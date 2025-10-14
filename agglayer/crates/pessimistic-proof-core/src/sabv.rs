@@ -1,5 +1,4 @@
 use crate::proof::ProofError;
-use std::collections::HashMap;
 
 #[derive(Debug, Clone)]
 pub struct SabvConfig {
@@ -21,9 +20,9 @@ impl SabvAlgorithm {
 
     pub fn verify_aggregated_blocks(
         &self,
-        blocks: &[crate::multi_batch_header::MultiBatchHeader],
+        blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Digest>],
         validator_nodes: &[usize],
-        global_root: &crate::aggchain_data::Digest,
+        global_root: &agglayer_primitives::keccak::Digest,
     ) -> Result<bool, ProofError> {
         // Simplified SABV verification for testing
         println!("🔍 SABV: Verifying {} blocks with {} validators", blocks.len(), validator_nodes.len());

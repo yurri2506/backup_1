@@ -1,5 +1,4 @@
 use crate::proof::ProofError;
-use std::collections::HashMap;
 
 #[derive(Debug, Clone)]
 pub struct LmtrConfig {
@@ -17,7 +16,7 @@ pub struct LmtrAlgorithm {
 pub struct RebalancedSet {
     pub needs_rebalancing: bool,
     pub new_height: usize,
-    pub optimized_blocks: Vec<crate::multi_batch_header::MultiBatchHeader>,
+    pub optimized_blocks: Vec<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Digest>>,
 }
 
 impl LmtrAlgorithm {
@@ -27,7 +26,7 @@ impl LmtrAlgorithm {
 
     pub fn rebalance_blocks(
         &self,
-        blocks: &[crate::multi_batch_header::MultiBatchHeader],
+        blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Digest>],
         target_height: usize,
         branching_factor: usize,
     ) -> Result<RebalancedSet, ProofError> {
