@@ -7,6 +7,7 @@ BIN_DIR="/home/ubuntu/thanhhuyen/agglayer"
 PKG="pessimistic-proof-test-suite"
 BIN="ppgen"
 EXIT_COUNTS=(1 5 10 20 50)
+INPUT_FILES=${INPUT_FILES:-/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json,/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json,/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json,/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json}
 
 mkdir -p "$LOG_DIR"
 
@@ -38,7 +39,15 @@ export SP1_PROVER=cpu; \
 mkdir -p $LOG_DIR/proofs; \
 for N in ${EXIT_COUNTS[@]}; do \
   echo \"[BASELINE] Running N=$N\" | tee -a $LOG_DIR/run.log; \
-  /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits $N --n-imported-exits $N --proof-dir $LOG_DIR/proofs > $LOG_DIR/proof_${BIN}_${N}.log 2>&1; \
+  /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits $N --n-imported-exits $N --proof-dir $LOG_DIR/proofs > $LOG_DIR/proof_${BIN}_${N}.no_input.log 2>&1; \
+  if [ -n \"$INPUT_FILES\" ]; then \
+    IFS=',' read -ra FILES <<< \"$INPUT_FILES\"; \
+    for F in \"${FILES[@]}\"; do \
+      BASE=$(basename \"$F\" | sed 's/\.[^.]*$//'); \
+      echo \"[BASELINE] Running N=$N INPUT=$F\" | tee -a $LOG_DIR/run.log; \
+      /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits $N --n-imported-exits $N --proof-dir $LOG_DIR/proofs --sample-path $F > $LOG_DIR/proof_${BIN}_${N}.input_${BASE}.log 2>&1; \
+    done; \
+  fi; \
 done; \
 echo 'DONE' | tee -a $LOG_DIR/run.log" C-m
 

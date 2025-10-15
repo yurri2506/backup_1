@@ -14,6 +14,7 @@ use pessimistic_proof_test_suite::{
 use sp1_sdk::{utils::setup_logger, HashableKey};
 use tracing::{info, warn};
 use pessimistic_proof::keccak::Keccak256Hasher;
+use agglayer_primitives::Digest as AggDigest;
 use serde::{Serialize, Deserialize};
 
 #[derive(Parser, Debug)]
@@ -89,11 +90,18 @@ fn main() {
 
     let bridge_exits = {
         let n = args.n_exits;
-        data::sample_bridge_exits_01()
-            .cycle()
-            .take(n)
-            .map(|e| (e.token_info, e.amount))
-            .collect::<Vec<_>>()
+        match &args.input {
+            Some(path) => data::sample_bridge_exits(path.clone())
+                .cycle()
+                .take(n)
+                .map(|e| (e.token_info, e.amount))
+                .collect::<Vec<_>>(),
+            None => data::sample_bridge_exits_01()
+                .cycle()
+                .take(n)
+                .map(|e| (e.token_info, e.amount))
+                .collect::<Vec<_>>(),
+        }
     };
     let imported_bridge_exits = bridge_exits.clone();
 
@@ -139,8 +147,8 @@ fn main() {
 
         // Apply SABV verification
         let blocks = vec![multi_batch_header.clone()];
-        // Use a Keccak hasher instance as global root context (placeholder for demo)
-        let global_root = Keccak256Hasher::default();
+        // Use real global root from the certificate: l1_info_root is the declared digest
+        let global_root: AggDigest = l1_info_root;
         
         let integrity_verified = sabv_algorithm
             .verify_aggregated_blocks(&blocks, &validator_nodes, &global_root)

@@ -8,6 +8,7 @@ PKG="pessimistic-proof-test-suite"
 BIN="ppgen_sabv_lmtr"
 EXIT_COUNTS=(1 5 10 20 50)
 VALIDATORS=${VALIDATORS:-5}
+INPUT_FILES=${INPUT_FILES:-/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json,/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json,/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json,/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json}
 
 mkdir -p "$LOG_DIR"
 
@@ -38,8 +39,16 @@ tmux send-keys -t "$SESSION_NAME":0.3 "\
 export SP1_PROVER=cpu; \
 mkdir -p $LOG_DIR/proofs; \
 for N in ${EXIT_COUNTS[@]}; do \
-  echo \"[SABV_LMTR] Running N=$N, validators=$VALIDATORS\" | tee -a $LOG_DIR/run.log; \
-  /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits $N --n-imported-exits $N --proof-dir $LOG_DIR/proofs --validator-nodes $VALIDATORS > $LOG_DIR/proof_${BIN}_${N}.log 2>&1; \
+  echo \"[SABV_LMTR] Running N=$N, validators=$VALIDATORS (no input)\" | tee -a $LOG_DIR/run.log; \
+  /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits $N --proof-dir $LOG_DIR/proofs --validator-nodes $VALIDATORS > $LOG_DIR/proof_${BIN}_${N}.no_input.log 2>&1; \
+  if [ -n \"$INPUT_FILES\" ]; then \
+    IFS=',' read -ra FILES <<< \"$INPUT_FILES\"; \
+    for F in \"${FILES[@]}\"; do \
+      BASE=$(basename \"$F\" | sed 's/\.[^.]*$//'); \
+      echo \"[SABV_LMTR] Running N=$N INPUT=$F, validators=$VALIDATORS\" | tee -a $LOG_DIR/run.log; \
+      /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits $N --proof-dir $LOG_DIR/proofs --validator-nodes $VALIDATORS --input $F > $LOG_DIR/proof_${BIN}_${N}.input_${BASE}.log 2>&1; \
+    done; \
+  fi; \
 done; \
 echo 'DONE' | tee -a $LOG_DIR/run.log" C-m
 
