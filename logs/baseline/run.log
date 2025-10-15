@@ -1,0 +1,6 @@
+[BASELINE] Running N=15102050
+[BASELINE] Running N=15102050 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json
+[BASELINE] Running N=15102050 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json
+[BASELINE] Running N=15102050 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json
+[BASELINE] Running N=15102050 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json
+DONE

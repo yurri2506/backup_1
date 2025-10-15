@@ -1,0 +1,15 @@
+=== SP1 LOCAL SERVER STARTING ===
+SP1 Environment:
+  SP1_PROVER=cpu
+  SP1_CIRCUITS_DIR=/home/ubuntu/thanhhuyen/sp1/target/release
+  SP1_CARGO_PROVE_PATH=/home/ubuntu/thanhhuyen/sp1/target/release/cargo-prove
+
+=== TESTING SP1 LOCAL ===
+Testing cargo-prove...
+❌ SP1 cargo-prove failed
+
+=== SP1 LOCAL SERVER READY ===
+Endpoint: local://sp1/cpu
+Mode: CPU proving
+Status: Active
+Wed Oct 15 02:21:55 PM UTC 2025: SP1 local server active
