@@ -20,9 +20,9 @@ impl SabvAlgorithm {
 
     pub fn verify_aggregated_blocks(
         &self,
-        blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Digest>],
+        blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>],
         validator_nodes: &[usize],
-        global_root: &agglayer_primitives::keccak::Digest,
+        global_root: &agglayer_primitives::keccak::Keccak256Hasher,
     ) -> Result<bool, ProofError> {
         // Simplified SABV verification for testing
         println!("🔍 SABV: Verifying {} blocks with {} validators", blocks.len(), validator_nodes.len());

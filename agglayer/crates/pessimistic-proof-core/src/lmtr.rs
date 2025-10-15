@@ -16,7 +16,7 @@ pub struct LmtrAlgorithm {
 pub struct RebalancedSet {
     pub needs_rebalancing: bool,
     pub new_height: usize,
-    pub optimized_blocks: Vec<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Digest>>,
+    pub optimized_blocks: Vec<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>>,
 }
 
 impl LmtrAlgorithm {
@@ -26,7 +26,7 @@ impl LmtrAlgorithm {
 
     pub fn rebalance_blocks(
         &self,
-        blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Digest>],
+        blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>],
         target_height: usize,
         branching_factor: usize,
     ) -> Result<RebalancedSet, ProofError> {
