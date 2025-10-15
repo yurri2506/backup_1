@@ -16,6 +16,8 @@ agglayer-tries.workspace = true
 agglayer-types = { workspace = true, features = ["testutils"] }
 unified-bridge.workspace = true
 pessimistic-proof = { path = "../pessimistic-proof" }
+pessimistic-proof-core = { path = "../pessimistic-proof-core" }
+agglayer-primitives.workspace = true
 ecdsa-proof-lib = { path = "./aggchain-proof-ecdsa-example/lib/" }
 
 base64.workspace = true

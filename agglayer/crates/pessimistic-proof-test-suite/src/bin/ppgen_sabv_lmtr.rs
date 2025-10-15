@@ -1,15 +1,20 @@
+use std::{path::PathBuf, time::Instant};
+
+use agglayer_types::{Address, Certificate, NetworkId, PessimisticRootInput};
 use clap::Parser;
 use pessimistic_proof::{
-    local_state::NetworkState, multi_batch_header,
+    unified_bridge::CommitmentVersion,
+    PessimisticProofOutput,
 };
+use pessimistic_proof_core::{SabvAlgorithm, SabvConfig, LmtrAlgorithm, LmtrConfig};
 use pessimistic_proof_test_suite::{
-    certificate::Certificate,
-    fixtures::PessimisticProofFixture,
     runner::Runner,
+    sample_data::{self as data},
 };
-use sp1_sdk::utils::setup_logger;
-use std::path::PathBuf;
+use sp1_sdk::{utils::setup_logger, HashableKey};
 use tracing::{info, warn};
+use pessimistic_proof::keccak::Keccak256Hasher;
+use serde::{Serialize, Deserialize};
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -31,6 +36,43 @@ struct PPGenArgs {
     input: Option<PathBuf>,
 }
 
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+struct PessimisticProofFixture {
+    certificate: Certificate,
+    pp_inputs: VerifierInputs,
+    signer: Address,
+    vkey: String,
+    public_values: String,
+    proof: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub struct VerifierInputs {
+    pub prev_local_exit_root: String,
+    pub prev_pessimistic_root: String,
+    pub l1_info_root: String,
+    pub origin_network: NetworkId,
+    pub aggchain_hash: String,
+    pub new_local_exit_root: String,
+    pub new_pessimistic_root: String,
+}
+
+impl From<PessimisticProofOutput> for VerifierInputs {
+    fn from(v: PessimisticProofOutput) -> Self {
+        Self {
+            prev_local_exit_root: format!("0x{}", hex::encode(v.prev_local_exit_root)),
+            prev_pessimistic_root: format!("0x{}", hex::encode(v.prev_pessimistic_root)),
+            l1_info_root: format!("0x{}", hex::encode(v.l1_info_root)),
+            origin_network: v.origin_network,
+            aggchain_hash: format!("0x{}", hex::encode(v.aggchain_hash)),
+            new_local_exit_root: format!("0x{}", hex::encode(v.new_local_exit_root)),
+            new_pessimistic_root: format!("0x{}", hex::encode(v.new_pessimistic_root)),
+        }
+    }
+}
+
 fn main() {
     setup_logger();
     
@@ -39,20 +81,34 @@ fn main() {
     info!("🚀 Starting SABV/LMTR enhanced SP1 proving...");
     info!("📊 Configuration: {} exits, {} validator nodes", args.n_exits, args.validator_nodes);
     
-    let start = std::time::Instant::now();
-    
-    // Load network state
-    let state = NetworkState::default();
-    let old_state = state.clone();
-    
-    // Generate multi batch header
-    let multi_batch_header = multi_batch_header::generate_multi_batch_header(
-        &state,
-        args.n_exits,
-    ).expect("Failed to generate multi batch header");
-    
-    // Load certificate
-    let certificate = Certificate::default();
+    let start = Instant::now();
+
+    // Build sample state and inputs (same as baseline binary)
+    let mut state = data::sample_state_00();
+    let old_state = state.state_b.clone();
+
+    let bridge_exits = {
+        let n = args.n_exits;
+        data::sample_bridge_exits_01()
+            .cycle()
+            .take(n)
+            .map(|e| (e.token_info, e.amount))
+            .collect::<Vec<_>>()
+    };
+    let imported_bridge_exits = bridge_exits.clone();
+
+    let certificate = state.apply_events(&imported_bridge_exits, &bridge_exits);
+
+    let l1_info_root = certificate.l1_info_root().unwrap().unwrap_or_default();
+    let multi_batch_header = old_state
+        .make_multi_batch_header(
+            &certificate,
+            state.get_signer(),
+            l1_info_root,
+            PessimisticRootInput::Computed(CommitmentVersion::V2),
+            None,
+        )
+        .expect("Failed to make multi batch header");
     
     // Use SABV/LMTR enhanced proving if validator_nodes > 0
     if args.validator_nodes > 0 {
@@ -63,34 +119,35 @@ fn main() {
         info!("✅ Applying SABV/LMTR algorithms...");
         
         // Initialize SABV algorithm
-        let sabv_config = pessimistic_proof_core::SabvConfig {
+        let num_validators = validator_nodes.len();
+        let secret_sharing_threshold = ((2 * num_validators) / 3) + 1; // 2f+1 threshold
+        let sabv_config = SabvConfig {
             batch_size: 500,
             branching_factor: 30,
-            num_validators: validator_nodes.len(),
-            secret_sharing_threshold: 1,
+            num_validators,
+            secret_sharing_threshold,
         };
-        let sabv_algorithm = pessimistic_proof_core::SabvAlgorithm::new(sabv_config.clone());
+        let sabv_algorithm = SabvAlgorithm::new(sabv_config.clone());
 
         // Initialize LMTR algorithm
-        let lmtr_config = pessimistic_proof_core::LmtrConfig {
+        let lmtr_config = LmtrConfig {
             branching_factor: 30,
             max_height: 10,
             verbose: false,
         };
-        let lmtr_algorithm = pessimistic_proof_core::LmtrAlgorithm::new(lmtr_config);
+        let lmtr_algorithm = LmtrAlgorithm::new(lmtr_config);
 
         // Apply SABV verification
         let blocks = vec![multi_batch_header.clone()];
-        let global_root = agglayer_primitives::keccak::Digest::default();
+        // Use a Keccak hasher instance as global root context (placeholder for demo)
+        let global_root = Keccak256Hasher::default();
         
-        let integrity_verified = sabv_algorithm.verify_aggregated_blocks(
-            &blocks,
-            &validator_nodes,
-            &global_root,
-        ).expect("SABV verification failed");
+        let integrity_verified = sabv_algorithm
+            .verify_aggregated_blocks(&blocks, &validator_nodes, &global_root)
+            .expect("SABV verification failed");
 
         if !integrity_verified {
-            println!("Warning: SABV integrity verification failed, but continuing for testing");
+            panic!("SABV integrity verification failed (n={}, t={})", num_validators, secret_sharing_threshold);
         }
 
         // Apply LMTR rebalancing
@@ -102,14 +159,21 @@ fn main() {
         ).expect("LMTR rebalancing failed");
 
         if rebalanced_set.needs_rebalancing {
-            println!("Warning: LMTR rebalancing still needed, but continuing for testing");
+            panic!("LMTR indicates rebalancing still needed; aborting proving to enforce correctness");
         }
 
-        info!("✅ SABV/LMTR algorithms applied, now running REAL SP1 proving...");
+        // Choose enhanced header (if LMTR produced an optimized header), otherwise fallback to original
+        let enhanced_header = rebalanced_set
+            .optimized_blocks
+            .get(0)
+            .cloned()
+            .unwrap_or_else(|| multi_batch_header.clone());
+
+        info!("✅ SABV/LMTR algorithms applied, now running REAL SP1 proving with enhanced header...");
         
         // Now run REAL SP1 proving
         let (proof, vk, new_roots) = Runner::new()
-            .generate_plonk_proof(&old_state.into(), &multi_batch_header)
+            .generate_plonk_proof(&old_state.into(), &enhanced_header)
             .expect("SABV/LMTR enhanced SP1 proving failed");
         
         let duration = start.elapsed();

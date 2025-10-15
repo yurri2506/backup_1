@@ -6849,6 +6849,7 @@ dependencies = [
 name = "pessimistic-proof-test-suite"
 version = "0.1.0"
 dependencies = [
+ "agglayer-primitives 0.6.0 (git+https://github.com/agglayer/interop.git?tag=v0.7.0)",
  "agglayer-tries 0.6.0 (git+https://github.com/agglayer/interop.git?tag=v0.7.0)",
  "agglayer-types",
  "anyhow",
@@ -6862,6 +6863,7 @@ dependencies = [
  "insta",
  "lazy_static",
  "pessimistic-proof",
+ "pessimistic-proof-core",
  "rand 0.9.1",
  "regex",
  "rstest",
