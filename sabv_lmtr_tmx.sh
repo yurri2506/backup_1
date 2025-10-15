@@ -35,22 +35,10 @@ tmux send-keys -t "$SESSION_NAME":0.2 "/bin/bash /home/ubuntu/thanhhuyen/sp1_loc
 
 # Pane 4: Proving runs
 tmux split-window -v -t "$SESSION_NAME":0.2
-tmux send-keys -t "$SESSION_NAME":0.3 "\
-export SP1_PROVER=cpu; \
-mkdir -p $LOG_DIR/proofs; \
-for N in ${EXIT_COUNTS[@]}; do \
-  echo \"[SABV_LMTR] Running N=$N, validators=$VALIDATORS (no input)\" | tee -a $LOG_DIR/run.log; \
-  /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits $N --proof-dir $LOG_DIR/proofs --validator-nodes $VALIDATORS > $LOG_DIR/proof_${BIN}_${N}.no_input.log 2>&1; \
-  if [ -n \"$INPUT_FILES\" ]; then \
-    IFS=',' read -ra FILES <<< \"$INPUT_FILES\"; \
-    for F in \"${FILES[@]}\"; do \
-      BASE=$(basename \"$F\" | sed 's/\.[^.]*$//'); \
-      echo \"[SABV_LMTR] Running N=$N INPUT=$F, validators=$VALIDATORS\" | tee -a $LOG_DIR/run.log; \
-      /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits $N --proof-dir $LOG_DIR/proofs --validator-nodes $VALIDATORS --input $F > $LOG_DIR/proof_${BIN}_${N}.input_${BASE}.log 2>&1; \
-    done; \
-  fi; \
-done; \
-echo 'DONE' | tee -a $LOG_DIR/run.log" C-m
+tmux send-keys -t "$SESSION_NAME":0.3 "export SP1_PROVER=cpu" C-m
+tmux send-keys -t "$SESSION_NAME":0.3 "mkdir -p $LOG_DIR/proofs" C-m
+tmux send-keys -t "$SESSION_NAME":0.3 "for N in ${EXIT_COUNTS[@]}; do echo \"[SABV_LMTR] Running N=\$N, validators=$VALIDATORS (no input)\" | tee -a $LOG_DIR/run.log; /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits \$N --proof-dir $LOG_DIR/proofs --validator-nodes $VALIDATORS > $LOG_DIR/proof_${BIN}_\${N}.no_input.log 2>&1; if [ -n \"$INPUT_FILES\" ]; then IFS=',' read -ra FILES <<< \"$INPUT_FILES\"; for F in \"\${FILES[@]}\"; do BASE=\$(basename \"\$F\" | sed 's/\.[^.]*\$//'); echo \"[SABV_LMTR] Running N=\$N INPUT=\$F, validators=$VALIDATORS\" | tee -a $LOG_DIR/run.log; /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits \$N --proof-dir $LOG_DIR/proofs --validator-nodes $VALIDATORS --input \$F > $LOG_DIR/proof_${BIN}_\${N}.input_\${BASE}.log 2>&1; done; fi; done" C-m
+tmux send-keys -t "$SESSION_NAME":0.3 "echo 'DONE' | tee -a $LOG_DIR/run.log" C-m
 
 echo "tmux session '$SESSION_NAME' started. Attach: tmux attach -t $SESSION_NAME"
 
