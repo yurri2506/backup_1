@@ -28,5 +28,5 @@ warning: field `config` is never read
    = note: `LmtrAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
 
 warning: `pessimistic-proof-core` (lib) generated 3 warnings
-    Finished `release` profile [optimized] target(s) in 1.79s
+    Finished `release` profile [optimized] target(s) in 1.76s
      Running `target/release/ppgen --n-exits 100 --n-imported-exits 100 --proof-dir /home/ubuntu/thanhhuyen/logs/baseline/proofs`

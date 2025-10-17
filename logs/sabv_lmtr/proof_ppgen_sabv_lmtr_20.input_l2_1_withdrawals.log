@@ -37,7 +37,7 @@ warning: unused import: `pessimistic_proof::keccak::Keccak256Hasher`
    = note: `#[warn(unused_imports)]` on by default
 
 warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr") generated 1 warning (run `cargo fix --bin "ppgen_sabv_lmtr"` to apply 1 suggestion)
-    Finished `release` profile [optimized] target(s) in 1.80s
+    Finished `release` profile [optimized] target(s) in 1.91s
      Running `target/release/ppgen_sabv_lmtr --n-exits 20 --proof-dir /home/ubuntu/thanhhuyen/logs/sabv_lmtr/proofs --validator-nodes 5 --input /home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json`
 
 thread 'main' panicked at /home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/src/event_data.rs:26:37:
@@ -45,20 +45,20 @@ called `Result::unwrap()` on an `Err` value: Error("invalid type: string \"30620
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 Command exited with non-zero status 101
 	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen_sabv_lmtr -- --n-exits 20 --proof-dir /home/ubuntu/thanhhuyen/logs/sabv_lmtr/proofs --validator-nodes 5 --input /home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json"
-	User time (seconds): 1.32
+	User time (seconds): 1.45
 	System time (seconds): 0.76
-	Percent of CPU this job got: 98%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.11
+	Percent of CPU this job got: 100%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.20
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 141560
+	Maximum resident set size (kbytes): 142032
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 36543
+	Minor (reclaiming a frame) page faults: 36552
 	Voluntary context switches: 76
-	Involuntary context switches: 28
+	Involuntary context switches: 10
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 16
