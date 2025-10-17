@@ -1,0 +1,42 @@
+[
+  {
+    "leafType": 1,
+    "originNetwork": 0,
+    "originAddress": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "destinationNetwork": 1,
+    "destinationAddress": "0x993acc4a4aa6d20335c42e33d4bd141ae8e3ae64",
+    "amount": 1000000000000000000,
+    "metadata": "bm90ZS1sMjEtMQ==",
+    "depositCount": 1
+  },
+  {
+    "leafType": 1,
+    "originNetwork": 0,
+    "originAddress": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "destinationNetwork": 2,
+    "destinationAddress": "0x4e05ba3a0023e72cad22c3fc6c8d301978de115d",
+    "amount": 2000000000000000000,
+    "metadata": "bm90ZS1sMjItMQ==",
+    "depositCount": 2
+  },
+  {
+    "leafType": 1,
+    "originNetwork": 0,
+    "originAddress": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "destinationNetwork": 1,
+    "destinationAddress": "0x12b93fdd67469bfbd344c4a7228159bfdada844d",
+    "amount": 3000000000000000000,
+    "metadata": "bm90ZS1sMjEtMg==",
+    "depositCount": 3
+  },
+  {
+    "leafType": 1,
+    "originNetwork": 0,
+    "originAddress": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "destinationNetwork": 2,
+    "destinationAddress": "0x7c62985e546f5eb65197f8cdfd63292c9de24eb5",
+    "amount": 4000000000000000000,
+    "metadata": "bm90ZS1sMjItMg==",
+    "depositCount": 4
+  }
+]

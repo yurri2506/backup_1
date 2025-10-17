@@ -1,0 +1,88 @@
+warning: unused variable: `global_root`
+  --> crates/pessimistic-proof-core/src/sabv.rs:25:9
+   |
+25 |         global_root: &agglayer_primitives::keccak::Keccak256Hasher,
+   |         ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_global_root`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `branching_factor`
+  --> crates/pessimistic-proof-core/src/lmtr.rs:31:9
+   |
+31 |         branching_factor: usize,
+   |         ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_branching_factor`
+
+warning: field `config` is never read
+  --> crates/pessimistic-proof-core/src/sabv.rs:13:5
+   |
+12 | pub struct SabvAlgorithm {
+   |            ------------- field in this struct
+13 |     config: SabvConfig,
+   |     ^^^^^^
+   |
+   = note: `SabvAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: field `config` is never read
+  --> crates/pessimistic-proof-core/src/lmtr.rs:12:5
+   |
+11 | pub struct LmtrAlgorithm {
+   |            ------------- field in this struct
+12 |     config: LmtrConfig,
+   |     ^^^^^^
+   |
+   = note: `LmtrAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: `pessimistic-proof-core` (lib) generated 4 warnings
+   Compiling pessimistic-proof-test-suite v0.1.0 (/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite)
+warning: unused import: `pessimistic_proof::keccak::Keccak256Hasher`
+  --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr.rs:16:5
+   |
+16 | use pessimistic_proof::keccak::Keccak256Hasher;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` on by default
+
+error[E0308]: mismatched types
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr.rs:154:66
+    |
+154 |             .verify_aggregated_blocks(&blocks, &validator_nodes, &global_root)
+    |              ------------------------                            ^^^^^^^^^^^^ expected `&Keccak256Hasher`, found `&Digest`
+    |              |
+    |              arguments to this method are incorrect
+    |
+    = note: expected reference `&Keccak256Hasher`
+               found reference `&Digest`
+note: method defined here
+   --> /home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-core/src/sabv.rs:21:12
+    |
+ 21 |     pub fn verify_aggregated_blocks(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^
+
+For more information about this error, try `rustc --explain E0308`.
+warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr") generated 1 warning
+error: could not compile `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr") due to 1 previous error; 1 warning emitted
+Command exited with non-zero status 101
+	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen_sabv_lmtr -- --n-exits 50 --proof-dir /home/ubuntu/thanhhuyen/logs/sabv_lmtr/proofs --validator-nodes 5 --input /home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json"
+	User time (seconds): 2.67
+	System time (seconds): 1.46
+	Percent of CPU this job got: 91%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:04.53
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 416248
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 89630
+	Voluntary context switches: 141
+	Involuntary context switches: 149
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 56
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 101
