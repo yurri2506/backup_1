@@ -1,0 +1,207 @@
+services:
+  # === MAIN SETUP (L1 + L2) ===
+  anvil-l1:
+    image: ametelnethermind/aggsandbox-anvil:latest
+    ports:
+      - "8545:8545"
+    networks:
+      - anvil-network
+    environment:
+      - ENABLE_FORK_MODE=${ENABLE_FORK_MODE:-false}
+      - FORK_URL_MAINNET=${FORK_URL_MAINNET:-}
+      - CHAIN_ID_MAINNET=${CHAIN_ID_MAINNET:-1}
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 1 bash -c '</dev/tcp/localhost/8545'"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  anvil-l2:
+    image: ametelnethermind/aggsandbox-anvil:latest
+    ports:
+      - "8546:8545"
+    networks:
+      - anvil-network
+    environment:
+      - ENABLE_FORK_MODE=${ENABLE_FORK_MODE:-false}
+      - FORK_URL_AGGLAYER_1=${FORK_URL_AGGLAYER_1:-}
+      - CHAIN_ID_AGGLAYER_1=${CHAIN_ID_AGGLAYER_1:-1101}
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 1 bash -c '</dev/tcp/localhost/8545'"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  # === MULTI-L2 ADDITION (L3) ===
+  anvil-l3:
+    image: ametelnethermind/aggsandbox-anvil:latest
+    ports:
+      - "8547:8545"
+    networks:
+      - anvil-network
+    environment:
+      - ENABLE_FORK_MODE=${ENABLE_FORK_MODE:-false}
+      - FORK_URL_AGGLAYER_2=${FORK_URL_AGGLAYER_2:-}
+      - CHAIN_ID_AGGLAYER_2=${CHAIN_ID_AGGLAYER_2:-137}
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 1 bash -c '</dev/tcp/localhost/8545'"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  # === CONTRACT DEPLOYMENT ===
+  contract-deployer:
+    image: ametelnethermind/aggsandbox-deployer:latest
+    pull_policy: always
+    depends_on:
+      anvil-l1:
+        condition: service_healthy
+      anvil-l2:
+        condition: service_healthy
+      anvil-l3:
+        condition: service_healthy
+    networks:
+      - anvil-network
+    environment:
+      - RPC_URL_1=http://anvil-l1:8545
+      - RPC_URL_2=http://anvil-l2:8545
+      - RPC_URL_3=http://anvil-l3:8545
+    volumes:
+      - ./.env:/app/output/deployed-contracts.env
+
+  # === AGGKIT INSTANCES ===
+  # Contract verification service for AggKit startup
+  aggkit-wait:
+    image: alpine:latest
+    pull_policy: missing
+    depends_on:
+      contract-deployer:
+        condition: service_completed_successfully
+    networks:
+      - anvil-network
+    command:
+      - sh
+      - -c
+      - |
+        apk add curl jq
+        echo 'Waiting for contracts to be deployed and accessible...'
+        for i in $$(seq 1 30); do
+          if [ -f '/app/output/deployed-contracts.env' ]; then
+            source /app/output/deployed-contracts.env
+            if [ -n "$$POLYGON_ROLLUP_MANAGER_L1" ]; then
+              RESPONSE=$$(curl -s -X POST http://anvil-l1:8545 -H 'Content-Type: application/json' -d "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getCode\",\"params\":[\"$$POLYGON_ROLLUP_MANAGER_L1\",\"latest\"],\"id\":1}" 2>/dev/null || echo '{"result":"0x"}')
+              CODE=$$(echo "$$RESPONSE" | jq -r '.result' 2>/dev/null || echo "0x")
+              if echo "$$CODE" | grep -q '^0x[0-9a-fA-F]\{3,\}$$'; then
+                echo "Contract verified at address $$POLYGON_ROLLUP_MANAGER_L1"
+                exit 0
+              fi
+            fi
+          fi
+          echo "Attempt $$i/30: Contract not ready, waiting..."
+          sleep 5
+        done
+        echo 'Contract verification failed after 150s'
+        exit 1
+    volumes:
+      - ./.env:/app/output/deployed-contracts.env:ro
+
+  # AggKit for L2 (L1 <-> L2 bridge)
+  aggkit-l2:
+    image: ametelnethermind/aggkit:latest
+    pull_policy: always
+    depends_on:
+      contract-deployer:
+        condition: service_completed_successfully
+      aggkit-wait:
+        condition: service_completed_successfully
+    ports:
+      - "5577:5577" # REST API
+      - "8080:8080" # Telemetry
+      - "8555:8555" # RPC
+    networks:
+      - anvil-network
+    volumes:
+      - ./config:/app/config
+      - aggkit-l2-data:/app/data
+      - ./.env:/app/.env:ro  # Mount .env file directly so it can be read at runtime
+    environment:
+      # Basic configuration
+      - AGGKIT_SANDBOX_ENABLED=true
+      - AGGKIT_LOG_LEVEL=info
+      - AGGKIT_COMPONENTS=bridge,aggoracle,claim-sponsor
+      - AGGKIT_CLAIMSPONSOR_ENABLED=true
+      - AGGKIT_CLAIMSPONSOR_CLAIM_ALL=${AGGKIT_CLAIMSPONSOR_CLAIM_ALL:-false}
+
+      # Network configuration
+      - AGGKIT_L1_URL=http://anvil-l1:8545
+      - AGGKIT_L2_URL=http://anvil-l2:8545
+      - AGGKIT_L1_CHAIN_ID=1
+      - AGGKIT_L2_CHAIN_ID=1101
+
+      # Service ports
+      - AGGKIT_REST_PORT=5577
+      - AGGKIT_RPC_PORT=8555
+      - AGGKIT_TELEMETRY_PORT=8080
+
+      # Database
+      - AGGKIT_DATABASE_NAME=/app/data/aggkit_l2.db
+
+      # Tell the entrypoint script to read from mounted .env file
+      - AGGKIT_ENV_FILE=/app/.env
+    container_name: aggkit-l2
+
+  # AggKit for L3 (L1 <-> L3 bridge)
+  aggkit-l3:
+    image: ametelnethermind/aggkit:latest
+    pull_policy: always
+    depends_on:
+      contract-deployer:
+        condition: service_completed_successfully
+      aggkit-wait:
+        condition: service_completed_successfully
+    ports:
+      - "5578:5578" # REST API (different external and internal port)
+      - "8081:8081" # Telemetry (different external and internal port)
+      - "8556:8556" # RPC (different external and internal port)
+    networks:
+      - anvil-network
+    volumes:
+      - ./config:/app/config
+      - aggkit-l3-data:/app/data
+      - ./.env:/app/.env:ro  # Mount .env file directly so it can be read at runtime
+    environment:
+      # Basic configuration
+      - AGGKIT_SANDBOX_ENABLED=true
+      - AGGKIT_LOG_LEVEL=info
+      - AGGKIT_COMPONENTS=bridge,aggoracle,claim-sponsor
+      - AGGKIT_CLAIMSPONSOR_ENABLED=true
+      - AGGKIT_CLAIMSPONSOR_CLAIM_ALL=${AGGKIT_CLAIMSPONSOR_CLAIM_ALL:-false}
+
+      # Network configuration
+      - AGGKIT_L1_URL=http://anvil-l1:8545
+      - AGGKIT_L2_URL=http://anvil-l3:8545
+      - AGGKIT_L1_CHAIN_ID=1
+      - AGGKIT_L2_CHAIN_ID=137
+
+      # Service ports (different internal ports to avoid conflicts)
+      - AGGKIT_REST_PORT=5578
+      - AGGKIT_RPC_PORT=8556
+      - AGGKIT_TELEMETRY_PORT=8081
+
+      # Database (different path to avoid conflicts)
+      - AGGKIT_DATABASE_NAME=/app/data/aggkit_l3.db
+
+      # Tell the entrypoint script to read from mounted .env file
+      - AGGKIT_ENV_FILE=/app/.env
+    container_name: aggkit-l3
+
+networks:
+  anvil-network:
+    driver: bridge
+
+volumes:
+  aggkit-l2-data:
+  aggkit-l3-data:

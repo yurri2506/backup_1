@@ -41,3 +41,4 @@ warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr") generated 1 warn
      Running `target/release/ppgen_sabv_lmtr --n-exits 20 --proof-dir /home/ubuntu/thanhhuyen/logs/sabv_lmtr/proofs --validator-nodes 5`
 🔍 SABV: Verifying 1 blocks with 5 validators
 🌳 LMTR: Rebalancing 1 blocks to height 3
+[sp1] plonk circuit artifacts already seem to exist at /home/ubuntu/.sp1/circuits/plonk/v5.0.0. if you want to re-download them, delete the directory
