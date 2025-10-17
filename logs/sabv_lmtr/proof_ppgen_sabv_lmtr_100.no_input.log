@@ -37,7 +37,7 @@ warning: unused import: `pessimistic_proof::keccak::Keccak256Hasher`
    = note: `#[warn(unused_imports)]` on by default
 
 warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr") generated 1 warning (run `cargo fix --bin "ppgen_sabv_lmtr"` to apply 1 suggestion)
-    Finished `release` profile [optimized] target(s) in 1.85s
+    Finished `release` profile [optimized] target(s) in 1.82s
      Running `target/release/ppgen_sabv_lmtr --n-exits 100 --proof-dir /home/ubuntu/thanhhuyen/logs/sabv_lmtr/proofs --validator-nodes 5`
 🔍 SABV: Verifying 1 blocks with 5 validators
 🌳 LMTR: Rebalancing 1 blocks to height 3
