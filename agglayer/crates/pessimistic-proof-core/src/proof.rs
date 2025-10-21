@@ -359,3 +359,13 @@ pub fn verify_consensus(
 
     Ok(target_pp_root_version)
 }
+
+    /// Invalid input parameters
+    #[error("Invalid input: {message}")]
+    #[error("Invalid input: {message}")]
+    InvalidInput { message: String },
+
+    /// Fraud detected during verification
+    #[error("Fraud detected: {message}")]
+    #[error("Fraud detected: {message}")]
+    FraudDetected { message: String },

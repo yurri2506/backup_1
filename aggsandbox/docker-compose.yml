@@ -51,7 +51,7 @@ services:
 
   aggkit-wait:
     image: alpine:latest
-    pull_policy: missing
+    pull_policy: always
     depends_on:
       contract-deployer:
         condition: service_completed_successfully

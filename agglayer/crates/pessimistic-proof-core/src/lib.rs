@@ -21,3 +21,17 @@ pub mod lmtr;
 
 pub use sabv::{SabvAlgorithm, SabvConfig};
 pub use lmtr::{LmtrAlgorithm, LmtrConfig, RebalancedSet};
+
+// Real algorithms for fraud detection
+pub mod real_sabv;
+pub mod real_lmtr;
+
+pub use real_sabv::{RealSabvAlgorithm, RealSabvConfig};
+pub use real_lmtr::{RealLmtrAlgorithm, RealLmtrConfig, RealRebalancedSet};
+
+// Real algorithms v3 for fraud detection
+pub mod real_sabv_3;
+pub mod real_lmtr_3;
+
+pub use real_sabv_3::{RealSabvAlgorithm3, RealSabvConfig3};
+pub use real_lmtr_3::{RealLmtrAlgorithm3, RealLmtrConfig3, RealRebalancedSet3};
