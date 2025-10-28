@@ -2,7 +2,7 @@
   "network_id": 1,
   "height": 0,
   "prev_local_exit_root": "0x27ae5ba08d7291c96c8cbddcc148bf48a6d68c7974b94356f53754ef6171d757",
-  "new_local_exit_root": "0x21c52d55ebc2c14eac42f4e42d6867dc1645c6034b9d39c1d52b31b03d7e1da6",
+  "new_local_exit_root": "0xf08d02271c367ac152d8c5c709486718150afeb7dabf958beba9ff197483b147",
   "bridge_exits": [
     {
       "leaf_type": "Transfer",
@@ -11,7 +11,7 @@
         "origin_token_address": "0x0000000000000000000000000000000000000000"
       },
       "dest_network": 0,
-      "dest_address": "0xf1ff67a701fb087789751f8d05334ea9371bf1c2",
+      "dest_address": "0x5c5593fadba314cac0ecca57112a52cbec232cb4",
       "amount": "0x2880dc0e310148",
       "metadata": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
     }
@@ -25,7 +25,7 @@
           "origin_token_address": "0x0000000000000000000000000000000000000000"
         },
         "dest_network": 1,
-        "dest_address": "0x5725eff6d6d59484b389848fe4777171c8ef4f85",
+        "dest_address": "0x6db07dae2318ece784e440548adfffd8498d91ac",
         "amount": "0x2880dc0e310148",
         "metadata": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
       },
@@ -68,7 +68,7 @@
                 "0x8448818bb4ae4562849e949e17ac16e0be16688e156b5cf15e098c627c0056a9"
               ]
             },
-            "root": "0x45dfa3875affb2c84543dea6da54198b822970b0eeec3581bf5390776cc270d3"
+            "root": "0x969b2977fff31fc6e304c6227e09c596d69ad170b74441c99689a61b93c74116"
           },
           "proof_ger_l1root": {
             "proof": {
@@ -107,14 +107,14 @@
                 "0x8448818bb4ae4562849e949e17ac16e0be16688e156b5cf15e098c627c0056a9"
               ]
             },
-            "root": "0x1824684946290a07772f3acc8b0b476373d8e625e3f9110d58fd65095e501c54"
+            "root": "0x23fb84823c97de5250b0a45ef0bf799064c4678c1c811f856454c4bf07953f37"
           },
           "l1_leaf": {
             "l1_info_tree_index": 0,
             "rer": "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "mer": "0x45dfa3875affb2c84543dea6da54198b822970b0eeec3581bf5390776cc270d3",
+            "mer": "0x969b2977fff31fc6e304c6227e09c596d69ad170b74441c99689a61b93c74116",
             "inner": {
-              "global_exit_root": "0xbff9153018e6857aa4e64910bca97d37a485aa5378a4f2fa0fc568e2183685e1",
+              "global_exit_root": "0x2da4dd9588ab51e138d49fa5defeb5c883dd3a8df1ab7b3cdff97d443cd7dcf9",
               "block_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
               "timestamp": 0
             }
@@ -130,8 +130,8 @@
   ],
   "metadata": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "signature": {
-    "r": "0xd8a9ba13e0fd4bad7fcf2b3500d7772178ecfee1390cb3e56937114d1e032622",
-    "s": "0x7a1815be47cabcc47cca95a60c8c87b8f2c7a93bd102ad8fa0d37d93467d7f15",
+    "r": "0x51a6eb547beddfb442f3e14998d57501aaf88dcfe6d3310364768d02732adca3",
+    "s": "0x15f34820fdd719d9ee0166ed3a86652c3cf4e27ce84126c5a441f33e8a2524a0",
     "odd_y_parity": false
   },
   "custom_chain_data": [],

@@ -2,7 +2,7 @@
   "network_id": 1,
   "height": 0,
   "prev_local_exit_root": "0x27ae5ba08d7291c96c8cbddcc148bf48a6d68c7974b94356f53754ef6171d757",
-  "new_local_exit_root": "0x4e75e971239bec7c346909ccb7bc39d0766e16a08ce3cc37ee3c1cf4555018d1",
+  "new_local_exit_root": "0xa0307685b6e0509cefb7511372284a0012fbd363373e637cf96f9144904d32b1",
   "bridge_exits": [
     {
       "leaf_type": "Transfer",
@@ -11,7 +11,7 @@
         "origin_token_address": "0x0000000000000000000000000000000000000000"
       },
       "dest_network": 0,
-      "dest_address": "0x4a35be44769cef20ff6e7200e6173c37636c519f",
+      "dest_address": "0xb4e216fb0334b56788fca80a74b1bdc19dde7b78",
       "amount": "0x2880dc0e310148",
       "metadata": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
     }
@@ -25,7 +25,7 @@
           "origin_token_address": "0x0000000000000000000000000000000000000000"
         },
         "dest_network": 1,
-        "dest_address": "0x919f38286dc03fdd564b6c995233ddebbfa37c8d",
+        "dest_address": "0xb6592a7003a356ce98f8aaf493c9bbb63474ffb8",
         "amount": "0x2880dc0e310148",
         "metadata": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"
       },
@@ -68,7 +68,7 @@
                 "0x8448818bb4ae4562849e949e17ac16e0be16688e156b5cf15e098c627c0056a9"
               ]
             },
-            "root": "0xe2eae3e3e3a656ea845fef263baf11bfc770f8d18dbe444dbbdb6c7da475bae2"
+            "root": "0x0ebdde0069667630b64c20738e4d08e22be14ece2498de6a01dd9abf76243783"
           },
           "proof_ger_l1root": {
             "proof": {
@@ -107,14 +107,14 @@
                 "0x8448818bb4ae4562849e949e17ac16e0be16688e156b5cf15e098c627c0056a9"
               ]
             },
-            "root": "0xbccab6c64ba1fcbff0df5aab414c50f968096f5d1943a60f37209569c6deab7f"
+            "root": "0xcf4c61e9ce02d262fcf1152ac4f6ff6e26443749d96e95d4aea35cf06fd3a5ce"
           },
           "l1_leaf": {
             "l1_info_tree_index": 0,
             "rer": "0x0000000000000000000000000000000000000000000000000000000000000000",
-            "mer": "0xe2eae3e3e3a656ea845fef263baf11bfc770f8d18dbe444dbbdb6c7da475bae2",
+            "mer": "0x0ebdde0069667630b64c20738e4d08e22be14ece2498de6a01dd9abf76243783",
             "inner": {
-              "global_exit_root": "0x7307291a7e8f9a4a5d9b9ecbcc6660a3311a4dad3bc6d9e6a3d0d20178b94817",
+              "global_exit_root": "0xc4cbe49452146ea4e7a1d2df49e1a48fd6a6b91326c38c5fbe244216c83dfe35",
               "block_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
               "timestamp": 0
             }
@@ -130,9 +130,9 @@
   ],
   "metadata": "0x0000000000000000000000000000000000000000000000000000000000000000",
   "signature": {
-    "r": "0xb7147b2d4d60397a7ff155eff4b7fd1f8514ea167ec6976bbb54f0a099410555",
-    "s": "0x21841fec0d34b9edb7bb6354730abea5e4dc3a2321554522f9ef62a5fe2cbb53",
-    "odd_y_parity": false
+    "r": "0xc8cb19ac1bf93422a66a5131144981e4a3bb88a1f908a9f26fee05984262d9a5",
+    "s": "0x7747e01e2ff355889c20a0d3292682fa83821825cc2b9acd63c9ef96124a8080",
+    "odd_y_parity": true
   },
   "custom_chain_data": [],
   "l1_info_tree_leaf_count": null
