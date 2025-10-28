@@ -1,0 +1,525 @@
+   Compiling ethers-contract-derive v2.0.14
+   Compiling pessimistic-proof-core v0.1.0 (/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-core)
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `tokio`
+ --> crates/pessimistic-proof-core/src/sabv3.rs:7:5
+  |
+7 | use tokio::sync::{RwLock, mpsc};
+  |     ^^^^^ use of unresolved module or unlinked crate `tokio`
+  |
+  = help: if you wanted to use a crate named `tokio`, use `cargo add tokio` to add it to your `Cargo.toml`
+
+error[E0432]: unresolved import `secp256k1`
+ --> crates/pessimistic-proof-core/src/sabv3.rs:5:5
+  |
+5 | use secp256k1::{Secp256k1, SecretKey, PublicKey, Message, Signature, ecdsa};
+  |     ^^^^^^^^^ use of unresolved module or unlinked crate `secp256k1`
+  |
+  = help: if you wanted to use a crate named `secp256k1`, use `cargo add secp256k1` to add it to your `Cargo.toml`
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv3.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Duration`
+ --> crates/pessimistic-proof-core/src/sabv3.rs:9:17
+  |
+9 | use std::time::{Duration, Instant};
+  |                 ^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr3.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Keccak256`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:3:34
+  |
+3 | use sha3::{Digest as Sha3Digest, Keccak256};
+  |                                  ^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:5:5
+  |
+5 | use std::collections::HashMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0277]: the `?` operator can only be applied to values that implement `Try`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:332:36
+    |
+332 |                         signature: self.generate_validator_signature(primary_id, &block_hash)?,
+    |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the `?` operator cannot be applied to type `impl Future<Output = Result<{type error}, ProofError>>`
+    |
+    = help: the trait `Try` is not implemented for `impl Future<Output = Result<{type error}, ProofError>>`
+help: consider `await`ing on the `Future`
+    |
+332 |                         signature: self.generate_validator_signature(primary_id, &block_hash).await?,
+    |                                                                                              ++++++
+
+error[E0277]: the `?` operator can only be applied to values that implement `Try`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:363:40
+    |
+363 | ...                   signature: self.generate_validator_signature(validator_id, &block_hash)?,
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the `?` operator cannot be applied to type `impl Future<Output = Result<{type error}, ProofError>>`
+    |
+    = help: the trait `Try` is not implemented for `impl Future<Output = Result<{type error}, ProofError>>`
+help: consider `await`ing on the `Future`
+    |
+363 |                             signature: self.generate_validator_signature(validator_id, &block_hash).await?,
+    |                                                                                                    ++++++
+
+error[E0277]: the `?` operator can only be applied to values that implement `Try`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:396:40
+    |
+396 | ...                   signature: self.generate_validator_signature(validator_id, &block_hash)?,
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the `?` operator cannot be applied to type `impl Future<Output = Result<{type error}, ProofError>>`
+    |
+    = help: the trait `Try` is not implemented for `impl Future<Output = Result<{type error}, ProofError>>`
+help: consider `await`ing on the `Future`
+    |
+396 |                             signature: self.generate_validator_signature(validator_id, &block_hash).await?,
+    |                                                                                                    ++++++
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:523:30
+    |
+523 |                 .map_err(|_| ProofError::InvalidNullifierPath("Invalid message hash".to_string()))?;
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------
+    |                              |
+    |                              call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:528:17
+    |
+528 |             Err(ProofError::InvalidNullifierPath("Validator not found".to_string()))
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------
+    |                 |
+    |                 call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:637:30
+    |
+637 |                 .map_err(|_| ProofError::InvalidNullifierPath("Invalid message hash".to_string()))?;
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^------------------------------------
+    |                              |
+    |                              call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:642:17
+    |
+642 |             Err(ProofError::InvalidNullifierPath("No validators available".to_string()))
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^---------------------------------------
+    |                 |
+    |                 call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:657:30
+    |
+657 |                 .map_err(|_| ProofError::InvalidNullifierPath("Invalid message".to_string()))?;
+    |                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-------------------------------
+    |                              |
+    |                              call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:451:65
+    |
+451 |         let block_bytes = bincode::serialize(block).map_err(|_| ProofError::InvalidNullifierPath("Failed to serialize block".to_string()))?;
+    |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------
+    |                                                                 |
+    |                                                                 call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:461:65
+    |
+461 |         let block_bytes = bincode::serialize(block).map_err(|_| ProofError::InvalidNullifierPath("Failed to serialize block".to_string()))?;
+    |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------
+    |                                                                 |
+    |                                                                 call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:467:65
+    |
+467 |         let block_bytes = bincode::serialize(block).map_err(|_| ProofError::InvalidNullifierPath("Failed to serialize block".to_string()))?;
+    |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------
+    |                                                                 |
+    |                                                                 call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:478:65
+    |
+478 |         let block_bytes = bincode::serialize(block).map_err(|_| ProofError::InvalidNullifierPath("Failed to serialize block".to_string()))?;
+    |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------
+    |                                                                 |
+    |                                                                 call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:490:65
+    |
+490 |         let block_bytes = bincode::serialize(block).map_err(|_| ProofError::InvalidNullifierPath("Failed to serialize block".to_string()))?;
+    |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------------
+    |                                                                 |
+    |                                                                 call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0618]: expected function, found `ProofError`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:516:64
+    |
+516 |         Ok(Digest::from(hash.as_slice().try_into().map_err(|_| ProofError::InvalidNullifierPath("Invalid hash length".to_string()))?))
+    |                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-----------------------------------
+    |                                                                |
+    |                                                                call expression requires function
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:75:5
+    |
+ 75 |     InvalidNullifierPath,
+    |     -------------------- `ProofError::InvalidNullifierPath` defined here
+
+error[E0277]: the trait bound `agglayer_primitives::Digest: From<&[u8]>` is not satisfied
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:149:31
+    |
+149 |             let leaf_digest = Digest::from(leaf_hash.as_slice());
+    |                               ^^^^^^ the trait `From<&[u8]>` is not implemented for `agglayer_primitives::Digest`
+    |
+    = help: the following other types implement trait `From<T>`:
+              `agglayer_primitives::Digest` implements `From<LocalBalanceRoot>`
+              `agglayer_primitives::Digest` implements `From<LocalExitRoot>`
+              `agglayer_primitives::Digest` implements `From<LocalNullifierRoot>`
+              `agglayer_primitives::Digest` implements `From<[u8; 32]>`
+              `agglayer_primitives::Digest` implements `From<alloy_primitives::bits::fixed::FixedBytes<32>>`
+
+error[E0277]: the trait bound `agglayer_primitives::Digest: From<&[u8]>` is not satisfied
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:238:34
+    |
+238 |                 let new_digest = Digest::from(new_hash.as_slice());
+    |                                  ^^^^^^ the trait `From<&[u8]>` is not implemented for `agglayer_primitives::Digest`
+    |
+    = help: the following other types implement trait `From<T>`:
+              `agglayer_primitives::Digest` implements `From<LocalBalanceRoot>`
+              `agglayer_primitives::Digest` implements `From<LocalExitRoot>`
+              `agglayer_primitives::Digest` implements `From<LocalNullifierRoot>`
+              `agglayer_primitives::Digest` implements `From<[u8; 32]>`
+              `agglayer_primitives::Digest` implements `From<alloy_primitives::bits::fixed::FixedBytes<32>>`
+
+error[E0599]: no method named `hash` found for reference `&MultiBatchHeader<Keccak256Hasher>` in the current scope
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:303:39
+    |
+303 |         data.extend_from_slice(&block.hash().as_slice());
+    |                                       ^^^^ method not found in `&MultiBatchHeader<Keccak256Hasher>`
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following traits define an item `hash`, perhaps you need to implement one of them:
+            candidate #1: `Hash`
+            candidate #2: `Hashable`
+
+error[E0599]: no method named `batch_header` found for reference `&MultiBatchHeader<Keccak256Hasher>` in the current scope
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:304:39
+    |
+304 |         data.extend_from_slice(&block.batch_header().hash().as_slice());
+    |                                       ^^^^^^^^^^^^ method not found in `&MultiBatchHeader<Keccak256Hasher>`
+
+error[E0599]: no method named `batch_header` found for reference `&MultiBatchHeader<Keccak256Hasher>` in the current scope
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:305:39
+    |
+305 |         data.extend_from_slice(&block.batch_header().l1_info_root().as_slice());
+    |                                       ^^^^^^^^^^^^ method not found in `&MultiBatchHeader<Keccak256Hasher>`
+
+error[E0599]: no variant or associated item named `InvalidInput` found for enum `ProofError` in the current scope
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:320:36
+    |
+320 |             return Err(ProofError::InvalidInput("Empty leaf nodes".to_string()));
+    |                                    ^^^^^^^^^^^^ variant or associated item not found in `ProofError`
+    |
+   ::: crates/pessimistic-proof-core/src/proof.rs:39:1
+    |
+ 39 | pub enum ProofError {
+    | ------------------- variant or associated item `InvalidInput` not found for this enum
+
+error[E0277]: the trait bound `agglayer_primitives::Digest: From<&[u8]>` is not satisfied
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:342:37
+    |
+342 |                 let parent_digest = Digest::from(parent_hash.as_slice());
+    |                                     ^^^^^^ the trait `From<&[u8]>` is not implemented for `agglayer_primitives::Digest`
+    |
+    = help: the following other types implement trait `From<T>`:
+              `agglayer_primitives::Digest` implements `From<LocalBalanceRoot>`
+              `agglayer_primitives::Digest` implements `From<LocalExitRoot>`
+              `agglayer_primitives::Digest` implements `From<LocalNullifierRoot>`
+              `agglayer_primitives::Digest` implements `From<[u8; 32]>`
+              `agglayer_primitives::Digest` implements `From<alloy_primitives::bits::fixed::FixedBytes<32>>`
+
+warning: unused import: `Digest`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:3:12
+  |
+3 | use sha3::{Digest as Sha3Digest, Keccak256};
+  |            ^^^^^^
+
+warning: unused variable: `branching_factor`
+  --> crates/pessimistic-proof-core/src/lmtr.rs:31:9
+   |
+31 |         branching_factor: usize,
+   |         ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_branching_factor`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `block`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:72:13
+   |
+72 |         for block in blocks {
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `consensus_result`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:79:13
+   |
+79 |         let consensus_result = self.run_consensus_mechanism(blocks, validator_nodes)?;
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_consensus_result`
+
+warning: unused variable: `global_root`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:63:9
+   |
+63 |         global_root: &agglayer_primitives::Digest,
+   |         ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_global_root`
+
+warning: unused variable: `computed_hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:136:13
+    |
+136 |         let computed_hash = Keccak256::digest(&block_data);
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_computed_hash`
+
+warning: unused variable: `declared_hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:139:13
+    |
+139 |         let declared_hash = self.get_block_declared_hash(block)?;
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_declared_hash`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:229:32
+    |
+229 |     fn get_block_height(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:241:39
+    |
+241 |     fn get_block_declared_hash(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) ...
+    |                                       ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:247:32
+    |
+247 |     fn get_block_signer(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:257:35
+    |
+257 |     fn get_block_signature(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |                                   ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:274:13
+    |
+274 |         let hash = Keccak256::digest(&block_data);
+    |             ^^^^ help: if this is intentional, prefix it with an underscore: `_hash`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:295:35
+    |
+295 |     fn estimate_block_size(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |                                   ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `i`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:144:14
+    |
+144 |         for (i, block) in blocks.iter().enumerate() {
+    |              ^ help: if this is intentional, prefix it with an underscore: `_i`
+
+warning: unused variable: `leaf_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:146:17
+    |
+146 |             let leaf_hash = Keccak256::digest(&block_data);
+    |                 ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_leaf_hash`
+
+warning: unused variable: `current_efficiency`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:179:13
+    |
+179 |         let current_efficiency = self.calculate_tree_efficiency(num_blocks, branching_factor)?;
+    |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_current_efficiency`
+
+warning: unused variable: `new_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:229:21
+    |
+229 |                 let new_hash = Keccak256::digest(&optimized_data);
+    |                     ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_new_hash`
+
+warning: unused variable: `optimal_config`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:217:9
+    |
+217 |         optimal_config: &OptimalConfig,
+    |         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_optimal_config`
+
+warning: unused variable: `parent_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:312:21
+    |
+312 |                 let parent_hash = Keccak256::digest(&parent_data);
+    |                     ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_parent_hash`
+
+warning: unused variable: `tree`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:399:136
+    |
+399 | ...ves::keccak::Keccak256Hasher>, tree: &MerkleTree) -> Result<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::K...
+    |                                   ^^^^ help: if this is intentional, prefix it with an underscore: `_tree`
+
+warning: unused variable: `hash`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:440:13
+    |
+440 |         let hash = Keccak256::digest(&block_data);
+    |             ^^^^ help: if this is intentional, prefix it with an underscore: `_hash`
+
+warning: unused variable: `signer`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:646:48
+    |
+646 |     fn extract_validator_id_from_signer(&self, signer: &str) -> Result<usize, ProofError> {
+    |                                                ^^^^^^ help: if this is intentional, prefix it with an underscore: `_signer`
+
+warning: unused variable: `current_efficiency`
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:181:13
+    |
+181 |         let current_efficiency = self.calculate_tree_efficiency(num_blocks, branching_factor)?;
+    |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_current_efficiency`
+
+warning: unused variable: `tree`
+   --> crates/pessimistic-proof-core/src/lmtr3.rs:428:136
+    |
+428 | ...ves::keccak::Keccak256Hasher>, tree: &MerkleTree) -> Result<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::K...
+    |                                   ^^^^ help: if this is intentional, prefix it with an underscore: `_tree`
+
+warning: unused variable: `total_detection_time`
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:128:13
+    |
+128 |         let total_detection_time = start_time.elapsed();
+    |             ^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_total_detection_time`
+
+warning: unused variable: `start_time`
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:225:13
+    |
+225 |         let start_time = Instant::now();
+    |             ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_start_time`
+
+warning: variable does not need to be mutable
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:269:17
+    |
+269 |             let mut malicious_block = block.clone();
+    |                 ----^^^^^^^^^^^^^^^
+    |                 |
+    |                 help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+error[E0433]: failed to resolve: use of unresolved module or unlinked crate `secp256k1`
+  --> crates/pessimistic-proof-core/src/sabv3.rs:64:21
+   |
+64 |     secp: Secp256k1<secp256k1::All>,
+   |                     ^^^^^^^^^ use of unresolved module or unlinked crate `secp256k1`
+   |
+   = help: if you wanted to use a crate named `secp256k1`, use `cargo add secp256k1` to add it to your `Cargo.toml`
+
+Some errors have detailed explanations: E0277, E0432, E0433, E0599, E0618.
+For more information about an error, try `rustc --explain E0277`.
+warning: `pessimistic-proof-core` (lib) generated 35 warnings
+error: could not compile `pessimistic-proof-core` (lib) due to 24 previous errors; 35 warnings emitted
+warning: build failed, waiting for other jobs to finish...
+Command exited with non-zero status 101
+	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen -- --n-exits 700 --n-imported-exits 700 --proof-dir /home/ubuntu/thanhhuyen/logs/fraud_detection_comprehensive_v2_1/proofs_baseline_malicious"
+	User time (seconds): 7.58
+	System time (seconds): 2.91
+	Percent of CPU this job got: 144%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.26
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 277892
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 663
+	Minor (reclaiming a frame) page faults: 191740
+	Voluntary context switches: 4063
+	Involuntary context switches: 825
+	Swaps: 0
+	File system inputs: 135896
+	File system outputs: 20176
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 101

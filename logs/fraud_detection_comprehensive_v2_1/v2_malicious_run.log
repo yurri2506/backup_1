@@ -1,0 +1,168 @@
+[V2] Running N=1 with malicious data, validators=5
+[V2] Running N=10 with malicious data, validators=5
+[V2] Running N=20 with malicious data, validators=5
+[V2] Running N=50 with malicious data, validators=5
+[V2] Running N=1 with malicious data, validators=5
+[V2] Running N=10 with malicious data, validators=5
+[V2] Running N=20 with malicious data, validators=5
+[V2] Running N=50 with malicious data, validators=5
+[V2] Running N=1 with malicious data, validators=5
+[V2] Running N=10 with malicious data, validators=5
+[V2] Running N=20 with malicious data, validators=5
+[V2] Running N=50 with malicious data, validators=5
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Wed Oct 22 12:22:41 PM UTC 2025
+[V2] Completed N=1 at Wed Oct 22 12:22:41 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Wed Oct 22 12:22:41 PM UTC 2025
+[V2] Completed N=10 at Wed Oct 22 12:22:42 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Wed Oct 22 12:22:42 PM UTC 2025
+[V2] Completed N=20 at Wed Oct 22 12:22:42 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Wed Oct 22 12:22:42 PM UTC 2025
+[V2] Completed N=50 at Wed Oct 22 12:22:42 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 12:13:50 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 12:13:50 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 12:13:50 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 12:13:50 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 12:13:50 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 12:13:51 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 12:13:51 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 12:13:51 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 01:13:18 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 01:13:18 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 01:13:18 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 01:13:19 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 01:13:19 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 01:13:19 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 01:13:19 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 01:13:19 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 01:20:08 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 01:20:08 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 01:20:08 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 01:20:08 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 01:20:08 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 01:20:08 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 01:20:08 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 01:20:09 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 01:29:54 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 01:29:54 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 01:29:54 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 01:29:54 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 01:29:54 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 01:29:55 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 01:29:55 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 01:29:55 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 01:36:28 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 01:36:28 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 01:36:28 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 01:36:29 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 01:36:29 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 01:36:29 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 01:36:29 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 01:36:29 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 01:37:26 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 01:37:26 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 01:37:26 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 01:37:26 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 01:37:26 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 01:37:27 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 01:37:27 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 01:37:27 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 03:29:59 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 03:29:59 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 03:29:59 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 03:29:59 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 03:29:59 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 03:29:59 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 03:29:59 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 03:30:00 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 04:16:20 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 04:16:21 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 04:16:21 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 04:16:21 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 04:16:21 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 04:16:22 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 04:16:22 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 04:16:22 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 04:18:39 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 04:18:40 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 04:18:40 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 04:18:40 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 04:18:40 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 04:18:40 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 04:18:40 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 04:18:41 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 04:47:14 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 04:47:14 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 04:47:14 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 04:47:15 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 04:47:15 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 04:47:15 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 04:47:15 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 04:47:15 PM UTC 2025
+[V2] Running N=1 with malicious data, validators=5
+[V2] Starting N=1 at Thu Oct 23 04:54:26 PM UTC 2025
+[V2] Completed N=1 at Thu Oct 23 04:54:27 PM UTC 2025
+[V2] Running N=10 with malicious data, validators=5
+[V2] Starting N=10 at Thu Oct 23 04:54:27 PM UTC 2025
+[V2] Completed N=10 at Thu Oct 23 04:54:27 PM UTC 2025
+[V2] Running N=20 with malicious data, validators=5
+[V2] Starting N=20 at Thu Oct 23 04:54:27 PM UTC 2025
+[V2] Completed N=20 at Thu Oct 23 04:54:27 PM UTC 2025
+[V2] Running N=50 with malicious data, validators=5
+[V2] Starting N=50 at Thu Oct 23 04:54:27 PM UTC 2025
+[V2] Completed N=50 at Thu Oct 23 04:54:28 PM UTC 2025
+[V2] Running N=70 with malicious data, validators=5
+[V2] Starting N=70 at Thu Oct 23 04:54:28 PM UTC 2025
+[V2] Completed N=70 at Thu Oct 23 04:54:28 PM UTC 2025
+[V2] Running N=200 with malicious data, validators=5
+[V2] Starting N=200 at Thu Oct 23 04:54:28 PM UTC 2025
+[V2] Completed N=200 at Thu Oct 23 04:54:28 PM UTC 2025
+[V2] Running N=400 with malicious data, validators=5
+[V2] Starting N=400 at Thu Oct 23 04:54:28 PM UTC 2025
+[V2] Completed N=400 at Thu Oct 23 04:54:28 PM UTC 2025
+[V2] Running N=700 with malicious data, validators=5
+[V2] Starting N=700 at Thu Oct 23 04:54:28 PM UTC 2025
+[V2] Completed N=700 at Thu Oct 23 04:54:29 PM UTC 2025

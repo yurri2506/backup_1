@@ -1,0 +1,609 @@
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv3.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr3.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv4.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr4.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `BridgeExit`, `ImportedBridgeExit`, `NetworkId`, and `TokenInfo`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:245:30
+    |
+245 |         use unified_bridge::{BridgeExit, ImportedBridgeExit, NetworkId, TokenInfo};
+    |                              ^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `agglayer_primitives::U256`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:247:13
+    |
+247 |         use agglayer_primitives::U256;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::nullifier_tree::NullifierPath`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:248:13
+    |
+248 |         use crate::nullifier_tree::NullifierPath;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::local_balance_tree::LocalBalancePath`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:249:13
+    |
+249 |         use crate::local_balance_tree::LocalBalancePath;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::aggchain_proof::AggchainData`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:250:13
+    |
+250 |         use crate::aggchain_proof::AggchainData;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Keccak256`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:3:34
+  |
+3 | use sha3::{Digest as Sha3Digest, Keccak256};
+  |                                  ^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:5:5
+  |
+5 | use std::collections::HashMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Digest`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:3:12
+  |
+3 | use sha3::{Digest as Sha3Digest, Keccak256};
+  |            ^^^^^^
+
+warning: unused variable: `branching_factor`
+  --> crates/pessimistic-proof-core/src/lmtr.rs:31:9
+   |
+31 |         branching_factor: usize,
+   |         ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_branching_factor`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `block`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:72:13
+   |
+72 |         for block in blocks {
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `consensus_result`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:79:13
+   |
+79 |         let consensus_result = self.run_consensus_mechanism(blocks, validator_nodes)?;
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_consensus_result`
+
+warning: unused variable: `global_root`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:63:9
+   |
+63 |         global_root: &agglayer_primitives::Digest,
+   |         ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_global_root`
+
+warning: unused variable: `computed_hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:136:13
+    |
+136 |         let computed_hash = Keccak256::digest(&block_data);
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_computed_hash`
+
+warning: unused variable: `declared_hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:139:13
+    |
+139 |         let declared_hash = self.get_block_declared_hash(block)?;
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_declared_hash`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:229:32
+    |
+229 |     fn get_block_height(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:241:39
+    |
+241 |     fn get_block_declared_hash(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) ...
+    |                                       ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:247:32
+    |
+247 |     fn get_block_signer(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:257:35
+    |
+257 |     fn get_block_signature(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |                                   ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:274:13
+    |
+274 |         let hash = Keccak256::digest(&block_data);
+    |             ^^^^ help: if this is intentional, prefix it with an underscore: `_hash`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:295:35
+    |
+295 |     fn estimate_block_size(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |                                   ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `i`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:144:14
+    |
+144 |         for (i, block) in blocks.iter().enumerate() {
+    |              ^ help: if this is intentional, prefix it with an underscore: `_i`
+
+warning: unused variable: `leaf_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:146:17
+    |
+146 |             let leaf_hash = Keccak256::digest(&block_data);
+    |                 ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_leaf_hash`
+
+warning: unused variable: `current_efficiency`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:179:13
+    |
+179 |         let current_efficiency = self.calculate_tree_efficiency(num_blocks, branching_factor)?;
+    |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_current_efficiency`
+
+warning: unused variable: `new_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:229:21
+    |
+229 |                 let new_hash = Keccak256::digest(&optimized_data);
+    |                     ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_new_hash`
+
+warning: unused variable: `optimal_config`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:217:9
+    |
+217 |         optimal_config: &OptimalConfig,
+    |         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_optimal_config`
+
+warning: unused variable: `parent_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:312:21
+    |
+312 |                 let parent_hash = Keccak256::digest(&parent_data);
+    |                     ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_parent_hash`
+
+warning: unused variable: `tree`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:399:136
+    |
+399 | ...ves::keccak::Keccak256Hasher>, tree: &MerkleTree) -> Result<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::K...
+    |                                   ^^^^ help: if this is intentional, prefix it with an underscore: `_tree`
+
+warning: unused variable: `j_star`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:305:9
+    |
+305 |         j_star: usize,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_j_star`
+
+warning: unused variable: `shard_idx`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:350:14
+    |
+350 |         for (shard_idx, shard) in shards.iter_mut().enumerate() {
+    |              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_shard_idx`
+
+warning: unused variable: `j_star`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:399:9
+    |
+399 |         j_star: usize,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_j_star`
+
+warning: unused variable: `expected_root`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:506:72
+    |
+506 | ...mputed_root: &Digest, expected_root: &agglayer_primitives::Digest, signature: &agglayer_primitives::Signature, signer: &agglayer_primi...
+    |                          ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_root`
+
+warning: unused variable: `expected_bytes`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:647:56
+    |
+647 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+    |                                                        ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_bytes`
+
+warning: unused variable: `total_detection_time`
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:128:13
+    |
+128 |         let total_detection_time = start_time.elapsed();
+    |             ^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_total_detection_time`
+
+warning: unused variable: `start_time`
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:225:13
+    |
+225 |         let start_time = Instant::now();
+    |             ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_start_time`
+
+warning: variable does not need to be mutable
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:269:17
+    |
+269 |             let mut malicious_block = block.clone();
+    |                 ----^^^^^^^^^^^^^^^
+    |                 |
+    |                 help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: field `config` is never read
+  --> crates/pessimistic-proof-core/src/sabv.rs:13:5
+   |
+12 | pub struct SabvAlgorithm {
+   |            ------------- field in this struct
+13 |     config: SabvConfig,
+   |     ^^^^^^
+   |
+   = note: `SabvAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: field `config` is never read
+  --> crates/pessimistic-proof-core/src/lmtr.rs:12:5
+   |
+11 | pub struct LmtrAlgorithm {
+   |            ------------- field in this struct
+12 |     config: LmtrConfig,
+   |     ^^^^^^
+   |
+   = note: `LmtrAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `config` and `consensus_messages` are never read
+  --> crates/pessimistic-proof-core/src/sabv2.rs:34:5
+   |
+33 | pub struct Sabv2Algorithm {
+   |            -------------- fields in this struct
+34 |     config: Sabv2Config,
+   |     ^^^^^^
+35 |     validators: Vec<ValidatorNode>,
+36 |     consensus_messages: HashMap<Digest, Vec<ConsensusMessage>>,
+   |     ^^^^^^^^^^^^^^^^^^
+   |
+   = note: `Sabv2Algorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple methods are never used
+   --> crates/pessimistic-proof-core/src/sabv2.rs:89:8
+    |
+ 39 | impl Sabv2Algorithm {
+    | ------------------- methods in this implementation
+...
+ 89 |     fn validate_block_cryptography(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+112 |     fn verify_merkle_tree_structure(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+130 |     fn verify_hash_integrity(
+    |        ^^^^^^^^^^^^^^^^^^^^^
+...
+149 |     fn verify_signature_validity(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+204 |     fn verify_consensus_threshold(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+222 |     fn calculate_optimal_height(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>)...
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^
+...
+229 |     fn get_block_height(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |        ^^^^^^^^^^^^^^^^
+...
+241 |     fn get_block_declared_hash(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) ...
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+247 |     fn get_block_signer(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |        ^^^^^^^^^^^^^^^^
+...
+252 |     fn get_block_message(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Res...
+    |        ^^^^^^^^^^^^^^^^^
+...
+257 |     fn get_block_signature(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |        ^^^^^^^^^^^^^^^^^^^
+...
+262 |     fn compute_expected_signature(&self, signer: &str, message: &[u8]) -> Result<String, ProofError> {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+295 |     fn estimate_block_size(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: field `tree_cache` is never read
+  --> crates/pessimistic-proof-core/src/lmtr2.rs:53:5
+   |
+51 | pub struct Lmtr2Algorithm {
+   |            -------------- field in this struct
+52 |     config: Lmtr2Config,
+53 |     tree_cache: HashMap<Digest, MerkleTree>,
+   |     ^^^^^^^^^^
+   |
+   = note: `Lmtr2Algorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `branching_factor` and `rebalancing_cost` are never read
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:415:5
+    |
+413 | struct OptimalConfig {
+    |        ------------- fields in this struct
+414 |     optimal_height: usize,
+415 |     branching_factor: usize,
+    |     ^^^^^^^^^^^^^^^^
+416 |     expected_efficiency: f64,
+417 |     rebalancing_cost: u64,
+    |     ^^^^^^^^^^^^^^^^
+    |
+    = note: `OptimalConfig` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `validators` is never read
+  --> crates/pessimistic-proof-core/src/sabv3.rs:41:5
+   |
+39 | pub struct Sabv3Algorithm {
+   |            -------------- field in this struct
+40 |     config: Sabv3Config,
+41 |     validators: Vec<ValidatorNode>,
+   |     ^^^^^^^^^^
+   |
+   = note: `Sabv3Algorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: methods `construct_local_cc_mbmt`, `compute_shard_hash`, `build_merkle_tree`, and `calculate_tree_height` are never used
+   --> crates/pessimistic-proof-core/src/sabv3.rs:302:8
+    |
+ 44 | impl Sabv3Algorithm {
+    | ------------------- methods in this implementation
+...
+302 |     fn construct_local_cc_mbmt(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+441 |     fn compute_shard_hash(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>]) ->...
+    |        ^^^^^^^^^^^^^^^^^^
+...
+459 |     fn build_merkle_tree(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>], b: ...
+    |        ^^^^^^^^^^^^^^^^^
+...
+526 |     fn calculate_tree_height(&self, num_blocks: usize, b: usize) -> usize {
+    |        ^^^^^^^^^^^^^^^^^^^^^
+
+warning: struct `BlockchainMerkleProof` is never constructed
+  --> crates/pessimistic-proof-core/src/sabv4.rs:38:8
+   |
+38 | struct BlockchainMerkleProof {
+   |        ^^^^^^^^^^^^^^^^^^^^^
+
+warning: field `validators` is never read
+  --> crates/pessimistic-proof-core/src/sabv4.rs:49:5
+   |
+47 | pub struct Sabv4Algorithm {
+   |            -------------- field in this struct
+48 |     config: Sabv4Config,
+49 |     validators: Vec<ValidatorNode>,
+   |     ^^^^^^^^^^
+   |
+   = note: `Sabv4Algorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple methods are never used
+    --> crates/pessimistic-proof-core/src/sabv4.rs:396:8
+     |
+  52 | impl Sabv4Algorithm {
+     | ------------------- methods in this implementation
+...
+ 396 |     fn construct_local_cc_mbmt(
+     |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 521 |     fn extract_blockchain_public_key(&self, computed_bytes: &[u8]) -> Result<Vec<u8>, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 532 |     fn validate_blockchain_signature(&self, signature: &[u8], public_key: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 551 |     fn verify_merkle_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^
+...
+ 585 |     fn extract_blockchain_merkle_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<BlockchainMe...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 620 |     fn validate_blockchain_proof(&self, proof: &BlockchainMerkleProof) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 647 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^
+...
+ 675 |     fn verify_timestamp_freshness(&self) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 687 |     fn verify_nonce_uniqueness(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 717 |     fn verify_zero_knowledge_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 756 |     fn calculate_signature_strength(&self, signature_bytes: &[u8]) -> f64 {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 853 |     fn calculate_entropy(&self, data: &[u8]) -> f64 {
+     |        ^^^^^^^^^^^^^^^^^
+...
+ 873 |     fn compute_shard_hash(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>]) ->...
+     |        ^^^^^^^^^^^^^^^^^^
+...
+ 940 |     fn build_merkle_tree(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>], b: ...
+     |        ^^^^^^^^^^^^^^^^^
+...
+1007 |     fn calculate_tree_height(&self, num_blocks: usize, b: usize) -> usize {
+     |        ^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `reconstruct_block_from_bytes` is never used
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:241:8
+    |
+ 27 | impl Lmtr4Algorithm {
+    | ------------------- method in this implementation
+...
+241 |     fn reconstruct_block_from_bytes(&self, bytes: &[u8]) -> Result<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::kecca...
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `pessimistic-proof-core` (lib) generated 54 warnings (run `cargo fix --lib -p pessimistic-proof-core` to apply 15 suggestions)
+warning: unused variable: `vk`
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr4.rs:172:21
+    |
+172 |         let (proof, vk, new_roots) = runner
+    |                     ^^ help: if this is intentional, prefix it with an underscore: `_vk`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `new_roots`
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr4.rs:172:25
+    |
+172 |         let (proof, vk, new_roots) = runner
+    |                         ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_new_roots`
+
+warning: variable does not need to be mutable
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr4.rs:167:13
+    |
+167 |         let mut runner = Runner::new();
+    |             ----^^^^^^
+    |             |
+    |             help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr4") generated 3 warnings (run `cargo fix --bin "ppgen_sabv_lmtr4"` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 1.72s
+     Running `target/release/ppgen_sabv_lmtr4 --n-exits 1 --validator-nodes 5`
+🔍 SABV4: Starting Algorithm 1 - Verify Aggregated Blocks Integrity
+   Input: N=1 blocks, branching_factor=3, validators=5
+📊 SABV4: Calculated j* = 1 with variance = 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0000
+✅ Step 1: Optimal sharding size j* = 1 (shard_size = 3^1 = 3)
+📦 SABV4: Created 1 shards (0 full + 1 remainder)
+✅ Step 2: Partitioned 1 blocks into 1 shards (shard_size = 3)
+🔐 SABV4: REAL Shamir secret sharing - Secret: 0.556299, Reconstructed: 0.556299, Match: true
+   Polynomial degree: 2, Shares: 5, Threshold: 3/5
+   Validator 0 assigned with share value: -0.998775
+✅ Step 3: Secret sharing applied (threshold k=3/5)
+📊 Step 4: Rebalancing shards with LMTR4 (Algorithm 2)...
+🔧 LMTR4: Starting Algorithm 2 rebalancing for 1 blocks
+📊 LMTR4: Initial state - Ni = 1, b = 3, htarget = 4
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 2
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 3
+📊 LMTR4: Height adjustment - Current height = 2, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 4, height = 2
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 5, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 6, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 7, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 8, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 9, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 10, height = 3
+✅ LMTR4: Rebalancing complete - Final Ni = 10, height = 4
+   ✅ Shard 0 (validator 0) - 1 → 10 blocks, height=4
+🌳 Step 5a: Building REAL Local CC-MBMT from rebalanced blocks...
+   ✅ Validator 0 built REAL local CC-MBMT (shard 0) - 10 blocks → tree height=4
+🔗 SABV4: Merged 1 local CC-MBMTs into global CC-MBMT using REAL tree structure
+✅ Step 5b: Merged 1 local CC-MBMTs into global root r
+🔧 LMTR4: Starting Algorithm 2 rebalancing for 1 blocks
+📊 LMTR4: Initial state - Ni = 1, b = 3, htarget = 4
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 2
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 3
+📊 LMTR4: Height adjustment - Current height = 2, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 4, height = 2
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 5, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 6, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 7, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 8, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 9, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 10, height = 3
+✅ LMTR4: Rebalancing complete - Final Ni = 10, height = 4
+✅ Step 6: Computed alternative root r' from all rebalanced blocks
+🔐 Step 7: Verifying integrity...
+   r  (from merged trees):     77c2d62d7e60556f3c9819d2fd588ed6487e9dfeeba2f2bdbef7dd2c2150d452
+   r' (from all blocks):       347cf8f3ec93d7f445665b96d72b01821eee4896edc74f323f23c7a1952a01c1
+   R  (global_root expected): 8488d47c79cfff4f4d7250e3fea5feaad1c67390fd2d5d69bce9014f152496ee
+   r == r'? false
+🔐 SABV4: Extracted REAL blockchain ECDSA signature from block
+🔐 SABV4: REAL blockchain signature verification - Recovered address matches signer: false
+🔍 SABV4: Blockchain signature verification - Valid: false
+📝 SABV4: ZKP verification delegated to SP1 proving system
+   Signature valid? false
+❌ SABV4: Verification FAILED - Root mismatch!
+   ❌ r ≠ r' (blocks modified between rebalancing)
+   ⚠️  Fraud detected - blocks were tampered with!
+🔧 LMTR4: Starting Algorithm 2 rebalancing for 1 blocks
+📊 LMTR4: Initial state - Ni = 1, b = 3, htarget = 4
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 2
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 3
+📊 LMTR4: Height adjustment - Current height = 2, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 4, height = 2
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 5, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 6, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 7, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 8, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 9, height = 3
+📊 LMTR4: Height adjustment - Current height = 3, Target = 4
+⬆️ LMTR4: Added block to increase height - Ni = 10, height = 3
+✅ LMTR4: Rebalancing complete - Final Ni = 10, height = 4
+[sp1] plonk circuit artifacts already seem to exist at /home/ubuntu/.sp1/circuits/plonk/v5.0.0. if you want to re-download them, delete the directory
+	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen_sabv_lmtr4 -- --n-exits 1 --validator-nodes 5"
+	User time (seconds): 17399.35
+	System time (seconds): 644.62
+	Percent of CPU this job got: 500%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:00:05
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15419584
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 72077
+	Minor (reclaiming a frame) page faults: 64170485
+	Voluntary context switches: 1089527
+	Involuntary context switches: 8132441
+	Swaps: 0
+	File system inputs: 2046976
+	File system outputs: 3520
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

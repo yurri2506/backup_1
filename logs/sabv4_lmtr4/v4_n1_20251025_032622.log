@@ -1,0 +1,429 @@
+   Compiling pessimistic-proof-core v0.1.0 (/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-core)
+error[E0432]: unresolved import `secp256k1::Signature`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:433:56
+    |
+433 |         use secp256k1::{Secp256k1, Message, PublicKey, Signature};
+    |                                                        ^^^^^^^^^ no `Signature` in the root
+    |
+    = help: consider importing one of these structs instead:
+            agglayer_primitives::Signature
+            alloy_primitives::Signature
+            secp256k1::ecdsa::Signature
+            secp256k1::schnorr::Signature
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv3.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr3.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv4.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr4.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `agglayer_primitives::keccak::Keccak256Hasher`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:355:13
+    |
+355 |         use agglayer_primitives::keccak::Keccak256Hasher;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unnecessary parentheses around assigned value
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:523:34
+    |
+523 |             let optimized_byte = ((byte as f64 * factor) as u8);
+    |                                  ^                            ^
+    |
+    = note: `#[warn(unused_parens)]` on by default
+help: remove these parentheses
+    |
+523 -             let optimized_byte = ((byte as f64 * factor) as u8);
+523 +             let optimized_byte = (byte as f64 * factor) as u8;
+    |
+
+warning: unnecessary parentheses around assigned value
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:563:35
+    |
+563 |             let simplified_byte = ((byte as f64 / (1.0 + factor)) as u8);
+    |                                   ^                                    ^
+    |
+help: remove these parentheses
+    |
+563 -             let simplified_byte = ((byte as f64 / (1.0 + factor)) as u8);
+563 +             let simplified_byte = (byte as f64 / (1.0 + factor)) as u8;
+    |
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `Keccak256`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:3:34
+  |
+3 | use sha3::{Digest as Sha3Digest, Keccak256};
+  |                                  ^^^^^^^^^
+
+warning: unused import: `std::collections::HashMap`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:5:5
+  |
+5 | use std::collections::HashMap;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: use of deprecated associated function `secp256k1::Message::from_digest_slice`: use from_digest instead
+   --> crates/pessimistic-proof-core/src/sabv4.rs:442:32
+    |
+442 |         let message = Message::from_digest_slice(computed_bytes)
+    |                                ^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+error[E0277]: the trait bound `&secp256k1::Message: Into<secp256k1::Message>` is not satisfied
+   --> crates/pessimistic-proof-core/src/sabv4.rs:454:53
+    |
+454 |         let verification_result = secp.verify_ecdsa(&message, &signature, &public_key);
+    |                                        ------------ ^^^^^^^^ the trait `ThirtyTwoByteHash` is not implemented for `&secp256k1::Message`
+    |                                        |
+    |                                        required by a bound introduced by this call
+    |
+    = note: required for `secp256k1::Message` to implement `From<&secp256k1::Message>`
+    = note: required for `&secp256k1::Message` to implement `Into<secp256k1::Message>`
+note: required by a bound in `ecdsa::<impl Secp256k1<C>>::verify_ecdsa`
+   --> /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/secp256k1-0.31.1/src/ecdsa/mod.rs:387:19
+    |
+385 |     pub fn verify_ecdsa(
+    |            ------------ required by a bound in this associated function
+386 |         &self,
+387 |         msg: impl Into<Message>,
+    |                   ^^^^^^^^^^^^^ required by this bound in `ecdsa::<impl Secp256k1<C>>::verify_ecdsa`
+
+error[E0689]: can't call method `to_le_bytes` on ambiguous numeric type `{integer}`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:534:34
+    |
+531 |         for level in 0..3 {
+    |             ----- you must specify a type for this binding, like `i32`
+...
+534 |             hasher.update(&level.to_le_bytes());
+    |                                  ^^^^^^^^^^^
+
+error[E0689]: can't call method `to_le_bytes` on ambiguous numeric type `{integer}`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:572:34
+    |
+569 |         for round in 0..3 {
+    |             ----- you must specify a type for this binding, like `i32`
+...
+572 |             hasher.update(&round.to_le_bytes());
+    |                                  ^^^^^^^^^^^
+
+error[E0599]: no function or associated item named `default` found for struct `MultiBatchHeader` in the current scope
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:360:30
+    |
+360 |         Ok(MultiBatchHeader::default())
+    |                              ^^^^^^^ function or associated item not found in `MultiBatchHeader<_>`
+    |
+   ::: crates/pessimistic-proof-core/src/multi_batch_header.rs:17:1
+    |
+ 17 | pub struct MultiBatchHeader<H>
+    | ------------------------------ function or associated item `default` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `default`, perhaps you need to implement it:
+            candidate #1: `Default`
+
+error[E0689]: can't call method `max` on ambiguous numeric type `{float}`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:466:31
+    |
+466 |                 depth = depth.max(current_level as f64);
+    |                               ^^^
+    |
+help: you must specify a type for this binding, like `f32`
+    |
+459 |         let mut depth: f32 = 0.0;
+    |                      +++++
+
+error[E0599]: no function or associated item named `default` found for struct `MultiBatchHeader` in the current scope
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:589:30
+    |
+589 |         Ok(MultiBatchHeader::default())
+    |                              ^^^^^^^ function or associated item not found in `MultiBatchHeader<_>`
+    |
+   ::: crates/pessimistic-proof-core/src/multi_batch_header.rs:17:1
+    |
+ 17 | pub struct MultiBatchHeader<H>
+    | ------------------------------ function or associated item `default` not found for this struct
+    |
+    = help: items from traits can only be used if the trait is implemented and in scope
+    = note: the following trait defines an item `default`, perhaps you need to implement it:
+            candidate #1: `Default`
+
+warning: unused import: `Digest`
+ --> crates/pessimistic-proof-core/src/benchmark_v2.rs:3:12
+  |
+3 | use sha3::{Digest as Sha3Digest, Keccak256};
+  |            ^^^^^^
+
+warning: unused variable: `branching_factor`
+  --> crates/pessimistic-proof-core/src/lmtr.rs:31:9
+   |
+31 |         branching_factor: usize,
+   |         ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_branching_factor`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `block`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:72:13
+   |
+72 |         for block in blocks {
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `consensus_result`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:79:13
+   |
+79 |         let consensus_result = self.run_consensus_mechanism(blocks, validator_nodes)?;
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_consensus_result`
+
+warning: unused variable: `global_root`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:63:9
+   |
+63 |         global_root: &agglayer_primitives::Digest,
+   |         ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_global_root`
+
+warning: unused variable: `computed_hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:136:13
+    |
+136 |         let computed_hash = Keccak256::digest(&block_data);
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_computed_hash`
+
+warning: unused variable: `declared_hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:139:13
+    |
+139 |         let declared_hash = self.get_block_declared_hash(block)?;
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_declared_hash`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:229:32
+    |
+229 |     fn get_block_height(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:241:39
+    |
+241 |     fn get_block_declared_hash(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) ...
+    |                                       ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:247:32
+    |
+247 |     fn get_block_signer(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:257:35
+    |
+257 |     fn get_block_signature(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |                                   ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:274:13
+    |
+274 |         let hash = Keccak256::digest(&block_data);
+    |             ^^^^ help: if this is intentional, prefix it with an underscore: `_hash`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:295:35
+    |
+295 |     fn estimate_block_size(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |                                   ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `i`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:144:14
+    |
+144 |         for (i, block) in blocks.iter().enumerate() {
+    |              ^ help: if this is intentional, prefix it with an underscore: `_i`
+
+warning: unused variable: `leaf_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:146:17
+    |
+146 |             let leaf_hash = Keccak256::digest(&block_data);
+    |                 ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_leaf_hash`
+
+warning: unused variable: `current_efficiency`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:179:13
+    |
+179 |         let current_efficiency = self.calculate_tree_efficiency(num_blocks, branching_factor)?;
+    |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_current_efficiency`
+
+warning: unused variable: `new_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:229:21
+    |
+229 |                 let new_hash = Keccak256::digest(&optimized_data);
+    |                     ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_new_hash`
+
+warning: unused variable: `optimal_config`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:217:9
+    |
+217 |         optimal_config: &OptimalConfig,
+    |         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_optimal_config`
+
+warning: unused variable: `parent_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:312:21
+    |
+312 |                 let parent_hash = Keccak256::digest(&parent_data);
+    |                     ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_parent_hash`
+
+warning: unused variable: `tree`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:399:136
+    |
+399 | ...ves::keccak::Keccak256Hasher>, tree: &MerkleTree) -> Result<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::K...
+    |                                   ^^^^ help: if this is intentional, prefix it with an underscore: `_tree`
+
+warning: unused variable: `j_star`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:305:9
+    |
+305 |         j_star: usize,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_j_star`
+
+warning: unused variable: `shard_idx`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:270:14
+    |
+270 |         for (shard_idx, shard) in shards.iter_mut().enumerate() {
+    |              ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_shard_idx`
+
+warning: unused variable: `j_star`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:319:9
+    |
+319 |         j_star: usize,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_j_star`
+
+warning: unused variable: `max_age`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:602:13
+    |
+602 |         let max_age = 300; // 5 minutes in seconds
+    |             ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_max_age`
+
+warning: unused variable: `actual_branches`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:236:13
+    |
+236 |         let actual_branches = (ni as f64).log2() / (b as f64).log2();
+    |             ^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_actual_branches`
+
+warning: unused variable: `rotated_block`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:267:17
+    |
+267 |         let mut rotated_block = block.clone();
+    |                 ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_rotated_block`
+
+warning: variable does not need to be mutable
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:267:13
+    |
+267 |         let mut rotated_block = block.clone();
+    |             ----^^^^^^^^^^^^^
+    |             |
+    |             help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` on by default
+
+warning: value assigned to `complexity` is never read
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:505:17
+    |
+505 |         let mut complexity = 0.0;
+    |                 ^^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` on by default
+
+warning: unused variable: `htarget`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:571:143
+    |
+571 | ...::keccak::Keccak256Hasher>, htarget: usize) -> Result<f64, ProofError> {
+    |                                ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_htarget`
+
+warning: unused variable: `b`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:593:156
+    |
+593 | ...ak::Keccak256Hasher>>, ni: usize, b: usize, htarget: usize) -> Result<Vec<crate::multi_batch_header::MultiBatchHeader<agglayer_primiti...
+    |                                      ^ help: if this is intentional, prefix it with an underscore: `_b`
+
+warning: unused variable: `htarget`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:593:166
+    |
+593 | ...her>>, ni: usize, b: usize, htarget: usize) -> Result<Vec<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Kec...
+    |                                ^^^^^^^ help: if this is intentional, prefix it with an underscore: `_htarget`
+
+warning: unused variable: `total_detection_time`
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:128:13
+    |
+128 |         let total_detection_time = start_time.elapsed();
+    |             ^^^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_total_detection_time`
+
+warning: unused variable: `start_time`
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:225:13
+    |
+225 |         let start_time = Instant::now();
+    |             ^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_start_time`
+
+warning: variable does not need to be mutable
+   --> crates/pessimistic-proof-core/src/benchmark_v2.rs:269:17
+    |
+269 |             let mut malicious_block = block.clone();
+    |                 ----^^^^^^^^^^^^^^^
+    |                 |
+    |                 help: remove this `mut`
+
+Some errors have detailed explanations: E0277, E0432, E0599, E0689.
+For more information about an error, try `rustc --explain E0277`.
+warning: `pessimistic-proof-core` (lib) generated 47 warnings
+error: could not compile `pessimistic-proof-core` (lib) due to 7 previous errors; 47 warnings emitted
+Command exited with non-zero status 101
+	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen_sabv_lmtr4 -- --n-exits 1 --validator-nodes 5"
+	User time (seconds): 4.02
+	System time (seconds): 1.91
+	Percent of CPU this job got: 60%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.77
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 274860
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 1667
+	Minor (reclaiming a frame) page faults: 116006
+	Voluntary context switches: 1938
+	Involuntary context switches: 674
+	Swaps: 0
+	File system inputs: 371312
+	File system outputs: 280
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 101

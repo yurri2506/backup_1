@@ -1,0 +1,115 @@
+[SABV2_LMTR2] Running N=1, validators=5 (no input)
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10, validators=5 (no input)
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20, validators=5 (no input)
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50, validators=5 (no input)
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100, validators=5 (no input)
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000, validators=5 (no input)
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+DONE
+[SABV2_LMTR2] Running N=1, validators=5 (no input)
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10, validators=5 (no input)
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20, validators=5 (no input)
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50, validators=5 (no input)
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100, validators=5 (no input)
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000, validators=5 (no input)
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+DONE
+[SABV2_LMTR2] Running N=1, validators=5 (no input)
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10, validators=5 (no input)
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=10 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20, validators=5 (no input)
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=20 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50, validators=5 (no input)
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100, validators=5 (no input)
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000, validators=5 (no input)
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+DONE
+[SABV2_LMTR2] Running N=1, validators=5 (no input)
+[SABV2_LMTR2] Running N=70, validators=5 (no input)
+[SABV2_LMTR2] Running N=70 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=70 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=70 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=70 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=200, validators=5 (no input)
+[SABV2_LMTR2] Running N=200 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=200 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=200 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=200 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=400, validators=5 (no input)
+[SABV2_LMTR2] Running N=400 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=400 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=400 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=400 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=700, validators=5 (no input)
+[SABV2_LMTR2] Running N=700 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=700 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=700 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json, validators=5
+[SABV2_LMTR2] Running N=700 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json, validators=5
+DONE

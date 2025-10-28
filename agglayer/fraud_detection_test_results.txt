@@ -1,0 +1,20 @@
+FRAUD DETECTION TEST RESULTS
+=============================
+Baseline Metrics:
+- Fraud detection time: 1.59µs
+- Validation accuracy: 0.00%
+- False positive rate: 0.00%
+- False negative rate: 100.00%
+- Malicious batches detected: 0/5
+
+V2 Metrics:
+- Fraud detection time: 285ns
+- Validation accuracy: 100.00%
+- False positive rate: 0.00%
+- False negative rate: 0.00%
+- Malicious batches detected: 5/5
+
+Comparison:
+- Detection time: V2 is infx faster/slower
+- Accuracy difference: 100.00% (V2 - Baseline)
+- False negative difference: 100.00% (Baseline - V2)

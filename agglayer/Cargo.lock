@@ -2258,6 +2258,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5e764a1d40d510daf35e07be9eb06e75770908c27d411ee6c92109c9840eaaf7"
 
 [[package]]
+name = "bitcoin-io"
+version = "0.1.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0b47c4ab7a93edb0c7198c5535ed9b52b63095f4e9b45279c6736cec4b856baf"
+
+[[package]]
+name = "bitcoin_hashes"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bb18c03d0db0247e147a21a6faafd5a7eb851c743db062de72018b6b7e8e4d16"
+dependencies = [
+ "bitcoin-io",
+ "hex-conservative",
+]
+
+[[package]]
 name = "bitflags"
 version = "1.3.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4649,6 +4665,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "hex-conservative"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5313b072ce3c597065a808dbf612c4c8e8590bdbf8b579508bf7a762c5eae6cd"
+dependencies = [
+ "arrayvec",
+]
+
+[[package]]
 name = "hex-literal"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -5181,57 +5206,6 @@ dependencies = [
 [[package]]
 name = "integrations"
 version = "0.1.0"
-dependencies = [
- "agglayer-aggregator-notifier",
- "agglayer-certificate-orchestrator",
- "agglayer-clock",
- "agglayer-config",
- "agglayer-contracts",
- "agglayer-node",
- "agglayer-prover",
- "agglayer-prover-config",
- "agglayer-signer",
- "agglayer-storage",
- "agglayer-telemetry 0.1.0",
- "agglayer-types",
- "alloy",
- "anyhow",
- "arc-swap",
- "buildstructor",
- "ethers",
- "fail",
- "futures",
- "hex",
- "http-body-util",
- "hyper 1.6.0",
- "hyper-util",
- "insta",
- "jsonrpsee",
- "jsonrpsee-test-utils",
- "lazy_static",
- "mockall",
- "parking_lot",
- "pessimistic-proof",
- "pessimistic-proof-test-suite",
- "pin-project 1.1.10",
- "rand 0.9.1",
- "reqwest 0.12.19",
- "rstest",
- "serde",
- "serde_json",
- "serde_with",
- "test-log",
- "thiserror 2.0.12",
- "tokio",
- "tokio-stream",
- "tokio-util",
- "toml",
- "tower 0.4.13",
- "tower-http",
- "tracing",
- "tracing-capture",
- "tracing-subscriber",
-]
 
 [[package]]
 name = "interprocess"
@@ -6170,7 +6144,7 @@ version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "af1844ef2428cc3e1cb900be36181049ef3d3193c63e43026cfe202983b27a56"
 dependencies = [
- "proc-macro-crate 2.0.0",
+ "proc-macro-crate 3.3.0",
  "proc-macro2",
  "quote",
  "syn 2.0.101",
@@ -6831,15 +6805,18 @@ dependencies = [
  "hex-literal 0.4.1",
  "rand 0.9.1",
  "rs_merkle",
+ "secp256k1",
  "semver 1.0.26",
  "serde",
  "serde_json",
  "serde_with",
+ "sha3",
  "sp1-primitives",
  "sp1-verifier",
  "sp1-zkvm",
  "thiserror 2.0.12",
  "tiny-keccak 2.0.2 (git+https://github.com/sp1-patches/tiny-keccak?tag=patch-2.0.2-sp1-4.0.0)",
+ "tokio",
  "toml",
  "tracing",
  "unified-bridge 0.6.0 (git+https://github.com/agglayer/interop.git?tag=v0.7.0)",
@@ -8346,6 +8323,26 @@ dependencies = [
  "serdect",
  "subtle",
  "zeroize",
+]
+
+[[package]]
+name = "secp256k1"
+version = "0.31.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2c3c81b43dc2d8877c216a3fccf76677ee1ebccd429566d3e67447290d0c42b2"
+dependencies = [
+ "bitcoin_hashes",
+ "rand 0.9.1",
+ "secp256k1-sys",
+]
+
+[[package]]
+name = "secp256k1-sys"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "dcb913707158fadaf0d8702c2db0e857de66eb003ccfdda5924b5f5ac98efb38"
+dependencies = [
+ "cc",
 ]
 
 [[package]]

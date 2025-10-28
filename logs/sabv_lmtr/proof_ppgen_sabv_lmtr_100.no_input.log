@@ -41,3 +41,27 @@ warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr") generated 1 warn
      Running `target/release/ppgen_sabv_lmtr --n-exits 100 --proof-dir /home/ubuntu/thanhhuyen/logs/sabv_lmtr/proofs --validator-nodes 5`
 🔍 SABV: Verifying 1 blocks with 5 validators
 🌳 LMTR: Rebalancing 1 blocks to height 3
+[sp1] plonk circuit artifacts already seem to exist at /home/ubuntu/.sp1/circuits/plonk/v5.0.0. if you want to re-download them, delete the directory
+	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen_sabv_lmtr -- --n-exits 100 --proof-dir /home/ubuntu/thanhhuyen/logs/sabv_lmtr/proofs --validator-nodes 5"
+	User time (seconds): 110813.50
+	System time (seconds): 4223.99
+	Percent of CPU this job got: 692%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:36:52
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 21306900
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 434787312
+	Voluntary context switches: 6513836
+	Involuntary context switches: 62366378
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 22024
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

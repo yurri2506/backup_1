@@ -23,3 +23,30 @@
 [BASELINE] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json
 [BASELINE] Running N=50 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json
 [BASELINE] Running N=100
+[BASELINE] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json
+[BASELINE] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json
+[BASELINE] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json
+[BASELINE] Running N=100 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json
+[BASELINE] Running N=1000
+[BASELINE] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json
+[BASELINE] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json
+[BASELINE] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json
+[BASELINE] Running N=1000 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json
+DONE
+[BASELINE] Running N=1
+[BASELINE] Running N=70
+[BASELINE] Running N=70 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json
+[BASELINE] Running N=70 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json
+[BASELINE] Running N=70 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json
+[BASELINE] Running N=70 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json
+[BASELINE] Running N=200
+[BASELINE] Running N=200 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json
+[BASELINE] Running N=200 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json
+[BASELINE] Running N=200 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json
+[BASELINE] Running N=200 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json
+[BASELINE] Running N=400
+[BASELINE] Running N=400 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_0_withdrawals.json
+[BASELINE] Running N=400 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_1_withdrawals.json
+[BASELINE] Running N=400 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_2_withdrawals.json
+[BASELINE] Running N=400 INPUT=/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite/data/l2_3_withdrawals.json
+[BASELINE] Running N=700
