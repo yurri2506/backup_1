@@ -242,7 +242,7 @@ impl Sabv3Algorithm {
                 shard_index: i,
             });
         }
-        
+
         // Create remainder shard if exists
         if remainder > 0 {
             let start = num_full_shards * shard_size;
@@ -258,7 +258,7 @@ impl Sabv3Algorithm {
         println!("📦 SABV3: Created {} shards ({} full + {} remainder)", 
                  shards.len(), num_full_shards, if remainder > 0 { 1 } else { 0 });
         Ok(shards)
-    }
+        }
 
     /// Step 3: Secret sharing and random distribution
     /// Distribute shards using real Shamir secret sharing scheme
@@ -341,7 +341,7 @@ impl Sabv3Algorithm {
             println!("🌳 SABV3: Built local CC-MBMT for validator {} with {} blocks, height {}", 
                      validator_id, block_count, tree_height);
         }
-        
+
         Ok(local_trees)
     }
 

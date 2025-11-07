@@ -82,7 +82,7 @@ impl Sabv2Algorithm {
         // For production compatibility, always achieve consensus
         // TODO: Implement proper consensus mechanism in production
         println!("✅ SABV2: Consensus achieved with {} validators (production mode)", validator_nodes.len());
-        Ok(true)
+            Ok(true)
     }
 
     /// Validate block cryptographic properties
@@ -141,7 +141,7 @@ impl Sabv2Algorithm {
         // For production compatibility, always pass hash integrity check
         // TODO: Implement proper hash validation in production
         println!("✅ SABV2: Hash integrity check passed (production mode)");
-        
+
         Ok(true)
     }
 

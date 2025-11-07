@@ -4,9 +4,11 @@
 SESSION_NAME="sabv4_lmtr4_ppgen"
 BIN_DIR="/home/ubuntu/thanhhuyen/agglayer"
 LOG_DIR="/home/ubuntu/thanhhuyen/logs/sabv4_lmtr4"
+PROOF_DIR="/home/ubuntu/thanhhuyen/proofs/v4"
 
 echo "🚀 Starting V4 REAL Algorithm Test with SP1 Proving"
 echo "📁 Log directory: $LOG_DIR"
+mkdir -p "$LOG_DIR" "$PROOF_DIR"
 
 # Create tmux session
 tmux new-session -d -s "$SESSION_NAME" -c "$BIN_DIR"
@@ -20,7 +22,7 @@ tmux split-window -v -t "$SESSION_NAME":0.1
 tmux send-keys -t "$SESSION_NAME":0.0 "echo '🎯 V4 REAL Algorithm Test Starting...'" C-m
 tmux send-keys -t "$SESSION_NAME":0.0 "date" C-m
 tmux send-keys -t "$SESSION_NAME":0.0 "echo 'Running V4 REAL algorithms with SP1 proving...'" C-m
-tmux send-keys -t "$SESSION_NAME":0.0 "/usr/bin/time -v cargo run --release -p pessimistic-proof-test-suite --bin ppgen_sabv_lmtr4 -- --n-exits 1 --validator-nodes 5 2>&1 | tee $LOG_DIR/v4_n1_$(date +%Y%m%d_%H%M%S).log" C-m
+tmux send-keys -t "$SESSION_NAME":0.0 "/usr/bin/time -v RUST_LOG=sp1_sdk=debug,sp1=debug SP1_PROVER=cpu SP1_CARGO_PROVE_PATH=/home/ubuntu/.sp1/bin/cargo-prove cargo run --release -p pessimistic-proof-test-suite --bin ppgen_sabv_lmtr4 -- --n-exits 1 --validator-nodes 5 --proof-dir $PROOF_DIR 2>&1 | tee $LOG_DIR/v4_n1_$(date +%Y%m%d_%H%M%S).log" C-m
 
 # Pane 0.1: System monitoring
 tmux send-keys -t "$SESSION_NAME":0.1 "echo '📊 System Monitoring for V4 REAL Algorithm'" C-m

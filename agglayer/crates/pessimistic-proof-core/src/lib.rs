@@ -24,6 +24,7 @@ pub mod sabv3;
 pub mod lmtr3;
 pub mod sabv4;
 pub mod lmtr4;
+pub mod sabv5;
 
 pub use sabv::{SabvAlgorithm, SabvConfig};
 pub use lmtr::{LmtrAlgorithm, LmtrConfig, RebalancedSet};
@@ -33,3 +34,4 @@ pub use sabv3::{Sabv3Algorithm, Sabv3Config};
 pub use lmtr3::{Lmtr3Algorithm, Lmtr3Config, RebalancedShard};
 pub use sabv4::{Sabv4Algorithm, Sabv4Config};
 pub use lmtr4::{Lmtr4Algorithm, Lmtr4Config};
+pub use sabv5::{Sabv5Algorithm, Sabv5Config};

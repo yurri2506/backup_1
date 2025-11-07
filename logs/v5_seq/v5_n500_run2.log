@@ -1,3 +1,14 @@
+🚀 Starting V5 Sequential Benchmark (lần lượt như baseline)
+N values: 500
+Proof dir: /home/ubuntu/thanhhuyen/proofs/v5
+Log dir: /home/ubuntu/thanhhuyen/logs/v5_seq
+
+⚠️  Chạy TUẦN TỰ - mỗi N sẽ chạy xong rồi mới chạy N tiếp theo
+
+════════════════════════════════════════════════════════════════════════════
+🔢 Starting N=500 at 2025-11-07 02:42:57
+════════════════════════════════════════════════════════════════════════════
+
 warning: unused import: `keccak::Keccak256Hasher`
  --> crates/pessimistic-proof-core/src/sabv2.rs:2:35
   |
@@ -65,6 +76,12 @@ warning: unused import: `crate::aggchain_proof::AggchainData`
     |
 250 |         use crate::aggchain_proof::AggchainData;
     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv5.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
 
 warning: unused variable: `branching_factor`
   --> crates/pessimistic-proof-core/src/lmtr.rs:31:9
@@ -204,6 +221,33 @@ warning: unused variable: `expected_bytes`
    --> crates/pessimistic-proof-core/src/sabv4.rs:744:56
     |
 744 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+    |                                                        ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_bytes`
+
+warning: value assigned to `local_trees` is never read
+   --> crates/pessimistic-proof-core/src/sabv5.rs:600:17
+    |
+600 |         let mut local_trees = Vec::new();
+    |                 ^^^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` on by default
+
+warning: unused variable: `j_star`
+   --> crates/pessimistic-proof-core/src/sabv5.rs:597:9
+    |
+597 |         j_star: usize,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_j_star`
+
+warning: unused variable: `expected_root`
+   --> crates/pessimistic-proof-core/src/sabv5.rs:720:72
+    |
+720 | ...mputed_root: &Digest, expected_root: &agglayer_primitives::Digest, signature: &agglayer_primitives::Signature, signer: &agglayer_primi...
+    |                          ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_root`
+
+warning: unused variable: `expected_bytes`
+   --> crates/pessimistic-proof-core/src/sabv5.rs:861:56
+    |
+861 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
     |                                                        ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_bytes`
 
 warning: field `config` is never read
@@ -450,36 +494,202 @@ warning: method `reconstruct_block_from_bytes` is never used
 241 |     fn reconstruct_block_from_bytes(&self, bytes: &[u8]) -> Result<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::kecca...
     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-warning: `pessimistic-proof-core` (lib) generated 48 warnings (run `cargo fix --lib -p pessimistic-proof-core` to apply 11 suggestions)
-   Compiling pessimistic-proof-test-suite v0.1.0 (/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite)
-    Finished `release` profile [optimized] target(s) in 5.12s
-     Running `target/release/ppgen --n-exits 1 --n-imported-exits 1`
-[sp1] plonk circuit artifacts for version v5.0.0 do not exist at /home/ubuntu/.sp1/circuits/plonk/v5.0.0. downloading...
+warning: struct `BlockchainMerkleProof` is never constructed
+  --> crates/pessimistic-proof-core/src/sabv5.rs:48:8
+   |
+48 | struct BlockchainMerkleProof {
+   |        ^^^^^^^^^^^^^^^^^^^^^
 
-thread 'main' panicked at /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sp1-sdk-5.0.3/src/install.rs:94:10:
-failed to download file: "Error while downloading file"
-note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-Command exited with non-zero status 101
-	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen -- --n-exits 1 --n-imported-exits 1"
-	User time (seconds): 17297.15
-	System time (seconds): 559.47
-	Percent of CPU this job got: 108%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:34:27
-	Average shared text size (kbytes): 0
-	Average unshared data size (kbytes): 0
-	Average stack size (kbytes): 0
-	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 16124500
-	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 27
-	Minor (reclaiming a frame) page faults: 59139787
-	Voluntary context switches: 1216021
-	Involuntary context switches: 7719642
-	Swaps: 0
-	File system inputs: 2784
-	File system outputs: 829832
-	Socket messages sent: 0
-	Socket messages received: 0
-	Signals delivered: 0
-	Page size (bytes): 4096
-	Exit status: 101
+warning: fields `shard_index` and `round` are never read
+  --> crates/pessimistic-proof-core/src/sabv5.rs:60:9
+   |
+57 | struct MPCShareMessage {
+   |        --------------- fields in this struct
+...
+60 |     pub shard_index: usize,
+   |         ^^^^^^^^^^^
+61 |     pub share: (f64, f64), // (x, y) = share point
+62 |     pub round: u64,
+   |         ^^^^^
+   |
+   = note: `MPCShareMessage` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `consensus_reached` is never read
+  --> crates/pessimistic-proof-core/src/sabv5.rs:70:9
+   |
+67 | struct MPCNetworkState {
+   |        --------------- field in this struct
+...
+70 |     pub consensus_reached: bool,
+   |         ^^^^^^^^^^^^^^^^^
+   |
+   = note: `MPCNetworkState` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: field `validators` is never read
+  --> crates/pessimistic-proof-core/src/sabv5.rs:77:5
+   |
+75 | pub struct Sabv5Algorithm {
+   |            -------------- field in this struct
+76 |     config: Sabv5Config,
+77 |     validators: Vec<ValidatorNode>,
+   |     ^^^^^^^^^^
+   |
+   = note: `Sabv5Algorithm` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: multiple methods are never used
+    --> crates/pessimistic-proof-core/src/sabv5.rs:594:8
+     |
+  81 | impl Sabv5Algorithm {
+     | ------------------- methods in this implementation
+...
+ 594 |     fn construct_local_cc_mbmt(
+     |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 672 |     fn verify_integrity_with_blocks(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest, blocks: &[crate::multi_ba...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 720 |     fn verify_blockchain_signature_real(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest, signature: &agglayer_...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 735 |     fn extract_blockchain_public_key(&self, computed_bytes: &[u8]) -> Result<Vec<u8>, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 746 |     fn validate_blockchain_signature(&self, signature: &[u8], public_key: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 765 |     fn verify_merkle_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^
+...
+ 799 |     fn extract_blockchain_merkle_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<BlockchainMe...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 834 |     fn validate_blockchain_proof(&self, proof: &BlockchainMerkleProof) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 861 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^
+...
+ 889 |     fn verify_timestamp_freshness(&self) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 901 |     fn verify_nonce_uniqueness(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 931 |     fn verify_zero_knowledge_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 970 |     fn calculate_signature_strength(&self, signature_bytes: &[u8]) -> f64 {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+1067 |     fn calculate_entropy(&self, data: &[u8]) -> f64 {
+     |        ^^^^^^^^^^^^^^^^^
+...
+1087 |     fn compute_shard_hash(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>]) ->...
+     |        ^^^^^^^^^^^^^^^^^^
+...
+1159 |     fn build_merkle_tree(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>], b: ...
+     |        ^^^^^^^^^^^^^^^^^
+...
+1226 |     fn calculate_tree_height(&self, num_blocks: usize, b: usize) -> usize {
+     |        ^^^^^^^^^^^^^^^^^^^^^
+...
+1247 |     fn compute_root_from_blocks(
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `pessimistic-proof-core` (lib) generated 58 warnings (run `cargo fix --lib -p pessimistic-proof-core` to apply 12 suggestions)
+   Compiling pessimistic-proof-test-suite v0.1.0 (/home/ubuntu/thanhhuyen/agglayer/crates/pessimistic-proof-test-suite)
+warning: unused import: `rayon::ThreadPoolBuilder`
+ --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr5.rs:6:5
+  |
+6 | use rayon::ThreadPoolBuilder;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused variable: `vk`
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr5.rs:179:24
+    |
+179 |             Ok((proof, vk, new_roots)) => {
+    |                        ^^ help: if this is intentional, prefix it with an underscore: `_vk`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `new_roots`
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr5.rs:179:28
+    |
+179 |             Ok((proof, vk, new_roots)) => {
+    |                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_new_roots`
+
+warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr5") generated 3 warnings (run `cargo fix --bin "ppgen_sabv_lmtr5"` to apply 1 suggestion)
+    Finished `release` profile [optimized] target(s) in 15.64s
+     Running `target/release/ppgen_sabv_lmtr5 --n-exits 500 --validator-nodes 5 --proof-dir /home/ubuntu/thanhhuyen/proofs/v5 --allow-fraud-testing`
+🔍 SABV5: Starting Algorithm 1 - Verify Aggregated Blocks Integrity
+   Input: N=1 blocks, branching_factor=3, validators=5
+   📐 Optimal height calculation: log_3(1) + 1 = 1
+🎯 V5: Calculated optimal htarget = 1 for N=1, b=3
+📊 SABV5: Calculated j* = 1 with variance = 179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.0000
+✅ Step 1: Optimal sharding size j* = 1 (shard_size = 3^1 = 3)
+📦 SABV5: Created 1 shards (0 full + 1 remainder)
+✅ Step 2: Partitioned 1 blocks into 1 shards (shard_size = 3)
+📡 SABV5: REAL MPC Network - 5 validators broadcast shares, 5 received sufficient shares
+🔐 SABV5: REAL Shamir secret sharing - Secret: 0.294799, Reconstructed: 0.294799, Match: true
+   Polynomial degree: 2, Shares: 5, Threshold: 3/5
+   Validator 4 assigned with share value: -16.480649
+✅ Step 3: Secret sharing applied (threshold k=3/5)
+📊 Step 4: Rebalancing shards with LMTR4 (Algorithm 2)...
+🔧 LMTR4: Starting Algorithm 2 rebalancing for 1 blocks
+📊 LMTR4: Initial state - Ni = 1, b = 3, htarget = 1
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 2
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 3
+📊 LMTR4: Height adjustment - Current height = 2, Target = 1
+⬇️ LMTR4: Removed block to decrease height - Ni = 2, height = 2
+📊 LMTR4: Height adjustment - Current height = 2, Target = 1
+⬇️ LMTR4: Removed block to decrease height - Ni = 1, height = 2
+✅ LMTR4: Rebalancing complete - Final Ni = 1, height = 1
+   ✅ Shard 0 (validator 4) - 1 → 1 blocks, height=1
+🌳 Step 5a: Building REAL Local CC-MBMT from rebalanced blocks...
+   ✅ Validator 4 built REAL local CC-MBMT (shard 0) - 1 blocks → tree height=1
+🔗 SABV5: Merged 1 local CC-MBMTs into global CC-MBMT using REAL tree structure
+✅ Step 5b: Merged 1 local CC-MBMTs into global root r
+✅ Step 6: Computed alternative root r' using SAME Merkle tree method as Step 5a
+   Using 1 rebalanced blocks, tree height=1
+🔐 Step 7: Verifying integrity...
+   r  (from merged trees):     88c0b3c16c0df2d14947b3e43547b2db57eb7757a405c330ee49d22c40618be3
+   r' (from all blocks):       88c0b3c16c0df2d14947b3e43547b2db57eb7757a405c330ee49d22c40618be3
+   R  (global_root expected): 1b0197c0029e4c971c54b8df285fcadb0cb8793716190aaa0c12db66a3fd3e00
+   r == global_root? false (blockchain integrity)
+   r == r'? true (internal consistency)
+❌ SABV5: Verification FAILED - Blockchain mismatch!
+   ❌ r ≠ global_root (computed root doesn't match blockchain)
+   ⚠️  FRAUD DETECTED - blocks don't match expected state!
+[2m2025-11-07T02:43:25.017368Z[0m [32m INFO[0m [1mprove_core[0m: clk = 0 pc = 0x201504
+[2m2025-11-07T02:43:25.890808Z[0m [32m INFO[0m [1mprove_core[0m: clk = 0 pc = 0x201504
+[2m2025-11-07T02:43:26.009025Z[0m [32m INFO[0m [1mprove_core[0m: clk = 10000000 pc = 0x20885c
+[2m2025-11-07T02:43:26.683057Z[0m [32m INFO[0m [1mprove_core[0m: clk = 20000000 pc = 0x205a38
+[2m2025-11-07T02:43:27.370553Z[0m [32m INFO[0m [1mprove_core[0m: clk = 30000000 pc = 0x2043d0
+[2m2025-11-07T02:43:27.394308Z[0m [32m INFO[0m [1mprove_core[0m: clk = 10000000 pc = 0x20885c
+[2m2025-11-07T02:43:28.096141Z[0m [32m INFO[0m [1mprove_core[0m: clk = 40000000 pc = 0x2060cc
+[2m2025-11-07T02:43:28.938952Z[0m [32m INFO[0m [1mprove_core[0m: clk = 50000000 pc = 0x205f04
+[2m2025-11-07T02:43:29.038245Z[0m [32m INFO[0m [1mprove_core[0m: clk = 20000000 pc = 0x205a38
+[2m2025-11-07T02:43:29.843082Z[0m [32m INFO[0m [1mprove_core[0m: clk = 60000000 pc = 0x2011f0
+[2m2025-11-07T02:43:30.423162Z[0m [32m INFO[0m [1mprove_core[0m: clk = 70000000 pc = 0x231250
+[2m2025-11-07T02:43:30.519720Z[0m [32m INFO[0m [1mprove_core[0m: clk = 30000000 pc = 0x2043d0
+[2m2025-11-07T02:43:31.027706Z[0m [32m INFO[0m [1mprove_core[0m: clk = 80000000 pc = 0x201234
+[2m2025-11-07T02:43:31.124621Z[0m [32m INFO[0m [1mprove_core[0m: clk = 60000000 pc = 0x2011f0
+[2m2025-11-07T02:43:31.761266Z[0m [32m INFO[0m [1mprove_core[0m: clk = 90000000 pc = 0x231254
+[2m2025-11-07T02:43:31.932980Z[0m [32m INFO[0m [1mprove_core[0m: clk = 40000000 pc = 0x2060cc
+[2m2025-11-07T02:43:32.509202Z[0m [32m INFO[0m [1mprove_core[0m: clk = 100000000 pc = 0x2313c8
+[2m2025-11-07T02:43:34.156861Z[0m [32m INFO[0m [1mprove_core[0m: clk = 110000000 pc = 0x201238
+[2m2025-11-07T02:43:36.543745Z[0m [32m INFO[0m [1mprove_core[0m: clk = 120000000 pc = 0x2013d8
+[2m2025-11-07T02:43:36.999618Z[0m [32m INFO[0m [1mprove_core[0m: clk = 50000000 pc = 0x205f04
+[2m2025-11-07T02:43:37.321295Z[0m [32m INFO[0m [1mprove_core[0m:[1mgenerate main traces[0m: close [3mtime.busy[0m[2m=[0m5.20s [3mtime.idle[0m[2m=[0m8.14µs [2m[3mindex[0m[2m=[0m0[0m
+[2m2025-11-07T02:43:37.889800Z[0m [32m INFO[0m [1mprove_core[0m: clk = 130000000 pc = 0x231250
+[2m2025-11-07T02:43:39.657201Z[0m [32m INFO[0m [1mprove_core[0m: clk = 140000000 pc = 0x201098
+[2m2025-11-07T02:43:40.953723Z[0m [32m INFO[0m [1mprove_core[0m: clk = 70000000 pc = 0x231250
+[2m2025-11-07T02:43:41.906933Z[0m [32m INFO[0m [1mprove_core[0m: clk = 150000000 pc = 0x201228
+[2m2025-11-07T02:43:43.718480Z[0m [32m INFO[0m [1mprove_core[0m: clk = 160000000 pc = 0x2010e4
+[2m2025-11-07T02:43:46.237820Z[0m [32m INFO[0m [1mprove_core[0m: clk = 170000000 pc = 0x23124c
+[2m2025-11-07T02:43:48.282226Z[0m [32m INFO[0m [1mprove_core[0m: clk = 180000000 pc = 0x2312b4
+[2m2025-11-07T02:43:48.679023Z[0m [32m INFO[0m [1mprove_core[0m:[1mgenerate main traces[0m: close [3mtime.busy[0m[2m=[0m7.72s [3mtime.idle[0m[2m=[0m6.51µs [2m[3mindex[0m[2m=[0m1[0m
+[2m2025-11-07T02:43:54.568419Z[0m [32m INFO[0m [1mprove_core[0m: clk = 80000000 pc = 0x201234
+[2m2025-11-07T02:44:07.060665Z[0m [32m INFO[0m [1mprove_core[0m:[1mgenerate main traces[0m: close [3mtime.busy[0m[2m=[0m9.06s [3mtime.idle[0m[2m=[0m9.76µs [2m[3mindex[0m[2m=[0m2[0m

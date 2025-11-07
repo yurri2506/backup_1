@@ -35,6 +35,7 @@ thiserror = "2.0.8"
 tiny-keccak = { git = "https://github.com/sp1-patches/tiny-keccak", tag = "patch-2.0.2-sp1-4.0.0", features = [
     "keccak",
 ] }
+rayon = "1.10"
 sp1-primitives = "=5.0.0"
 sp1-verifier = { version = "=5.0.0" }
 sp1-zkvm = { version = "=5.0.0", features = ["verify"] }

@@ -1,0 +1,25 @@
+/usr/bin/time: cannot run RUST_LOG=sp1_sdk=debug,sp1=debug: No such file or directory
+Command exited with non-zero status 127
+	Command being timed: "RUST_LOG=sp1_sdk=debug,sp1=debug SP1_PROVER=cpu SP1_CARGO_PROVE_PATH=/home/ubuntu/.sp1/bin/cargo-prove cargo run --release --package pessimistic-proof-test-suite --bin ppgen_sabv_lmtr4 -- --n-exits 1 --validator-nodes 3 --proof-dir /tmp/v4_sp1_tmux"
+	User time (seconds): 0.00
+	System time (seconds): 0.00
+	Percent of CPU this job got: 77%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.00
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 1024
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 30
+	Voluntary context switches: 1
+	Involuntary context switches: 0
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 0
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 127
