@@ -1,0 +1,18 @@
+═══════════════════════════════════════════════════════════════
+🚀 V5 BENCHMARK: N=100, 500 (lặp lại 5 lần) - TMUX SESSION
+═══════════════════════════════════════════════════════════════
+
+📋 Configuration:
+  • N values: 100 500
+  • Số lần lặp: 5
+  • Validator nodes: 5
+  • Proof dir: /home/ubuntu/thanhhuyen/proofs/v5
+  • Log dir: /home/ubuntu/thanhhuyen/logs/v5
+  • TMUX session: v5_n100_500
+  • ⚠️  GIẢM MEMORY USAGE để tránh OOM kill
+
+⚠️  TMUX session 'v5_n100_500' đã tồn tại
+💡 Attach: tmux attach -t v5_n100_500
+💡 Hoặc kill session cũ: tmux kill-session -t v5_n100_500
+
+Tiếp tục với session hiện tại? (y/n) 

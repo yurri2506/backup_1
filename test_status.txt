@@ -1,0 +1,119 @@
+====================================================================================================
+TRẠNG THÁI CÁC KỊCH BẢN KIỂM THỬ
+====================================================================================================
+Ngày cập nhật: 2025-11-17 11:29:00 UTC
+
+====================================================================================================
+TEST ĐANG CHẠY
+====================================================================================================
+
+1. ✅ Quick Test (test_v5)
+   - Script: test_quick.sh
+   - Test: N=1 với cấu hình mới (verify fix OOM)
+   - Config: RAYON_NUM_THREADS=16 (N<100)
+   - Expected: ~47 phút, RAM ~16-17GB
+   - TMUX: test_v5
+   - Status: Đang chạy
+   - Xem: tmux attach -t test_v5
+
+2. ✅ Fraud Detection Tests (fraud_tests)
+   - Script: fraud_detection_comparison.sh
+   - Test: N=1, fraud_type=wrong_global_root
+   - Mục đích: So sánh V5 vs baseline trong fraud detection
+   - TMUX: fraud_tests
+   - Status: Đang chạy
+   - Xem: tmux attach -t fraud_tests
+   - Note: Fraud tests có thể cần code changes để thực sự inject fraud
+
+====================================================================================================
+TEST SCRIPTS SẴN SÀNG
+====================================================================================================
+
+1. ✅ test_quick.sh
+   - Test nhỏ N=1 để verify fix OOM
+   - Expected: ~47 phút
+   - Status: Đang chạy
+
+2. ✅ test_fix_oom.sh
+   - Test verify fix OOM (N=10, timeout 5 phút)
+   - Status: Có sẵn
+
+3. ✅ run_all_fraud_tests.sh
+   - Chạy tất cả fraud tests với nhiều N values
+   - N values: 1, 10, 100
+   - Fraud types: wrong_global_root, tampered_blocks
+   - Status: Có sẵn
+   - Chạy: ./run_all_fraud_tests.sh
+
+4. ✅ fraud_detection_comparison.sh
+   - So sánh fraud detection V5 vs baseline
+   - Usage: ./fraud_detection_comparison.sh [N] [fraud_type]
+   - Status: Đang chạy (N=1, wrong_global_root)
+
+5. ✅ run_v5_benchmark.sh
+   - Full benchmark với fix OOM
+   - N values: 1, 10, 100, 200, 500, 700
+   - Config: Điều chỉnh theo N (8 threads cho N>=100)
+   - Status: Đã fix, sẵn sàng chạy
+   - Chạy: ./run_v5_benchmark.sh
+
+6. ⚠️  test_n100.sh
+   - Test N=100 với RAYON_NUM_THREADS=16 (sẽ bị OOM)
+   - Status: Không nên chạy (sẽ bị OOM)
+   - Note: Script này chưa được update với fix OOM
+
+====================================================================================================
+KẾT QUẢ MONG ĐỢI
+====================================================================================================
+
+✅ Quick Test (N=1):
+   - Không bị OOM kill
+   - RAM: ~16-17GB (dưới 25GB)
+   - Hoàn thành thành công trong ~47 phút
+
+✅ Fraud Detection Tests:
+   - V5: Phát hiện fraud sớm (early detection)
+   - Baseline: Không phát hiện ở level SABV (chỉ có SP1)
+   - Note: Cần code changes để thực sự inject fraud
+
+✅ Full Benchmark (run_v5_benchmark.sh):
+   - N<=10: RAYON_NUM_THREADS=16, RAM ~16-24GB
+   - N>=100: RAYON_NUM_THREADS=8, RAM ~20-25GB (không bị OOM)
+   - Tất cả runs hoàn thành thành công
+
+====================================================================================================
+LỆNH QUẢN LÝ
+====================================================================================================
+
+Xem test đang chạy:
+  tmux attach -t test_v5          # Quick test N=1
+  tmux attach -t fraud_tests      # Fraud detection tests
+
+Chạy test mới:
+  ./test_quick.sh                 # Quick test N=1
+  ./run_all_fraud_tests.sh        # All fraud tests
+  ./run_v5_benchmark.sh           # Full benchmark
+
+Kiểm tra logs:
+  ls -lht logs/test/              # Test logs
+  ls -lht logs/fraud_detection/   # Fraud test logs
+  ls -lht logs/v5/                # Benchmark logs
+
+====================================================================================================
+LƯU Ý
+====================================================================================================
+
+1. ⚠️  Fraud detection tests có thể không inject fraud thực sự
+   - Cần kiểm tra code để đảm bảo fraud được inject
+   - Có thể cần modify ppgen_sabv_lmtr5.rs để accept --wrong-global-root parameter
+
+2. ✅ Fix OOM đã được áp dụng:
+   - run_v5_benchmark.sh: Điều chỉnh RAYON_NUM_THREADS theo N
+   - N>=100: 8 threads (tránh OOM)
+   - N<=10: 16 threads (OK)
+
+3. ⚠️  test_n100.sh chưa được update:
+   - Vẫn dùng RAYON_NUM_THREADS=16
+   - Sẽ bị OOM kill
+   - Nên update hoặc không sử dụng
+

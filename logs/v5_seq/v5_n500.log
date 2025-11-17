@@ -704,3 +704,19 @@ warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr5") generated 3 war
 2025-11-07T08:37:44.243919Z  INFO prove_core:generate main traces: close time.busy=12.3s time.idle=7.06µs index=17
 2025-11-07T08:41:50.858404Z  INFO prove_core: clk = 150000000 pc = 0x201228
 2025-11-07T08:42:07.115535Z  INFO prove_core:generate main traces: close time.busy=16.5s time.idle=7.51µs index=18
+2025-11-07T09:11:27.012308Z  INFO prove_core:generate main traces: close time.busy=13.3s time.idle=22.7µs index=19
+2025-11-07T09:28:17.211816Z  INFO prove_core: clk = 160000000 pc = 0x2010e4
+2025-11-07T09:28:33.038592Z  INFO prove_core:generate main traces: close time.busy=12.4s time.idle=7.97µs index=20
+2025-11-07T09:32:52.004989Z  INFO prove_core:generate main traces: close time.busy=16.0s time.idle=9.38µs index=21
+2025-11-07T10:01:22.307825Z  INFO prove_core: clk = 170000000 pc = 0x23124c
+2025-11-07T10:01:40.930716Z  INFO prove_core:generate main traces: close time.busy=14.3s time.idle=6.70µs index=22
+2025-11-07T10:18:26.051358Z  INFO prove_core: clk = 180000000 pc = 0x2312b4
+2025-11-07T10:18:38.203630Z  INFO prove_core:generate main traces: close time.busy=12.2s time.idle=6.56µs index=23
+2025-11-07T10:23:01.304680Z  INFO prove_core:generate main traces: close time.busy=17.7s time.idle=17.9µs index=24
+2025-11-07T10:52:08.993927Z  INFO prove_core:generate main traces: close time.busy=14.5s time.idle=11.9µs index=25
+2025-11-07T11:09:25.192789Z  INFO prove_core:generate main traces: close time.busy=15.3s time.idle=8.69µs index=26
+2025-11-07T11:26:29.052051Z  INFO prove_core:generate main traces: close time.busy=12.9s time.idle=10.9µs index=27
+2025-11-07T11:30:59.474005Z  INFO prove_core:generate main traces: close time.busy=25.7s time.idle=12.1µs index=28
+2025-11-07T12:04:22.903168Z  WARN prove_core: High cycle count detected (180M cycles). For better performance, consider using the Succinct Prover Network: https://docs.succinct.xyz/docs/sp1/generating-proofs/prover-network
+2025-11-07T12:04:23.077072Z  INFO prove_core: close time.busy=26874s time.idle=7.77s
+2025-11-07T19:22:06.411875Z  INFO compress: close time.busy=26256s time.idle=7.52s

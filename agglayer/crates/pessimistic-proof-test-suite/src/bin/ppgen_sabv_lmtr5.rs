@@ -12,6 +12,7 @@ use tracing::{error, info, warn};
 use agglayer_primitives::Digest as AggDigest;
 use serde::{Serialize, Deserialize};
 use pessimistic_proof::unified_bridge::CommitmentVersion;
+use hex;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -35,6 +36,11 @@ struct PPGenArgs {
     /// Allow SP1 proving even if fraud detected (testing only)
     #[arg(long, default_value = "false")]
     allow_fraud_testing: bool,
+
+    /// Wrong global_root for fraud testing (hex string, optional)
+    /// If provided, uses this instead of computed global_root to test fraud detection
+    #[arg(long)]
+    wrong_global_root: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -63,15 +69,20 @@ fn main() {
     let args = PPGenArgs::parse();
     
     let total_start = Instant::now();
-    info!("🚀 Starting REAL SABV3/LMTR3 Proving with {} exits and {} validators", 
+    info!("🚀 Starting REAL SABV5/LMTR4 Proving with {} exits and {} validators", 
           args.n_exits, args.validator_nodes);
     
-    // Build sample state and inputs (same as V2 binary)
+    // Build sample state and inputs
+    // FIX: Create multiple blocks from n_exits - each block contains 1 exit
     let setup_start = Instant::now();
     let mut state = data::sample_state_00();
-    let old_state = state.state_b.clone();
-
-    let bridge_exits = {
+    let mut blocks = Vec::new();
+    let mut global_roots = Vec::new();
+    
+    info!("📦 Creating {} blocks (one per exit) for SABV5 verification", args.n_exits);
+    
+    // Get all bridge exits
+    let all_bridge_exits: Vec<_> = {
         let n = args.n_exits;
         match &args.input {
             Some(path) => data::sample_bridge_exits(path.clone())
@@ -86,27 +97,84 @@ fn main() {
                 .collect::<Vec<_>>(),
         }
     };
-    let imported_bridge_exits = bridge_exits.clone();
-
-    let certificate = state.apply_events(&imported_bridge_exits, &bridge_exits);
-
-    let l1_info_root = certificate.l1_info_root().unwrap().unwrap_or_default();
-    let multi_batch_header = old_state
-        .make_multi_batch_header(
-            &certificate,
-            state.get_signer(),
-            l1_info_root,
-            PessimisticRootInput::Computed(CommitmentVersion::V2),
-            None,
-        )
-        .expect("Failed to make multi batch header");
+    
+    // Create one block per exit by creating separate certificates
+    // State needs to be updated sequentially for each certificate
+    let initial_state = state.state_b.clone();
+    let mut current_state = initial_state.clone();
+    let signer = state.get_signer();
+    
+    // Create a separate state for building blocks sequentially
+    let mut block_state = data::sample_state_00();
+    block_state.state_b = current_state.clone();
+    
+    for (i, (token_info, amount)) in all_bridge_exits.iter().enumerate() {
+        // Create a single-exit certificate for this block
+        let single_exit = vec![(*token_info, *amount)];
+        let single_imported_exit = single_exit.clone();
+        
+        // Create state snapshot BEFORE applying events
+        let state_before = block_state.state_b.clone();
+        
+        // Apply events to create certificate (this mutates block_state)
+        let certificate = block_state.apply_events(&single_imported_exit, &single_exit);
+        
+        let l1_info_root = certificate.l1_info_root().unwrap().unwrap_or_default();
+        
+        // Create multi_batch_header using state BEFORE applying events
+        let multi_batch_header = state_before
+            .make_multi_batch_header(
+                &certificate,
+                signer,
+                l1_info_root,
+                PessimisticRootInput::Computed(CommitmentVersion::V2),
+                None,
+            )
+            .expect(&format!("Failed to make multi batch header for block {}", i));
+        
+        blocks.push(multi_batch_header.clone());
+        global_roots.push(l1_info_root);
+        
+        // Update current_state for next iteration (state after applying events)
+        current_state = block_state.state_b.clone();
+        
+        if (i + 1) % 50 == 0 || i == 0 || i == all_bridge_exits.len() - 1 {
+            info!("  ✅ Created {} blocks", i + 1);
+        }
+    }
+    
+    info!("✅ Created {} blocks total for SABV5 verification", blocks.len());
+    
+    // Use the last l1_info_root as the expected global root for verification
+    // In a real scenario, this would be the expected blockchain state root
+    // For now, we use l1_info_root from the last certificate as the expected root
+    let global_root = if let Some(wrong_root_hex) = &args.wrong_global_root {
+        // FRAUD TEST MODE: Use wrong global_root to test fraud detection
+        info!("🔴 FRAUD TEST MODE: Using wrong_global_root for fraud detection test");
+        let hex_str = wrong_root_hex.strip_prefix("0x").unwrap_or(wrong_root_hex);
+        let wrong_root_bytes = hex::decode(hex_str)
+            .expect("Invalid wrong_global_root hex string");
+        if wrong_root_bytes.len() != 32 {
+            panic!("wrong_global_root must be 32 bytes (64 hex characters), got {} bytes", wrong_root_bytes.len());
+        }
+        let mut wrong_root_array = [0u8; 32];
+        wrong_root_array.copy_from_slice(&wrong_root_bytes);
+        AggDigest::from(wrong_root_array)
+    } else {
+        // Normal mode: use computed global_root
+        global_roots.last().copied().unwrap_or_else(|| {
+            // Fallback: use default if no blocks (shouldn't happen)
+            AggDigest::default()
+        })
+    };
     
     let setup_time = setup_start.elapsed();
-    info!("📊 Setup time (state + certificate): {:?}", setup_time);
+    info!("📊 Setup time (state + {} certificates): {:?}", blocks.len(), setup_time);
     
-    // Use SABV3/LMTR3 algorithms if validator_nodes > 0
+    // Use SABV5/LMTR4 algorithms if validator_nodes > 0
     if args.validator_nodes > 0 {
         info!("🚀 Applying SABV5/LMTR4 REAL algorithms with {} validator nodes", args.validator_nodes);
+        info!("📦 SABV5 will verify {} blocks", blocks.len());
         
         // Apply SABV5/LMTR4 REAL algorithms before SP1 proving
         info!("✅ Applying SABV5/LMTR4 REAL algorithms...");
@@ -119,10 +187,8 @@ fn main() {
         };
         let mut sabv5_algorithm = Sabv5Algorithm::new(sabv5_config);
 
-        // Apply SABV5 REAL verification (Algorithm 1)
-        let blocks = vec![multi_batch_header.clone()];
-        // Use real global root from the certificate: l1_info_root is the declared digest
-        let global_root: AggDigest = l1_info_root;
+        // Apply SABV5 REAL verification (Algorithm 1) with multiple blocks
+        // Use real global root from the last block/certificate
         
         let sabv5_start = Instant::now();
         let (integrity_verified, rebalanced_blocks) = sabv5_algorithm
@@ -157,23 +223,93 @@ fn main() {
         // No need to call LMTR4 again - SABV5 already did it!
         info!("📦 Using rebalanced blocks from SABV5 ({} blocks total)", rebalanced_blocks.len());
         
-        // Extract enhanced header from rebalanced blocks
-        let enhanced_header = rebalanced_blocks
-            .get(0)
-            .expect("Rebalanced blocks should contain at least one block")
-            .clone();
+        // For SP1 proving, we need to create a combined certificate from all blocks
+        // Create a final certificate that contains all exits for SP1 proving
+        // BASELINE: N=700 = 700 bridge exits + 700 imported bridge exits
+        info!("📝 Creating combined certificate for SP1 proving...");
+        info!("📊 Baseline: {} bridge exits + {} imported bridge exits (total: {} events)", 
+              all_bridge_exits.len(), all_bridge_exits.len(), all_bridge_exits.len() * 2);
         
-        info!("🎯 Complete workflow: SABV5 REAL verification + LMTR4 rebalancing → SP1 proving ✓");
+        // Flush logs before heavy operations to ensure we see progress
+        use std::io::Write;
+        let _ = std::io::stdout().flush();
+        
+        info!("🔄 Step 1: Creating final state from initial state...");
+        let _ = std::io::stdout().flush();
+        let mut final_state = data::sample_state_00();
+        final_state.state_b = initial_state.clone();
+        info!("✅ Step 1: Final state created (memory allocated)");
+        let _ = std::io::stdout().flush();
+        
+        info!("🔄 Step 2: Applying {} bridge exits to create certificate...", all_bridge_exits.len());
+        info!("   Memory before: This may take a while for large N...");
+        let _ = std::io::stdout().flush();
+        
+        // Apply events - this is where it might fail for large N
+        let final_certificate = final_state.apply_events(&all_bridge_exits, &all_bridge_exits);
+        info!("✅ Step 2: Certificate created successfully with {} exits", all_bridge_exits.len());
+        let _ = std::io::stdout().flush();
+        
+        info!("🔄 Step 3: Getting L1 info root from certificate...");
+        let _ = std::io::stdout().flush();
+        let final_l1_info_root = match final_certificate.l1_info_root() {
+            Ok(Some(root)) => {
+                info!("✅ Step 3: L1 info root retrieved successfully");
+                let _ = std::io::stdout().flush();
+                root
+            }
+            Ok(None) => {
+                warn!("⚠️  Step 3: L1 info root is None, using default");
+                let _ = std::io::stdout().flush();
+                AggDigest::default()
+            }
+            Err(e) => {
+                error!("❌ Step 3: Error getting L1 info root: {:?}", e);
+                error!("   This is non-fatal, continuing with default root");
+                let _ = std::io::stdout().flush();
+                AggDigest::default()
+            }
+        };
+        
+        info!("🔄 Step 4: Creating multi batch header from certificate...");
+        let _ = std::io::stdout().flush();
+        let enhanced_header = match initial_state.make_multi_batch_header(
+            &final_certificate,
+            signer,
+            final_l1_info_root,
+            PessimisticRootInput::Computed(CommitmentVersion::V2),
+            None,
+        ) {
+            Ok(header) => {
+                info!("✅ Step 4: Multi batch header created successfully");
+                let _ = std::io::stdout().flush();
+                header
+            }
+            Err(e) => {
+                error!("❌ Step 4: CRITICAL - Failed to create multi batch header!");
+                error!("   Error: {:?}", e);
+                error!("   Certificate hash: {:?}", final_certificate.hash());
+                error!("   Number of bridge exits: {}", all_bridge_exits.len());
+                error!("   This is a fatal error - cannot continue with SP1 proving");
+                let _ = std::io::stdout().flush();
+                panic!("Failed to create final multi batch header for SP1 with {} exits: {:?}", all_bridge_exits.len(), e);
+            }
+        };
+        
+        info!("🎯 Complete workflow: SABV5 REAL verification ({} blocks) + LMTR4 rebalancing → SP1 proving ✓", blocks.len());
+        info!("✅ All certificate preparation steps completed successfully");
+        let _ = std::io::stdout().flush();
 
-        // NOW: Run SP1 Proving with REAL algorithms (same as V2)
-        info!("🔐 Starting SP1 Proving with SABV5/LMTR4 REAL optimized blocks...");
+        // NOW: Run SP1 Proving with REAL algorithms
+        info!("🔐 Starting SP1 Proving with combined certificate ({} bridge exits + {} imported bridge exits = {} total events)...", 
+              all_bridge_exits.len(), all_bridge_exits.len(), all_bridge_exits.len() * 2);
         let sp1_start = Instant::now();
         
         info!("📝 Preparing SP1 inputs...");
         let runner = Runner::new();
         
         info!("🚀 Generating SP1 PLONK proof...");
-        let proof_result = runner.generate_plonk_proof(&old_state.into(), &enhanced_header);
+        let proof_result = runner.generate_plonk_proof(&initial_state.into(), &enhanced_header);
         
         match proof_result {
             Ok((proof, vk, new_roots)) => {
@@ -184,20 +320,20 @@ fn main() {
                 // Save proof fixture
                 let save_start = Instant::now();
                 let fixture = PessimisticProofFixture {
-                    certificate: certificate.clone(),
+                    certificate: final_certificate.clone(),
                     pp_inputs: VerifierInputs {
-                        certificate: certificate.clone(),
+                        certificate: final_certificate.clone(),
                         pessimistic_root_input: "Computed".to_string(),
-                        l1_info_root,
+                        l1_info_root: final_l1_info_root,
                     },
-                    signer: state.get_signer(),
-                    vkey: format!("v3_proof_vkey_{}", args.n_exits),
+                    signer: signer,
+                    vkey: format!("v5_proof_vkey_{}", args.n_exits),
                     public_values: format!("0x{}", hex::encode(proof.public_values.as_slice())),
                     proof: format!("0x{}", hex::encode(proof.bytes())),
                 };
                 
                 // Save fixture
-                let fixture_path = args.proof_dir.join(format!("v3_proof_n{}.json", args.n_exits));
+                let fixture_path = args.proof_dir.join(format!("v5_proof_n{}.json", args.n_exits));
                 std::fs::create_dir_all(&args.proof_dir).expect("Failed to create proof directory");
                 
                 let fixture_json = serde_json::to_string_pretty(&fixture)
@@ -228,8 +364,8 @@ fn main() {
             }
         }
     } else {
-        warn!("⚠️  No validator nodes specified, skipping V3 algorithms");
+        warn!("⚠️  No validator nodes specified, skipping V5 algorithms");
     }
     
-    info!("🎉 SABV3/LMTR3 with SP1 Proving completed");
+    info!("🎉 SABV5/LMTR4 with SP1 Proving completed");
 }

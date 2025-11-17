@@ -149,6 +149,16 @@ impl Sabv5Algorithm {
         let htarget = self.calculate_optimal_height(n, b);
         println!("🎯 V5: Calculated optimal htarget = {} for N={}, b={}", htarget, n, b);
 
+        // **V5 FIX**: Compute expected root from ORIGINAL blocks (before rebalancing)
+        // This is used to detect if blocks were tampered BEFORE entering SABV5
+        // If rebalancing doesn't change block content (only structure), roots should match
+        let expected_root_from_original_blocks = {
+            let (root, height) = self.build_real_merkle_tree(blocks, b)?;
+            println!("📊 Computed expected root from {} ORIGINAL blocks (before rebalancing): {:?} (height={})", 
+                     blocks.len(), root, height);
+            root
+        };
+
         // **Algorithm 1 - Step 1**: Find optimal sharding size j*
         // Goal: Choose j* that minimizes variance in shard sizes for balanced workload distribution
         // Method: Try all j ∈ [1, log_b(N)], calculate variance, pick j* with min variance
@@ -267,7 +277,7 @@ impl Sabv5Algorithm {
         let r_computed = self.merge_local_cc_mbmt(&local_trees)?;
         println!("✅ Step 5b: Merged {} local CC-MBMTs into global root r", local_trees.len());
 
-        // **Algorithm 1 - Step 6**: Compute Root r' from All REBALANCED Blocks (Same as Step 5)
+        // **Algorithm 1 - Step 6**: Compute Root r' from All REBALANCED Blocks (for CHECK 1)
         // Goal: Compute alternative root r' using the SAME rebalanced blocks from Step 4-5
         // Purpose: Verify that r == r' (both computed from SAME rebalanced blocks, MUST match)
         // IMPORTANT: Use the SAME rebalanced_shards from Step 4, don't rebalance again!
@@ -278,43 +288,153 @@ impl Sabv5Algorithm {
             .collect();
         
         // REAL: Use SAME tree-building method as Step 5a (Merkle tree, not direct hash)
-        let (r_prime, r_prime_height) = self.build_real_merkle_tree(&all_rebalanced_blocks, b)?;
-        println!("✅ Step 6: Computed alternative root r' using SAME Merkle tree method as Step 5a");
+        let (r_prime_from_rebalanced, r_prime_height) = self.build_real_merkle_tree(&all_rebalanced_blocks, b)?;
+        println!("✅ Step 6: Computed alternative root r' (from rebalanced blocks) using SAME Merkle tree method as Step 5a");
         println!("   Using {} rebalanced blocks, tree height={}", all_rebalanced_blocks.len(), r_prime_height);
+        
+        // **Algorithm 1 - Step 6b**: Compute Root r' from ORIGINAL Blocks (for CHECK 2)
+        // Goal: Compute r' from original blocks (before rebalancing) to compare with r (from rebalanced blocks)
+        // Purpose: Verify that rebalancing doesn't change block content (only structure)
+        // Paper: Compare root from original blocks with root from rebalanced blocks
+        // NOTE: expected_root_from_original_blocks was already computed at the beginning
+        let r_prime_from_original = expected_root_from_original_blocks;
+        println!("✅ Step 6b: Using r' (from original blocks) = expected_root_from_original_blocks for CHECK 2");
 
         // **Algorithm 1 - Step 7**: Integrity Verification
-        // Goal: Verify r == r' AND r == global_root (chống gian lận)
+        // Goal: Verify r == r' (CHECK 1) AND r' (from original) == r (from rebalanced) (CHECK 2)
         // Paper: "if R = R then return True else return False" (Algorithm 1 Lines 22-25)
-        println!("🔐 Step 7: Verifying integrity...");
-        println!("   r  (from merged trees):     {:?}", r_computed);
-        println!("   r' (from all blocks):       {:?}", r_prime);
-        println!("   R  (global_root expected): {:?}", global_root);
+        // 
+        // **FRAUD DETECTION STRATEGY (THEO PAPER)**:
+        // 1. CHECK 1: r == r' (from rebalanced blocks) - internal consistency
+        //    - r: from merged local trees (rebalanced blocks)
+        //    - r': from all rebalanced blocks (rebalanced blocks)
+        //    - Purpose: Verify sharding + merge đúng
+        // 2. CHECK 2: r' (from original blocks) == r (from rebalanced blocks) - rebalancing integrity
+        //    - r' (from original): from original blocks (TRƯỚC rebalancing)
+        //    - r (from rebalanced): from rebalanced blocks (SAU rebalancing)
+        //    - Purpose: Verify rebalancing không thay đổi content (chỉ thay đổi structure)
+        println!("🔐 Step 7: Verifying integrity and detecting fraud...");
+        println!("   r  (from merged local trees, rebalanced): {:?}", r_computed);
+        println!("   r' (from all rebalanced blocks):           {:?}", r_prime_from_rebalanced);
+        println!("   r' (from original blocks):                 {:?}", r_prime_from_original);
+        println!("   Note: r' (from original) will be compared with r (from rebalanced) in CHECK 2");
         
-        // **V5 FIX 1**: Check r == global_root FIRST (early fraud detection)
-        let global_root_match = r_computed.as_slice() == global_root.as_slice();
-        println!("   r == global_root? {} (blockchain integrity)", global_root_match);
+        // **CHECK 1**: r == r' (from rebalanced blocks) - internal consistency (CRITICAL)
+        // Both r and r' are computed from the SAME rebalanced blocks
+        // If they don't match, it means:
+        //   - Sharding/merge error (blocks divided incorrectly)
+        //   - Blocks tampered BETWEEN Step 5a and Step 6 (unlikely, same data source)
+        let check1_roots_match = r_computed == r_prime_from_rebalanced;
+        println!("   ✅ Check 1: r == r' (from rebalanced blocks)? {} (internal consistency)", check1_roots_match);
         
-        // **V5 FIX 2**: Check r == r' (internal consistency)
-        let roots_match = r_computed == r_prime;
-        println!("   r == r'? {} (internal consistency)", roots_match);
+        // **CHECK 2**: r' (from original blocks) == r (from rebalanced blocks) - rebalancing integrity (CRITICAL)
+        // This verifies that rebalancing doesn't change block content (only structure)
+        // Paper: Compare root from original blocks with root from rebalanced blocks
+        // If rebalancing only changes structure (not content), roots should match
+        // NOTE: LMTR4 may change block count (add/remove blocks for balancing)
+        // FIX: When block count changes due to rebalancing, compare unique blocks instead
+        let original_block_count = blocks.len();
+        let rebalanced_block_count = all_rebalanced_blocks.len();
+        println!("   📊 Block counts: original={}, rebalanced={}", original_block_count, rebalanced_block_count);
         
-        // **V5**: Verify BOTH checks - chống gian lận toàn diện
-        if global_root_match && roots_match {
-            println!("✅ SABV5: Verification PASSED - All checks passed");
-            println!("   ✅ r == global_root (blockchain integrity verified - chống gian lận)");
-            println!("   ✅ r == r' (internal consistency verified)");
-            println!("   ✅ Algorithm integrity: SABV5 + LMTR4 working as designed");
-            Ok((true, all_rebalanced_blocks))
-        } else if !global_root_match {
-            println!("❌ SABV5: Verification FAILED - Blockchain mismatch!");
-            println!("   ❌ r ≠ global_root (computed root doesn't match blockchain)");
-            println!("   ⚠️  FRAUD DETECTED - blocks don't match expected state!");
+        let check2_rebalancing_match = if original_block_count != rebalanced_block_count {
+            // Block count changed due to rebalancing (LMTR4 added/removed blocks)
+            // FIX: Compare unique blocks by computing content hash sets
+            // Extract unique blocks from rebalanced blocks (remove duplicates)
+            let mut unique_rebalanced_hashes = std::collections::HashSet::new();
+            for block in &all_rebalanced_blocks {
+                let block_hash = self.compute_shard_hash(&[block.clone()])?;
+                unique_rebalanced_hashes.insert(block_hash);
+            }
+            
+            // Compute hash set for original blocks
+            let mut original_hashes = std::collections::HashSet::new();
+            for block in blocks {
+                let block_hash = self.compute_shard_hash(&[block.clone()])?;
+                original_hashes.insert(block_hash);
+            }
+            
+            // Check if all original blocks are present in rebalanced blocks (allowing duplicates)
+            let all_original_present = original_hashes.is_subset(&unique_rebalanced_hashes);
+            let no_extra_blocks = unique_rebalanced_hashes.is_subset(&original_hashes);
+            let content_preserved = all_original_present && no_extra_blocks;
+            
+            println!("   🔍 Check 2 (rebalancing changed block count):");
+            println!("      • Unique blocks in rebalanced: {}", unique_rebalanced_hashes.len());
+            println!("      • Original blocks: {}", original_hashes.len());
+            println!("      • All original blocks present: {}", all_original_present);
+            println!("      • No extra blocks: {}", no_extra_blocks);
+            println!("      • Content preserved: {}", content_preserved);
+            
+            if content_preserved {
+                println!("   ✅ Check 2: Content preserved (only structure changed) - PASSED");
+            } else {
+                println!("   ❌ Check 2: Content changed (new blocks added or original blocks missing) - FAILED");
+            }
+            
+            content_preserved
+        } else {
+            // Block count unchanged - compare roots directly
+            let roots_match = r_prime_from_original.as_slice() == r_computed.as_slice();
+            println!("   ✅ Check 2: r' (from original blocks) == r (from rebalanced blocks)? {} (rebalancing integrity)", roots_match);
+            if !roots_match {
+                println!("   ⚠️  Block count unchanged but roots differ → rebalancing changed block content (FRAUD)");
+            }
+            roots_match
+        };
+        
+        // **FRAUD DETECTION LOGIC (THEO PAPER)**:
+        // - CHECK 1: r == r' (from rebalanced) - MUST pass (internal consistency - CRITICAL)
+        // - CHECK 2: r' (from original) == r (from rebalanced) - MUST pass (rebalancing integrity - CRITICAL)
+        //   If this fails, it means rebalancing changed block content (FRAUD)
+        
+        // **PRIMARY CHECK**: CHECK 1 - r == r' (from rebalanced blocks)
+        if !check1_roots_match {
+            println!("❌ SABV5: Verification FAILED - Internal inconsistency!");
+            println!("   ❌ r ≠ r' (from rebalanced blocks) - computed from same blocks but results differ");
+            println!("   ⚠️  FRAUD DETECTED - sharding/merge error or data corruption!");
+            println!("   ⚠️  Possible causes:");
+            println!("      - Blocks divided incorrectly between shards");
+            println!("      - Blocks missing or duplicated during sharding");
+            println!("      - Merge process error");
+            println!("      - Data corruption during processing");
+            Ok((false, all_rebalanced_blocks))
+        } else if !check2_rebalancing_match {
+            // **SECONDARY CHECK**: CHECK 2 - r' (from original) == r (from rebalanced)
+            // If CHECK 1 passes but CHECK 2 fails, it means rebalancing changed block content
+            println!("❌ SABV5: Verification FAILED - Rebalancing integrity violation!");
+            println!("   ✅ Check 1: r == r' (from rebalanced blocks) - PASSED");
+            println!("   ❌ Check 2: r' (from original blocks) ≠ r (from rebalanced blocks) - FAILED");
+            println!("   ⚠️  FRAUD DETECTED - rebalancing changed block content!");
+            println!("   ⚠️  Rebalancing should only change structure (add/remove blocks), not content");
+            println!("   ⚠️  If roots don't match, blocks were modified during rebalancing (FRAUD)");
             Ok((false, all_rebalanced_blocks))
         } else {
-            println!("❌ SABV5: Verification FAILED - Internal inconsistency!");
-            println!("   ❌ r ≠ r' (blocks modified between rebalancing)");
-            println!("   ⚠️  FRAUD DETECTED - blocks were tampered with!");
-            Ok((false, all_rebalanced_blocks))
+            // **CHECK 3**: r (computed) == global_root (expected from blockchain) - blockchain integrity (CRITICAL)
+            // This checks if the computed root matches the expected root from the blockchain
+            // If they don't match, it means blocks don't match blockchain state (FRAUD)
+            let check3_blockchain_match = r_computed.as_slice() == global_root.as_slice();
+            println!("   🔍 Check 3: r (computed) == global_root (expected from blockchain)? {} (blockchain integrity)", check3_blockchain_match);
+            if !check3_blockchain_match {
+                println!("   ❌ Check 3: r (computed) ≠ global_root (expected from blockchain) - FAILED");
+                println!("      Computed r: {:?}", r_computed);
+                println!("      Expected global_root: {:?}", global_root);
+                println!("   ⚠️  FRAUD DETECTED - blocks don't match blockchain state!");
+                println!("   ⚠️  Possible causes:");
+                println!("      - Blocks were tampered with");
+                println!("      - Wrong blocks provided (not matching blockchain)");
+                println!("      - Blockchain state changed");
+                Ok((false, all_rebalanced_blocks))
+            } else {
+                // **ALL CHECKS PASSED**
+                println!("✅ SABV5: Verification PASSED - All checks passed");
+                println!("   ✅ Check 1: r == r' (from rebalanced blocks) - internal consistency verified");
+                println!("   ✅ Check 2: r' (from original blocks) == r (from rebalanced blocks) - rebalancing integrity verified");
+                println!("   ✅ Check 3: r (computed) == global_root (expected from blockchain) - blockchain integrity verified");
+                println!("   ✅ Algorithm integrity: SABV5 + LMTR4 working as designed");
+                println!("   ✅ No fraud detected - blocks are consistent and rebalancing preserved content");
+                Ok((true, all_rebalanced_blocks))
+            }
         }
     }
 

@@ -1,0 +1,133 @@
+================================================================================
+KIỂM TRA TÍNH ĐÚNG ĐẮN CỦA PHẦN THỰC NGHIỆM TRONG PAPER
+================================================================================
+
+Dựa trên dữ liệu thực tế từ V4 (LMTR Only) và V5 (SABV+LMTR):
+
+================================================================================
+SO SÁNH DỮ LIỆU PAPER vs THỰC TẾ:
+================================================================================
+
+❌ VẤN ĐỀ 1: Số liệu trong paper KHÔNG khớp với dữ liệu thực tế
+
+PAPER nói:
+- N=1: Baseline 0.2 giờ, SABV/LMTR 0.18 giờ
+- N=500: Baseline 15.8 giờ, SABV/LMTR 9.5 giờ
+
+THỰC TẾ:
+- V4 (LMTR Only) N=1: 23:39 = 0.39 giờ (KHÔNG phải 0.2 giờ)
+- V4 N=500: 16:17:16 = 16.29 giờ (tương đương 15.8 giờ)
+- V5 (SABV+LMTR) N=1: 47:34 = 0.79 giờ (CHẬM HƠN baseline, KHÔNG phải 0.18 giờ)
+- V5 N=500: 15:48:09 = 15.80 giờ (NHANH HƠN V4 ~3%, KHÔNG phải 9.5 giờ)
+
+❌ VẤN ĐỀ 2: Paper thiếu dữ liệu cho 3 ngữ cảnh
+
+Paper chỉ có 2 ngữ cảnh (Baseline và SABV/LMTR), nhưng thiếu:
+- Ngữ cảnh 1: Chỉ LMTR (V4)
+- Ngữ cảnh 2: SABV+LMTR (V5)  
+- Ngữ cảnh 3: AggSandbox (multi-L2)
+
+❌ VẤN ĐỀ 3: Paper có số liệu không thực tế về "Early exit"
+
+Paper nói: "Khoảng 85% các batch chứa lỗi được dừng ngay"
+- Đây là ước tính, không có dữ liệu thực tế
+- Thực tế: Early exit chỉ xảy ra khi fraud detected (rất hiếm trong test bình thường)
+
+❌ VẤN ĐỀ 4: Paper có số liệu Throughput không khớp
+
+Paper nói:
+- N=500: Baseline 7.0 batch/giờ, SABV/LMTR 12.0 batch/giờ
+- Điều này không khớp với dữ liệu thực tế
+
+THỰC TẾ:
+- N=500: V4 ~16.29 giờ → 0.061 batch/giờ
+- N=500: V5 ~15.80 giờ → 0.063 batch/giờ
+- Throughput tăng nhẹ (~3%), KHÔNG phải 1.7 lần
+
+================================================================================
+DỮ LIỆU THỰC TẾ ĐÚNG (Từ V4 và V5):
+================================================================================
+
+NGỮ CẢNH 1: CHỈ LMTR (V4 Architecture)
+- Workflow: Blocks → LMTR4 Rebalancing → SP1 Proving (3 bước)
+- SP1 Config: (4, 8) cho N ≤ 200, (3, 6) cho N > 200
+- Validator nodes: 3
+
+| N | Elapsed Time | Max RAM (GB) | CPU (%) | SP1 Config |
+|---|--------------|--------------|---------|------------|
+| 1 | 23:39 (0.39h) | 15.23 | 839 | (4, 8) |
+| 10 | 38:48 (0.65h) | 16.94 | 901 | (4, 8) |
+| 100 | 2:41:40 (2.69h) | 20.22 | 1128 | (4, 8) |
+| 200 | 6:47:44 (6.79h) | 21.33 | 1215 | (4, 8) |
+| 500 | 16:17:16 (16.29h) | 22.39 | 1254 | (3, 6) |
+
+NGỮ CẢNH 2: SABV+LMTR (V5 Architecture)
+- Workflow: Blocks → SABV5 → LMTR4 Rebalancing → SP1 Proving (4 bước)
+- SP1 Config: (1, 1) cho tất cả N
+- RAYON_NUM_THREADS: 8 (baseline, optimal) hoặc 16
+- Validator nodes: 5
+
+| N | Elapsed Time | Max RAM (GB) | CPU (%) | SP1 Config | RAYON |
+|---|--------------|--------------|---------|------------|-------|
+| 1 | 47:34 (0.79h) | 17.12 | 895 | (1, 1) | 16 |
+| 10 | 1:02:01 (1.03h) | 23.95 | 1012 | (1, 1) | 16 |
+| 100 | 3:40:01 (3.67h) | 20.40 | 1193 | (1, 1) | 8* |
+| 200 | ~6:37-6:40 (6.6h) | ~21.3 | ~1230 | (1, 1) | 8* |
+| 500 | 15:48:09 (15.80h) | 22.47 | 1265 | (1, 1) | 16 |
+
+*Baseline optimal (8 threads) nhanh hơn 16 threads ~2-3%
+
+NGỮ CẢNH 3: AggSandbox (Multi-L2)
+- Hệ thống AggSandbox với multi-L2 mode (L1 + L2-1 + L2-2)
+- Tích hợp SABV/LMTR với môi trường test đầy đủ
+- Mục đích: Đánh giá trong môi trường thực tế với nhiều chuỗi
+- Chưa có dữ liệu chi tiết (cần bổ sung từ experiments)
+
+================================================================================
+PHẦN CỨNG THỰC TẾ:
+================================================================================
+
+- Bộ xử lý: Multi-core (12+ cores, hỗ trợ tối đa 16 threads)
+- RAM: 32 GB (KHÔNG phải 64 GB như paper nói)
+- Hệ điều hành: Linux
+- KHÔNG có kết nối mạng 10 Gbps (không cần thiết cho single-node test)
+
+================================================================================
+SO SÁNH V5 vs V4 (DỮ LIỆU THỰC TẾ):
+================================================================================
+
+| N | V4 (LMTR Only) | V5 (SABV+LMTR) | So sánh |
+|---|----------------|----------------|---------|
+| 1 | 0.39h (23:39) | 0.79h (47:34) | V4 nhanh hơn ~103% (V5 có overhead SABV) |
+| 10 | 0.65h (38:48) | 1.03h (1:02:01) | V4 nhanh hơn ~58% |
+| 100 | 2.69h (2:41:40) | 3.67h (3:40:01) | V4 nhanh hơn ~36% |
+| 200 | 6.79h (6:47:44) | ~6.6h (6:37-6:40) | V5 nhanh hơn ~2-3% |
+| 500 | 16.29h (16:17:16) | 15.80h (15:48:09) | V5 nhanh hơn ~3.0% |
+
+KẾT LUẬN:
+- V5 CHẬM HƠN V4 cho N nhỏ (N ≤ 100) do overhead SABV
+- V5 NHANH HƠN V4 cho N lớn (N ≥ 200) nhờ cấu hình SP1 tối ưu
+- Trade-off: Bảo mật (SABV) vs Performance (N nhỏ)
+
+================================================================================
+ĐỀ XUẤT SỬA ĐỔI CHO PAPER:
+================================================================================
+
+1. Sửa số liệu phần cứng: RAM 32 GB (không phải 64 GB)
+
+2. Sửa bảng so sánh với dữ liệu thực tế từ 3 ngữ cảnh:
+   - Ngữ cảnh 1: Chỉ LMTR (V4)
+   - Ngữ cảnh 2: SABV+LMTR (V5)
+   - Ngữ cảnh 3: AggSandbox (cần bổ sung dữ liệu)
+
+3. Sửa nhận xét về performance:
+   - V5 CHẬM HƠN V4 cho N nhỏ (N ≤ 100) do overhead SABV
+   - V5 NHANH HƠN V4 cho N lớn (N ≥ 200) nhờ cấu hình tối ưu
+   - Early exit chỉ áp dụng khi fraud detected (hiếm trong test bình thường)
+
+4. Bổ sung phân tích chi tiết theo 3 ngữ cảnh:
+   - So sánh V4 vs V5 cho từng N
+   - Phân tích overhead của SABV
+   - Phân tích lợi ích của LMTR
+   - Dữ liệu AggSandbox (cần bổ sung)
+

@@ -41,6 +41,7 @@ pub struct Sabv3Algorithm {
     validators: Vec<ValidatorNode>,
 }
 
+#[allow(dead_code)] // SABV3 is kept for backward compatibility but not actively used in V5
 impl Sabv3Algorithm {
     pub fn new(config: Sabv3Config) -> Self {
         // Initialize validator nodes with real cryptographic secret shares
@@ -438,6 +439,7 @@ impl Sabv3Algorithm {
     }
 
     /// Helper: Compute hash of shard blocks with REAL block data extraction
+    #[allow(dead_code)] // Used in ppgen_sabv_lmtr3.rs but not in V5
     fn compute_shard_hash(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>]) -> Result<Digest, ProofError> {
         let mut hasher = Keccak256::new();
         
@@ -456,6 +458,7 @@ impl Sabv3Algorithm {
     }
 
     /// Helper: Build Merkle tree from blocks
+    #[allow(dead_code)] // Used in ppgen_sabv_lmtr3.rs but not in V5
     fn build_merkle_tree(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>], b: usize) -> Result<Digest, ProofError> {
         if blocks.is_empty() {
             return Err(ProofError::InvalidNullifierPath);
@@ -523,6 +526,7 @@ impl Sabv3Algorithm {
     }
 
     /// Helper: Calculate tree height
+    #[allow(dead_code)] // Used in ppgen_sabv_lmtr3.rs but not in V5
     fn calculate_tree_height(&self, num_blocks: usize, b: usize) -> usize {
         if num_blocks == 0 {
             return 0;

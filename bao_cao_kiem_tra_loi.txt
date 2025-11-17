@@ -1,0 +1,81 @@
+====================================================================================================
+BÁO CÁO KIỂM TRA LỖI - V5 BENCHMARK
+====================================================================================================
+Ngày kiểm tra: 2025-11-17 11:16:38 UTC
+
+✅ TRẠNG THÁI PROCESS HIỆN TẠI:
+  - N=700, Run 3: Đang chạy bình thường
+  - RAM: ~17 GB
+  - CPU: ~27%
+  - Progress: ~57/700 shards (~8%)
+
+✅ TÀI NGUYÊN HỆ THỐNG:
+  - Disk: 89GB/155GB used (61%) - OK
+  - RAM: 18GB used / 62GB total, 44GB available - OK
+
+====================================================================================================
+❌ LỖI PHÁT HIỆN: SIGNAL 9 (OOM KILLS)
+====================================================================================================
+Tổng số: 20 runs bị kill bởi OOM killer
+
+N=100: 10 run(s) bị OOM kill
+  - RAM trung bình: 61.55 GB
+  - User time trung bình: 5,922.21 s
+  - Các runs: Run 1, Run 1, Run 2, Run 2, Run 3
+    ... và 5 run(s) khác
+
+N=500: 10 run(s) bị OOM kill
+  - RAM trung bình: 61.72 GB
+  - User time trung bình: 16,223.87 s
+  - Các runs: Run 1, Run 1, Run 2, Run 2, Run 3
+    ... và 5 run(s) khác
+
+⚠️  PHÂN TÍCH:
+  - N=100: TẤT CẢ 10 runs đều bị OOM kill
+    → RAM usage: ~61-62 GB (gần bằng total RAM của system)
+    → User time thấp: ~9-11k s (incomplete, bị kill sớm)
+    → NGUYÊN NHÂN: N=100 cần RAM quá lớn (~62GB) khiến process bị OOM killer kill
+
+  - N=500: Một số runs bị OOM kill
+    → Các runs bị kill có RAM usage ~61-65 GB
+    → Các runs thành công có RAM usage ~22-24 GB
+    → NGUYÊN NHÂN: Có thể do cấu hình khác nhau (threads, batch size)
+
+====================================================================================================
+⚠️  RUNS INCOMPLETE (Không đạt full proving)
+====================================================================================================
+N=100: TẤT CẢ 10/10 runs đều INCOMPLETE
+  - Không có run nào đạt user_time > 50,000s (threshold)
+  - Tất cả đều bị OOM kill trước khi hoàn thành
+
+N=500: 10/13 runs INCOMPLETE
+  - Chỉ 3 runs đạt full proving
+  - 10 runs còn lại có user_time thấp hoặc bị OOM kill
+
+====================================================================================================
+⚠️  COMPILER WARNINGS (Không phải lỗi nghiêm trọng)
+====================================================================================================
+  - unused import: `rayon::ThreadPoolBuilder`
+  - value assigned to `current_state` is never read
+  - unused variable: `vk`
+  - unused variable: `new_roots`
+  - variable does not need to be mutable
+
+💡 Khuyến nghị: Chạy `cargo fix` để tự động sửa warnings
+
+====================================================================================================
+💡 KHUYẾN NGHỊ
+====================================================================================================
+1. N=100:
+   - Giảm RAYON_NUM_THREADS hoặc SHARD_BATCH_SIZE
+   - Hoặc tăng RAM của hệ thống
+   - Hoặc bỏ qua N=100 nếu không cần thiết (đã có N=200)
+
+2. N=500:
+   - Đảm bảo chạy với cấu hình đúng (RAYON_NUM_THREADS=8 cho N>=100)
+   - Monitor RAM usage để tránh OOM
+
+3. Cleanup warnings:
+   - Chạy: cargo fix --lib -p pessimistic-proof-core
+   - Chạy: cargo fix --bin ppgen_sabv_lmtr5
+

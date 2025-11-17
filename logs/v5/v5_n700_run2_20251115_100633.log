@@ -1,0 +1,872 @@
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr2.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv3.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr3.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv4.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/lmtr4.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused imports: `BridgeExit`, `ImportedBridgeExit`, `NetworkId`, and `TokenInfo`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:245:30
+    |
+245 |         use unified_bridge::{BridgeExit, ImportedBridgeExit, NetworkId, TokenInfo};
+    |                              ^^^^^^^^^^  ^^^^^^^^^^^^^^^^^^  ^^^^^^^^^  ^^^^^^^^^
+
+warning: unused import: `agglayer_primitives::U256`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:247:13
+    |
+247 |         use agglayer_primitives::U256;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::nullifier_tree::NullifierPath`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:248:13
+    |
+248 |         use crate::nullifier_tree::NullifierPath;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::local_balance_tree::LocalBalancePath`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:249:13
+    |
+249 |         use crate::local_balance_tree::LocalBalancePath;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::aggchain_proof::AggchainData`
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:250:13
+    |
+250 |         use crate::aggchain_proof::AggchainData;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `keccak::Keccak256Hasher`
+ --> crates/pessimistic-proof-core/src/sabv5.rs:2:35
+  |
+2 | use agglayer_primitives::{Digest, keccak::Keccak256Hasher};
+  |                                   ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused variable: `branching_factor`
+  --> crates/pessimistic-proof-core/src/lmtr.rs:31:9
+   |
+31 |         branching_factor: usize,
+   |         ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_branching_factor`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `block`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:72:13
+   |
+72 |         for block in blocks {
+   |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `consensus_result`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:79:13
+   |
+79 |         let consensus_result = self.run_consensus_mechanism(blocks, validator_nodes)?;
+   |             ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_consensus_result`
+
+warning: unused variable: `global_root`
+  --> crates/pessimistic-proof-core/src/sabv2.rs:63:9
+   |
+63 |         global_root: &agglayer_primitives::Digest,
+   |         ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_global_root`
+
+warning: unused variable: `computed_hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:136:13
+    |
+136 |         let computed_hash = Keccak256::digest(&block_data);
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_computed_hash`
+
+warning: unused variable: `declared_hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:139:13
+    |
+139 |         let declared_hash = self.get_block_declared_hash(block)?;
+    |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_declared_hash`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:229:32
+    |
+229 |     fn get_block_height(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:241:39
+    |
+241 |     fn get_block_declared_hash(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) ...
+    |                                       ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:247:32
+    |
+247 |     fn get_block_signer(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |                                ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:257:35
+    |
+257 |     fn get_block_signature(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |                                   ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `hash`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:274:13
+    |
+274 |         let hash = Keccak256::digest(&block_data);
+    |             ^^^^ help: if this is intentional, prefix it with an underscore: `_hash`
+
+warning: unused variable: `block`
+   --> crates/pessimistic-proof-core/src/sabv2.rs:295:35
+    |
+295 |     fn estimate_block_size(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |                                   ^^^^^ help: if this is intentional, prefix it with an underscore: `_block`
+
+warning: unused variable: `i`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:144:14
+    |
+144 |         for (i, block) in blocks.iter().enumerate() {
+    |              ^ help: if this is intentional, prefix it with an underscore: `_i`
+
+warning: unused variable: `leaf_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:146:17
+    |
+146 |             let leaf_hash = Keccak256::digest(&block_data);
+    |                 ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_leaf_hash`
+
+warning: unused variable: `current_efficiency`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:179:13
+    |
+179 |         let current_efficiency = self.calculate_tree_efficiency(num_blocks, branching_factor)?;
+    |             ^^^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_current_efficiency`
+
+warning: unused variable: `new_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:229:21
+    |
+229 |                 let new_hash = Keccak256::digest(&optimized_data);
+    |                     ^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_new_hash`
+
+warning: unused variable: `optimal_config`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:217:9
+    |
+217 |         optimal_config: &OptimalConfig,
+    |         ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_optimal_config`
+
+warning: unused variable: `parent_hash`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:312:21
+    |
+312 |                 let parent_hash = Keccak256::digest(&parent_data);
+    |                     ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_parent_hash`
+
+warning: unused variable: `tree`
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:399:136
+    |
+399 | ...ves::keccak::Keccak256Hasher>, tree: &MerkleTree) -> Result<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::K...
+    |                                   ^^^^ help: if this is intentional, prefix it with an underscore: `_tree`
+
+warning: unused variable: `j_star`
+   --> crates/pessimistic-proof-core/src/sabv3.rs:306:9
+    |
+306 |         j_star: usize,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_j_star`
+
+warning: unused variable: `j_star`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:496:9
+    |
+496 |         j_star: usize,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_j_star`
+
+warning: unused variable: `expected_root`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:603:72
+    |
+603 | ...mputed_root: &Digest, expected_root: &agglayer_primitives::Digest, signature: &agglayer_primitives::Signature, signer: &agglayer_primi...
+    |                          ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_root`
+
+warning: unused variable: `expected_bytes`
+   --> crates/pessimistic-proof-core/src/sabv4.rs:744:56
+    |
+744 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+    |                                                        ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_bytes`
+
+warning: unused variable: `global_root`
+   --> crates/pessimistic-proof-core/src/sabv5.rs:138:9
+    |
+138 |         global_root: &agglayer_primitives::Digest,
+    |         ^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_global_root`
+
+warning: value assigned to `local_trees` is never read
+   --> crates/pessimistic-proof-core/src/sabv5.rs:702:17
+    |
+702 |         let mut local_trees = Vec::new();
+    |                 ^^^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` on by default
+
+warning: unused variable: `j_star`
+   --> crates/pessimistic-proof-core/src/sabv5.rs:699:9
+    |
+699 |         j_star: usize,
+    |         ^^^^^^ help: if this is intentional, prefix it with an underscore: `_j_star`
+
+warning: unused variable: `expected_root`
+   --> crates/pessimistic-proof-core/src/sabv5.rs:822:72
+    |
+822 | ...mputed_root: &Digest, expected_root: &agglayer_primitives::Digest, signature: &agglayer_primitives::Signature, signer: &agglayer_primi...
+    |                          ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_root`
+
+warning: unused variable: `expected_bytes`
+   --> crates/pessimistic-proof-core/src/sabv5.rs:963:56
+    |
+963 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+    |                                                        ^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_expected_bytes`
+
+warning: field `config` is never read
+  --> crates/pessimistic-proof-core/src/sabv.rs:13:5
+   |
+12 | pub struct SabvAlgorithm {
+   |            ------------- field in this struct
+13 |     config: SabvConfig,
+   |     ^^^^^^
+   |
+   = note: `SabvAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: field `config` is never read
+  --> crates/pessimistic-proof-core/src/lmtr.rs:12:5
+   |
+11 | pub struct LmtrAlgorithm {
+   |            ------------- field in this struct
+12 |     config: LmtrConfig,
+   |     ^^^^^^
+   |
+   = note: `LmtrAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `config` and `consensus_messages` are never read
+  --> crates/pessimistic-proof-core/src/sabv2.rs:34:5
+   |
+33 | pub struct Sabv2Algorithm {
+   |            -------------- fields in this struct
+34 |     config: Sabv2Config,
+   |     ^^^^^^
+35 |     validators: Vec<ValidatorNode>,
+36 |     consensus_messages: HashMap<Digest, Vec<ConsensusMessage>>,
+   |     ^^^^^^^^^^^^^^^^^^
+   |
+   = note: `Sabv2Algorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: multiple methods are never used
+   --> crates/pessimistic-proof-core/src/sabv2.rs:89:8
+    |
+ 39 | impl Sabv2Algorithm {
+    | ------------------- methods in this implementation
+...
+ 89 |     fn validate_block_cryptography(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+112 |     fn verify_merkle_tree_structure(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+130 |     fn verify_hash_integrity(
+    |        ^^^^^^^^^^^^^^^^^^^^^
+...
+149 |     fn verify_signature_validity(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+204 |     fn verify_consensus_threshold(
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+222 |     fn calculate_optimal_height(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>)...
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^
+...
+229 |     fn get_block_height(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |        ^^^^^^^^^^^^^^^^
+...
+241 |     fn get_block_declared_hash(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) ...
+    |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+247 |     fn get_block_signer(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Resu...
+    |        ^^^^^^^^^^^^^^^^
+...
+252 |     fn get_block_message(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> Res...
+    |        ^^^^^^^^^^^^^^^^^
+...
+257 |     fn get_block_signature(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |        ^^^^^^^^^^^^^^^^^^^
+...
+262 |     fn compute_expected_signature(&self, signer: &str, message: &[u8]) -> Result<String, ProofError> {
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+295 |     fn estimate_block_size(&self, block: &crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>) -> R...
+    |        ^^^^^^^^^^^^^^^^^^^
+
+warning: field `tree_cache` is never read
+  --> crates/pessimistic-proof-core/src/lmtr2.rs:53:5
+   |
+51 | pub struct Lmtr2Algorithm {
+   |            -------------- field in this struct
+52 |     config: Lmtr2Config,
+53 |     tree_cache: HashMap<Digest, MerkleTree>,
+   |     ^^^^^^^^^^
+   |
+   = note: `Lmtr2Algorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: fields `branching_factor` and `rebalancing_cost` are never read
+   --> crates/pessimistic-proof-core/src/lmtr2.rs:415:5
+    |
+413 | struct OptimalConfig {
+    |        ------------- fields in this struct
+414 |     optimal_height: usize,
+415 |     branching_factor: usize,
+    |     ^^^^^^^^^^^^^^^^
+416 |     expected_efficiency: f64,
+417 |     rebalancing_cost: u64,
+    |     ^^^^^^^^^^^^^^^^
+    |
+    = note: `OptimalConfig` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `validators` is never read
+  --> crates/pessimistic-proof-core/src/sabv3.rs:41:5
+   |
+39 | pub struct Sabv3Algorithm {
+   |            -------------- field in this struct
+40 |     config: Sabv3Config,
+41 |     validators: Vec<ValidatorNode>,
+   |     ^^^^^^^^^^
+   |
+   = note: `Sabv3Algorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: struct `BlockchainMerkleProof` is never constructed
+  --> crates/pessimistic-proof-core/src/sabv4.rs:38:8
+   |
+38 | struct BlockchainMerkleProof {
+   |        ^^^^^^^^^^^^^^^^^^^^^
+
+warning: fields `shard_index` and `round` are never read
+  --> crates/pessimistic-proof-core/src/sabv4.rs:50:9
+   |
+47 | struct MPCShareMessage {
+   |        --------------- fields in this struct
+...
+50 |     pub shard_index: usize,
+   |         ^^^^^^^^^^^
+51 |     pub share: (f64, f64), // (x, y) = share point
+52 |     pub round: u64,
+   |         ^^^^^
+   |
+   = note: `MPCShareMessage` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `consensus_reached` is never read
+  --> crates/pessimistic-proof-core/src/sabv4.rs:60:9
+   |
+57 | struct MPCNetworkState {
+   |        --------------- field in this struct
+...
+60 |     pub consensus_reached: bool,
+   |         ^^^^^^^^^^^^^^^^^
+   |
+   = note: `MPCNetworkState` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: field `validators` is never read
+  --> crates/pessimistic-proof-core/src/sabv4.rs:67:5
+   |
+65 | pub struct Sabv4Algorithm {
+   |            -------------- field in this struct
+66 |     config: Sabv4Config,
+67 |     validators: Vec<ValidatorNode>,
+   |     ^^^^^^^^^^
+   |
+   = note: `Sabv4Algorithm` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: multiple methods are never used
+    --> crates/pessimistic-proof-core/src/sabv4.rs:493:8
+     |
+  71 | impl Sabv4Algorithm {
+     | ------------------- methods in this implementation
+...
+ 493 |     fn construct_local_cc_mbmt(
+     |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 564 |     fn verify_integrity_with_blocks(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest, blocks: &[crate::multi_ba...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 603 |     fn verify_blockchain_signature_real(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest, signature: &agglayer_...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 618 |     fn extract_blockchain_public_key(&self, computed_bytes: &[u8]) -> Result<Vec<u8>, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 629 |     fn validate_blockchain_signature(&self, signature: &[u8], public_key: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 648 |     fn verify_merkle_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^
+...
+ 682 |     fn extract_blockchain_merkle_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<BlockchainMe...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 717 |     fn validate_blockchain_proof(&self, proof: &BlockchainMerkleProof) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 744 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^
+...
+ 772 |     fn verify_timestamp_freshness(&self) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 784 |     fn verify_nonce_uniqueness(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 814 |     fn verify_zero_knowledge_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 853 |     fn calculate_signature_strength(&self, signature_bytes: &[u8]) -> f64 {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 950 |     fn calculate_entropy(&self, data: &[u8]) -> f64 {
+     |        ^^^^^^^^^^^^^^^^^
+...
+ 970 |     fn compute_shard_hash(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>]) ->...
+     |        ^^^^^^^^^^^^^^^^^^
+...
+1037 |     fn build_merkle_tree(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>], b: ...
+     |        ^^^^^^^^^^^^^^^^^
+...
+1104 |     fn calculate_tree_height(&self, num_blocks: usize, b: usize) -> usize {
+     |        ^^^^^^^^^^^^^^^^^^^^^
+...
+1113 |     fn compute_root_from_blocks(
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: method `reconstruct_block_from_bytes` is never used
+   --> crates/pessimistic-proof-core/src/lmtr4.rs:241:8
+    |
+ 27 | impl Lmtr4Algorithm {
+    | ------------------- method in this implementation
+...
+241 |     fn reconstruct_block_from_bytes(&self, bytes: &[u8]) -> Result<crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::kecca...
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: struct `BlockchainMerkleProof` is never constructed
+  --> crates/pessimistic-proof-core/src/sabv5.rs:48:8
+   |
+48 | struct BlockchainMerkleProof {
+   |        ^^^^^^^^^^^^^^^^^^^^^
+
+warning: fields `shard_index` and `round` are never read
+  --> crates/pessimistic-proof-core/src/sabv5.rs:60:9
+   |
+57 | struct MPCShareMessage {
+   |        --------------- fields in this struct
+...
+60 |     pub shard_index: usize,
+   |         ^^^^^^^^^^^
+61 |     pub share: (f64, f64), // (x, y) = share point
+62 |     pub round: u64,
+   |         ^^^^^
+   |
+   = note: `MPCShareMessage` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: field `consensus_reached` is never read
+  --> crates/pessimistic-proof-core/src/sabv5.rs:70:9
+   |
+67 | struct MPCNetworkState {
+   |        --------------- field in this struct
+...
+70 |     pub consensus_reached: bool,
+   |         ^^^^^^^^^^^^^^^^^
+   |
+   = note: `MPCNetworkState` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: field `validators` is never read
+  --> crates/pessimistic-proof-core/src/sabv5.rs:77:5
+   |
+75 | pub struct Sabv5Algorithm {
+   |            -------------- field in this struct
+76 |     config: Sabv5Config,
+77 |     validators: Vec<ValidatorNode>,
+   |     ^^^^^^^^^^
+   |
+   = note: `Sabv5Algorithm` has a derived impl for the trait `Debug`, but this is intentionally ignored during dead code analysis
+
+warning: multiple methods are never used
+    --> crates/pessimistic-proof-core/src/sabv5.rs:696:8
+     |
+  81 | impl Sabv5Algorithm {
+     | ------------------- methods in this implementation
+...
+ 696 |     fn construct_local_cc_mbmt(
+     |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 774 |     fn verify_integrity_with_blocks(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest, blocks: &[crate::multi_ba...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 822 |     fn verify_blockchain_signature_real(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest, signature: &agglayer_...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 837 |     fn extract_blockchain_public_key(&self, computed_bytes: &[u8]) -> Result<Vec<u8>, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 848 |     fn validate_blockchain_signature(&self, signature: &[u8], public_key: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 867 |     fn verify_merkle_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^
+...
+ 901 |     fn extract_blockchain_merkle_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<BlockchainMe...
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 936 |     fn validate_blockchain_proof(&self, proof: &BlockchainMerkleProof) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+ 963 |     fn verify_hash_chain(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^
+...
+ 991 |     fn verify_timestamp_freshness(&self) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+1003 |     fn verify_nonce_uniqueness(&self, computed_bytes: &[u8], expected_bytes: &[u8]) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^
+...
+1033 |     fn verify_zero_knowledge_proof(&self, computed_root: &Digest, expected_root: &agglayer_primitives::Digest) -> Result<bool, ProofError> {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+1072 |     fn calculate_signature_strength(&self, signature_bytes: &[u8]) -> f64 {
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+1169 |     fn calculate_entropy(&self, data: &[u8]) -> f64 {
+     |        ^^^^^^^^^^^^^^^^^
+...
+1261 |     fn build_merkle_tree(&self, blocks: &[crate::multi_batch_header::MultiBatchHeader<agglayer_primitives::keccak::Keccak256Hasher>], b: ...
+     |        ^^^^^^^^^^^^^^^^^
+...
+1328 |     fn calculate_tree_height(&self, num_blocks: usize, b: usize) -> usize {
+     |        ^^^^^^^^^^^^^^^^^^^^^
+...
+1349 |     fn compute_root_from_blocks(
+     |        ^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: `pessimistic-proof-core` (lib) generated 58 warnings (run `cargo fix --lib -p pessimistic-proof-core` to apply 12 suggestions)
+warning: unused import: `rayon::ThreadPoolBuilder`
+ --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr5.rs:6:5
+  |
+6 | use rayon::ThreadPoolBuilder;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: value assigned to `current_state` is never read
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr5.rs:133:9
+    |
+133 |         current_state = block_state.state_b.clone();
+    |         ^^^^^^^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` on by default
+
+warning: unused variable: `vk`
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr5.rs:294:24
+    |
+294 |             Ok((proof, vk, new_roots)) => {
+    |                        ^^ help: if this is intentional, prefix it with an underscore: `_vk`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `new_roots`
+   --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr5.rs:294:28
+    |
+294 |             Ok((proof, vk, new_roots)) => {
+    |                            ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_new_roots`
+
+warning: variable does not need to be mutable
+  --> crates/pessimistic-proof-test-suite/src/bin/ppgen_sabv_lmtr5.rs:72:9
+   |
+72 |     let mut state = data::sample_state_00();
+   |         ----^^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: `pessimistic-proof-test-suite` (bin "ppgen_sabv_lmtr5") generated 5 warnings (run `cargo fix --bin "ppgen_sabv_lmtr5"` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 0.97s
+     Running `target/release/ppgen_sabv_lmtr5 --n-exits 700 --validator-nodes 5 --proof-dir /home/ubuntu/thanhhuyen/proofs/v5/n700_run2`
+🔍 SABV5: Starting Algorithm 1 - Verify Aggregated Blocks Integrity
+   Input: N=700 blocks, branching_factor=3, validators=5
+   📐 Optimal height calculation: log_3(700) + 1 = 7
+🎯 V5: Calculated optimal htarget = 7 for N=700, b=3
+📊 Computed expected root from 700 ORIGINAL blocks (before rebalancing): 13770f84c48b888722fef34678436e620a6afc6306df362712c264dc2b3e18dc (height=7)
+📊 SABV5: Calculated j* = 6 with variance = 0.0000
+✅ Step 1: Optimal sharding size j* = 6 (shard_size = 3^6 = 729)
+📦 SABV5: Created 1 shards (0 full + 1 remainder)
+✅ Step 2: Partitioned 700 blocks into 1 shards (shard_size = 729)
+📡 SABV5: REAL MPC Network - 5 validators broadcast shares, 5 received sufficient shares
+🔐 SABV5: REAL Shamir secret sharing - Secret: 0.291109, Reconstructed: 0.291109, Match: true
+   Polynomial degree: 2, Shares: 5, Threshold: 3/5
+   Validator 4 assigned with share value: 4.739186
+✅ Step 3: Secret sharing applied (threshold k=3/5)
+📊 Step 4: Rebalancing shards with LMTR4 (Algorithm 2)...
+🔧 LMTR4: Starting Algorithm 2 rebalancing for 700 blocks
+📊 LMTR4: Initial state - Ni = 700, b = 3, htarget = 7
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 701
+🔄 LMTR4: Fixed branch imbalance by appending last block - Ni = 702
+✅ LMTR4: Rebalancing complete - Final Ni = 702, height = 7
+   ✅ Shard 0 (validator 4) - 700 → 702 blocks, height=7
+🌳 Step 5a: Building REAL Local CC-MBMT from rebalanced blocks...
+   ✅ Validator 4 built REAL local CC-MBMT (shard 0) - 702 blocks → tree height=7
+🔗 SABV5: Merged 1 local CC-MBMTs into global CC-MBMT using REAL tree structure
+✅ Step 5b: Merged 1 local CC-MBMTs into global root r
+✅ Step 6: Computed alternative root r' (from rebalanced blocks) using SAME Merkle tree method as Step 5a
+   Using 702 rebalanced blocks, tree height=7
+✅ Step 6b: Using r' (from original blocks) = expected_root_from_original_blocks for CHECK 2
+🔐 Step 7: Verifying integrity and detecting fraud...
+   r  (from merged local trees, rebalanced): 1c26d3d8c3cec13b5c53bd1044fd61264c3d349fc2ee19dfc98ddea310b9288b
+   r' (from all rebalanced blocks):           1c26d3d8c3cec13b5c53bd1044fd61264c3d349fc2ee19dfc98ddea310b9288b
+   r' (from original blocks):                 13770f84c48b888722fef34678436e620a6afc6306df362712c264dc2b3e18dc
+   Note: r' (from original) will be compared with r (from rebalanced) in CHECK 2
+   ✅ Check 1: r == r' (from rebalanced blocks)? true (internal consistency)
+   📊 Block counts: original=700, rebalanced=702
+   🔍 Check 2 (rebalancing changed block count):
+      • Unique blocks in rebalanced: 700
+      • Original blocks: 700
+      • All original blocks present: true
+      • No extra blocks: true
+      • Content preserved: true
+   ✅ Check 2: Content preserved (only structure changed) - PASSED
+✅ SABV5: Verification PASSED - All checks passed
+   ✅ Check 1: r == r' (from rebalanced blocks) - internal consistency verified
+   ✅ Check 2: r' (from original blocks) == r (from rebalanced blocks) - rebalancing integrity verified
+   ✅ Algorithm integrity: SABV5 + LMTR4 working as designed
+   ✅ No fraud detected - blocks are consistent and rebalancing preserved content
+2025-11-15T10:06:43.725956Z  INFO prove_core: clk = 0 pc = 0x201504
+2025-11-15T10:06:43.905226Z  INFO prove_core: clk = 0 pc = 0x201504
+2025-11-15T10:06:44.351557Z  INFO prove_core: clk = 10000000 pc = 0x20439c
+2025-11-15T10:06:44.942082Z  INFO prove_core: clk = 20000000 pc = 0x206288
+2025-11-15T10:06:45.595206Z  INFO prove_core: clk = 30000000 pc = 0x204398
+2025-11-15T10:06:46.056079Z  INFO prove_core:generate main traces: close time.busy=771ms time.idle=6.80µs index=0
+2025-11-15T10:06:46.226790Z  INFO prove_core: clk = 40000000 pc = 0x204394
+2025-11-15T10:06:46.816107Z  INFO prove_core: clk = 50000000 pc = 0x2043c0
+2025-11-15T10:06:47.474864Z  INFO prove_core: clk = 60000000 pc = 0x20123c
+2025-11-15T10:06:48.012020Z  INFO prove_core:generate main traces: close time.busy=642ms time.idle=11.5µs index=1
+2025-11-15T10:06:48.136269Z  INFO prove_core: clk = 70000000 pc = 0x206260
+2025-11-15T10:06:48.727686Z  INFO prove_core: clk = 80000000 pc = 0x205f74
+2025-11-15T10:06:49.342822Z  INFO prove_core: clk = 90000000 pc = 0x2043d0
+2025-11-15T10:06:50.014860Z  INFO prove_core:generate main traces: close time.busy=667ms time.idle=7.26µs index=2
+2025-11-15T10:06:50.126166Z  INFO prove_core: clk = 100000000 pc = 0x231240
+2025-11-15T10:06:50.752425Z  INFO prove_core: clk = 110000000 pc = 0x201248
+2025-11-15T10:06:51.339098Z  INFO prove_core: clk = 120000000 pc = 0x231240
+2025-11-15T10:06:51.930382Z  INFO prove_core: clk = 130000000 pc = 0x21b6d0
+2025-11-15T10:06:52.559857Z  INFO prove_core: clk = 140000000 pc = 0x23124c
+2025-11-15T10:06:53.779797Z  INFO prove_core: clk = 150000000 pc = 0x231250
+2025-11-15T10:06:54.653011Z  INFO prove_core: clk = 160000000 pc = 0x20121c
+2025-11-15T10:06:55.242894Z  INFO prove_core: clk = 170000000 pc = 0x201244
+2025-11-15T10:06:55.828647Z  INFO prove_core: clk = 180000000 pc = 0x231254
+2025-11-15T10:06:56.417873Z  INFO prove_core: clk = 190000000 pc = 0x21bd80
+2025-11-15T10:06:57.041108Z  INFO prove_core: clk = 200000000 pc = 0x231240
+2025-11-15T10:06:57.906906Z  INFO prove_core: clk = 210000000 pc = 0x20123c
+2025-11-15T10:06:58.720566Z  INFO prove_core: clk = 220000000 pc = 0x201224
+2025-11-15T10:06:59.656242Z  INFO prove_core: clk = 230000000 pc = 0x2313e4
+2025-11-15T10:07:00.298895Z  INFO prove_core: clk = 240000000 pc = 0x231244
+2025-11-15T10:07:00.948890Z  INFO prove_core: clk = 250000000 pc = 0x2313bc
+2025-11-15T10:11:13.450045Z  INFO prove_core:generate main traces: close time.busy=632ms time.idle=6.86µs index=3
+2025-11-15T10:15:40.453788Z  INFO prove_core: clk = 10000000 pc = 0x20439c
+2025-11-15T10:15:41.676192Z  INFO prove_core:generate main traces: close time.busy=635ms time.idle=7.85µs index=4
+2025-11-15T10:20:07.278126Z  INFO prove_core:generate main traces: close time.busy=738ms time.idle=7.54µs index=5
+2025-11-15T10:24:31.213924Z  INFO prove_core:generate main traces: close time.busy=646ms time.idle=5.98µs index=6
+2025-11-15T10:28:53.055313Z  INFO prove_core:generate main traces: close time.busy=759ms time.idle=7.39µs index=7
+2025-11-15T10:33:17.685480Z  INFO prove_core:generate main traces: close time.busy=703ms time.idle=7.22µs index=8
+2025-11-15T10:37:38.890345Z  INFO prove_core: clk = 20000000 pc = 0x206288
+2025-11-15T10:37:40.197426Z  INFO prove_core:generate main traces: close time.busy=559ms time.idle=6.42µs index=9
+2025-11-15T10:42:05.169630Z  INFO prove_core:generate main traces: close time.busy=644ms time.idle=7.88µs index=10
+2025-11-15T10:46:29.092674Z  INFO prove_core:generate main traces: close time.busy=716ms time.idle=6.89µs index=11
+2025-11-15T10:50:51.708835Z  INFO prove_core:generate main traces: close time.busy=597ms time.idle=6.91µs index=12
+2025-11-15T10:55:15.950338Z  INFO prove_core:generate main traces: close time.busy=682ms time.idle=7.58µs index=13
+2025-11-15T10:59:37.282999Z  INFO prove_core: clk = 30000000 pc = 0x204398
+2025-11-15T10:59:39.111507Z  INFO prove_core:generate main traces: close time.busy=864ms time.idle=6.86µs index=14
+2025-11-15T11:04:02.704303Z  INFO prove_core:generate main traces: close time.busy=706ms time.idle=6.39µs index=15
+2025-11-15T11:08:23.483763Z  INFO prove_core:generate main traces: close time.busy=624ms time.idle=7.86µs index=16
+2025-11-15T11:12:47.152609Z  INFO prove_core:generate main traces: close time.busy=650ms time.idle=7.11µs index=17
+2025-11-15T11:17:08.920423Z  INFO prove_core:generate main traces: close time.busy=646ms time.idle=7.37µs index=18
+2025-11-15T11:21:31.781666Z  INFO prove_core: clk = 40000000 pc = 0x204394
+2025-11-15T11:21:33.630517Z  INFO prove_core:generate main traces: close time.busy=635ms time.idle=7.41µs index=19
+2025-11-15T11:25:57.275767Z  INFO prove_core:generate main traces: close time.busy=840ms time.idle=7.33µs index=20
+2025-11-15T11:30:18.496712Z  INFO prove_core:generate main traces: close time.busy=836ms time.idle=11.3µs index=21
+2025-11-15T11:34:40.893989Z  INFO prove_core:generate main traces: close time.busy=561ms time.idle=7.38µs index=22
+2025-11-15T11:39:02.425849Z  INFO prove_core: clk = 50000000 pc = 0x2043c0
+2025-11-15T11:39:03.468355Z  INFO prove_core:generate main traces: close time.busy=599ms time.idle=7.86µs index=23
+2025-11-15T11:43:25.623268Z  INFO prove_core:generate main traces: close time.busy=596ms time.idle=7.07µs index=24
+2025-11-15T11:47:49.556873Z  INFO prove_core:generate main traces: close time.busy=621ms time.idle=7.45µs index=25
+2025-11-15T11:52:13.620403Z  INFO prove_core:generate main traces: close time.busy=612ms time.idle=7.04µs index=26
+2025-11-15T11:56:37.318614Z  INFO prove_core:generate main traces: close time.busy=572ms time.idle=7.05µs index=27
+2025-11-15T12:00:59.652924Z  INFO prove_core: clk = 60000000 pc = 0x20123c
+2025-11-15T12:01:00.946347Z  INFO prove_core:generate main traces: close time.busy=652ms time.idle=7.19µs index=28
+2025-11-15T12:05:27.318214Z  INFO prove_core:generate main traces: close time.busy=594ms time.idle=7.22µs index=29
+2025-11-15T12:09:51.445197Z  INFO prove_core:generate main traces: close time.busy=600ms time.idle=6.64µs index=30
+2025-11-15T12:14:15.203858Z  INFO prove_core:generate main traces: close time.busy=730ms time.idle=6.64µs index=31
+2025-11-15T12:18:38.804936Z  INFO prove_core:generate main traces: close time.busy=645ms time.idle=11.7µs index=32
+2025-11-15T12:23:01.221208Z  INFO prove_core: clk = 70000000 pc = 0x206260
+2025-11-15T12:23:02.865549Z  INFO prove_core:generate main traces: close time.busy=716ms time.idle=6.86µs index=33
+2025-11-15T12:27:32.080175Z  INFO prove_core:generate main traces: close time.busy=821ms time.idle=6.96µs index=34
+2025-11-15T12:31:58.503909Z  INFO prove_core:generate main traces: close time.busy=607ms time.idle=6.85µs index=35
+2025-11-15T12:36:25.711514Z  INFO prove_core:generate main traces: close time.busy=760ms time.idle=7.24µs index=36
+2025-11-15T12:40:55.761993Z  INFO prove_core:generate main traces: close time.busy=605ms time.idle=6.46µs index=37
+2025-11-15T12:45:20.429939Z  INFO prove_core: clk = 80000000 pc = 0x205f74
+2025-11-15T12:45:22.118068Z  INFO prove_core:generate main traces: close time.busy=620ms time.idle=6.64µs index=38
+2025-11-15T12:49:46.717560Z  INFO prove_core:generate main traces: close time.busy=575ms time.idle=12.1µs index=39
+2025-11-15T12:54:13.869699Z  INFO prove_core:generate main traces: close time.busy=607ms time.idle=8.06µs index=40
+2025-11-15T12:58:38.605619Z  INFO prove_core:generate main traces: close time.busy=717ms time.idle=7.06µs index=41
+2025-11-15T13:03:03.448623Z  INFO prove_core: clk = 90000000 pc = 0x2043d0
+2025-11-15T13:03:04.476450Z  INFO prove_core:generate main traces: close time.busy=656ms time.idle=7.00µs index=42
+2025-11-15T13:07:29.107005Z  INFO prove_core:generate main traces: close time.busy=578ms time.idle=7.67µs index=43
+2025-11-15T13:11:57.612948Z  INFO prove_core:generate main traces: close time.busy=560ms time.idle=7.10µs index=44
+2025-11-15T13:16:23.212591Z  INFO prove_core:generate main traces: close time.busy=608ms time.idle=7.21µs index=45
+2025-11-15T13:20:46.251581Z  INFO prove_core:generate main traces: close time.busy=786ms time.idle=11.3µs index=46
+2025-11-15T13:25:07.887969Z  INFO prove_core: clk = 100000000 pc = 0x231240
+2025-11-15T13:25:12.185971Z  INFO prove_core:generate main traces: close time.busy=3.49s time.idle=6.88µs index=47
+2025-11-15T13:34:20.381027Z  INFO prove_core:generate main traces: close time.busy=5.49s time.idle=7.62µs index=48
+2025-11-15T13:44:14.415086Z  INFO prove_core:generate main traces: close time.busy=3.43s time.idle=6.53µs index=49
+2025-11-15T13:46:21.128566Z  INFO prove_core:generate main traces: close time.busy=3.50s time.idle=7.02µs index=50
+2025-11-15T13:51:52.105494Z  INFO prove_core:generate main traces: close time.busy=3.47s time.idle=6.29µs index=51
+2025-11-15T13:57:18.230703Z  INFO prove_core: clk = 110000000 pc = 0x201248
+2025-11-15T13:57:23.139422Z  INFO prove_core:generate main traces: close time.busy=3.87s time.idle=6.22µs index=52
+2025-11-15T14:02:56.689457Z  INFO prove_core:generate main traces: close time.busy=5.45s time.idle=5.94µs index=53
+2025-11-15T14:12:50.768686Z  INFO prove_core:generate main traces: close time.busy=3.58s time.idle=7.62µs index=54
+2025-11-15T14:14:59.221150Z  INFO prove_core:generate main traces: close time.busy=3.81s time.idle=7.21µs index=55
+2025-11-15T14:20:29.679167Z  INFO prove_core:generate main traces: close time.busy=3.71s time.idle=7.14µs index=56
+2025-11-15T14:25:52.153290Z  INFO prove_core: clk = 120000000 pc = 0x231240
+2025-11-15T14:25:59.602137Z  INFO prove_core:generate main traces: close time.busy=5.63s time.idle=11.4µs index=57
+2025-11-15T14:35:54.268941Z  INFO prove_core:generate main traces: close time.busy=3.73s time.idle=8.14µs index=58
+2025-11-15T14:38:02.631725Z  INFO prove_core:generate main traces: close time.busy=3.67s time.idle=6.79µs index=59
+2025-11-15T14:43:31.112208Z  INFO prove_core:generate main traces: close time.busy=3.60s time.idle=7.82µs index=60
+2025-11-15T14:48:57.456651Z  INFO prove_core: clk = 130000000 pc = 0x21b6d0
+2025-11-15T14:49:03.997965Z  INFO prove_core:generate main traces: close time.busy=5.57s time.idle=7.29µs index=61
+2025-11-15T14:58:59.908383Z  INFO prove_core:generate main traces: close time.busy=3.67s time.idle=6.81µs index=62
+2025-11-15T15:01:09.104689Z  INFO prove_core:generate main traces: close time.busy=3.65s time.idle=7.73µs index=63
+2025-11-15T15:06:39.421191Z  INFO prove_core:generate main traces: close time.busy=3.55s time.idle=6.15µs index=64
+2025-11-15T15:12:16.443060Z  INFO prove_core:generate main traces: close time.busy=5.33s time.idle=6.09µs index=65
+2025-11-15T15:22:10.874042Z  INFO prove_core: clk = 140000000 pc = 0x23124c
+2025-11-15T15:22:15.203760Z  INFO prove_core:generate main traces: close time.busy=3.52s time.idle=7.57µs index=66
+2025-11-15T15:24:23.221598Z  INFO prove_core:generate main traces: close time.busy=3.40s time.idle=7.65µs index=67
+2025-11-15T15:29:54.447655Z  INFO prove_core:generate main traces: close time.busy=3.98s time.idle=7.89µs index=68
+2025-11-15T15:35:24.094613Z  INFO prove_core:generate main traces: close time.busy=3.86s time.idle=7.18µs index=69
+2025-11-15T15:40:54.179606Z  INFO prove_core:generate main traces: close time.busy=5.48s time.idle=8.02µs index=70
+2025-11-15T15:50:43.421676Z  INFO prove_core: clk = 150000000 pc = 0x231250
+2025-11-15T15:50:48.005213Z  INFO prove_core:generate main traces: close time.busy=3.54s time.idle=7.24µs index=71
+2025-11-15T15:52:54.722903Z  INFO prove_core:generate main traces: close time.busy=3.56s time.idle=13.6µs index=72
+2025-11-15T15:58:23.074823Z  INFO prove_core:generate main traces: close time.busy=3.79s time.idle=7.04µs index=73
+2025-11-15T16:03:56.703909Z  INFO prove_core:generate main traces: close time.busy=5.44s time.idle=7.90µs index=74
+2025-11-15T16:13:44.769304Z  INFO prove_core:generate main traces: close time.busy=3.74s time.idle=8.50µs index=75
+2025-11-15T16:15:46.635405Z  INFO prove_core: clk = 160000000 pc = 0x20121c
+2025-11-15T16:15:51.316627Z  INFO prove_core:generate main traces: close time.busy=3.43s time.idle=10.4µs index=76
+2025-11-15T16:21:21.267786Z  INFO prove_core:generate main traces: close time.busy=3.45s time.idle=7.88µs index=77
+2025-11-15T16:26:54.770224Z  INFO prove_core:generate main traces: close time.busy=5.45s time.idle=8.76µs index=78
+2025-11-15T16:36:50.199785Z  INFO prove_core:generate main traces: close time.busy=3.56s time.idle=6.33µs index=79
+2025-11-15T16:38:57.633916Z  INFO prove_core:generate main traces: close time.busy=3.48s time.idle=8.48µs index=80
+2025-11-15T16:44:22.400214Z  INFO prove_core: clk = 170000000 pc = 0x201244
+2025-11-15T16:44:27.679350Z  INFO prove_core:generate main traces: close time.busy=3.63s time.idle=6.46µs index=81
+2025-11-15T16:49:56.601423Z  INFO prove_core:generate main traces: close time.busy=5.22s time.idle=6.75µs index=82
+2025-11-15T16:59:50.496202Z  INFO prove_core:generate main traces: close time.busy=3.43s time.idle=5.87µs index=83
+2025-11-15T17:01:58.047354Z  INFO prove_core:generate main traces: close time.busy=3.87s time.idle=5.87µs index=84
+2025-11-15T17:07:22.311364Z  INFO prove_core: clk = 180000000 pc = 0x231254
+2025-11-15T17:07:26.836582Z  INFO prove_core:generate main traces: close time.busy=3.81s time.idle=6.27µs index=85
+2025-11-15T17:12:56.452484Z  INFO prove_core:generate main traces: close time.busy=3.62s time.idle=6.28µs index=86
+2025-11-15T17:18:29.095016Z  INFO prove_core:generate main traces: close time.busy=5.79s time.idle=6.37µs index=87
+2025-11-15T17:28:23.290049Z  INFO prove_core:generate main traces: close time.busy=3.83s time.idle=8.45µs index=88
+2025-11-15T17:30:30.780782Z  INFO prove_core:generate main traces: close time.busy=3.24s time.idle=11.1µs index=89
+2025-11-15T17:35:58.981463Z  INFO prove_core: clk = 190000000 pc = 0x21bd80
+2025-11-15T17:36:03.243525Z  INFO prove_core:generate main traces: close time.busy=3.23s time.idle=8.67µs index=90
+2025-11-15T17:41:38.737278Z  INFO prove_core:generate main traces: close time.busy=5.55s time.idle=7.00µs index=91
+2025-11-15T17:51:40.363385Z  INFO prove_core:generate main traces: close time.busy=3.34s time.idle=7.15µs index=92
+2025-11-15T17:53:49.069889Z  INFO prove_core:generate main traces: close time.busy=3.11s time.idle=7.56µs index=93
+2025-11-15T17:59:24.128712Z  INFO prove_core:generate main traces: close time.busy=3.39s time.idle=6.52µs index=94
+2025-11-15T18:04:52.703563Z  INFO prove_core: clk = 200000000 pc = 0x231240
+2025-11-15T18:04:59.611561Z  INFO prove_core:generate main traces: close time.busy=5.36s time.idle=7.02µs index=95
+2025-11-15T18:15:01.221063Z  INFO prove_core:generate main traces: close time.busy=3.36s time.idle=6.52µs index=96
+2025-11-15T18:17:08.621407Z  INFO prove_core:generate main traces: close time.busy=3.43s time.idle=7.22µs index=97
+2025-11-15T18:22:44.814927Z  INFO prove_core:generate main traces: close time.busy=3.44s time.idle=6.80µs index=98
+2025-11-15T18:28:20.367530Z  INFO prove_core:generate main traces: close time.busy=6.00s time.idle=5.66µs index=99
+2025-11-15T18:38:13.816253Z  INFO prove_core: clk = 210000000 pc = 0x20123c
+2025-11-15T18:38:18.667370Z  INFO prove_core:generate main traces: close time.busy=3.25s time.idle=7.31µs index=100
+2025-11-15T18:40:28.102432Z  INFO prove_core:generate main traces: close time.busy=3.88s time.idle=8.10µs index=101
+2025-11-15T18:46:03.012331Z  INFO prove_core:generate main traces: close time.busy=3.46s time.idle=6.46µs index=102
+2025-11-15T18:51:36.083833Z  INFO prove_core:generate main traces: close time.busy=3.68s time.idle=8.35µs index=103
+2025-11-15T18:57:04.648694Z  INFO prove_core: clk = 220000000 pc = 0x201224
+2025-11-15T18:57:11.669107Z  INFO prove_core:generate main traces: close time.busy=5.91s time.idle=6.92µs index=104
+2025-11-15T19:07:11.273475Z  INFO prove_core:generate main traces: close time.busy=3.48s time.idle=7.69µs index=105
+2025-11-15T19:09:17.946604Z  INFO prove_core:generate main traces: close time.busy=3.66s time.idle=7.63µs index=106
+2025-11-15T19:14:51.682032Z  INFO prove_core:generate main traces: close time.busy=3.49s time.idle=6.14µs index=107
+2025-11-15T19:20:27.538382Z  INFO prove_core:generate main traces: close time.busy=5.17s time.idle=8.90µs index=108
+2025-11-15T19:30:26.017494Z  INFO prove_core: clk = 230000000 pc = 0x2313e4
+2025-11-15T19:30:30.373264Z  INFO prove_core:generate main traces: close time.busy=3.37s time.idle=7.93µs index=109
+2025-11-15T19:32:37.869799Z  INFO prove_core:generate main traces: close time.busy=3.58s time.idle=7.51µs index=110
+2025-11-15T19:38:10.771517Z  INFO prove_core:generate main traces: close time.busy=3.18s time.idle=9.08µs index=111
+2025-11-15T19:43:49.815037Z  INFO prove_core:generate main traces: close time.busy=5.61s time.idle=8.44µs index=112
+2025-11-15T19:53:54.836265Z  INFO prove_core:generate main traces: close time.busy=3.33s time.idle=6.59µs index=113
+2025-11-15T19:55:58.758695Z  INFO prove_core: clk = 240000000 pc = 0x231244
+2025-11-15T19:56:03.346196Z  INFO prove_core:generate main traces: close time.busy=3.37s time.idle=7.21µs index=114
+2025-11-15T20:01:35.513642Z  INFO prove_core:generate main traces: close time.busy=3.81s time.idle=6.68µs index=115
+2025-11-15T20:07:11.834180Z  INFO prove_core:generate main traces: close time.busy=5.89s time.idle=9.27µs index=116
+2025-11-15T20:17:13.269943Z  INFO prove_core:generate main traces: close time.busy=3.41s time.idle=8.41µs index=117
+2025-11-15T20:19:19.532041Z  INFO prove_core:generate main traces: close time.busy=881ms time.idle=6.35µs index=118
+2025-11-15T20:23:54.191407Z  INFO prove_core: clk = 250000000 pc = 0x2313bc
+2025-11-15T20:24:01.761413Z  INFO prove_core:generate main traces: close time.busy=5.87s time.idle=8.12µs index=119
+2025-11-15T20:34:38.172615Z  INFO prove_core:generate main traces: close time.busy=20.6s time.idle=7.99µs index=120
+2025-11-15T20:49:10.082581Z  WARN prove_core: High cycle count detected (253M cycles). For better performance, consider using the Succinct Prover Network: https://docs.succinct.xyz/docs/sp1/generating-proofs/prover-network
+2025-11-15T20:49:10.091220Z  INFO prove_core: close time.busy=38542s time.idle=2.37s
+2025-11-16T07:37:42.641630Z  INFO compress: close time.busy=38910s time.idle=2.06s
+2025-11-16T07:38:29.261161Z  INFO shrink:prove_shards: close time.busy=39.1s time.idle=7.51µs
+2025-11-16T07:38:29.341265Z  INFO shrink: close time.busy=45.4s time.idle=11.8µs
+2025-11-16T07:48:46.969434Z  INFO wrap_bn254:prove_shards: close time.busy=436s time.idle=19.0µs
+2025-11-16T07:48:47.288553Z  INFO wrap_bn254:verify: close time.busy=319ms time.idle=6.16µs
+2025-11-16T07:48:47.545303Z  INFO wrap_bn254: close time.busy=618s time.idle=11.6µs
+[sp1] plonk circuit artifacts already seem to exist at /home/ubuntu/.sp1/circuits/plonk/v5.0.0. if you want to re-download them, delete the directory
+2025-11-16T07:48:47.653311Z  INFO wrap_plonk_bn254: Running prove in docker
+2025-11-16T08:05:13.908351Z  INFO wrap_plonk_bn254: Running verify in docker
+2025-11-16T08:05:14.544750Z  INFO wrap_plonk_bn254: close time.busy=987s time.idle=6.59µs
+	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen_sabv_lmtr5 -- --n-exits 700 --validator-nodes 5 --proof-dir /home/ubuntu/thanhhuyen/proofs/v5/n700_run2"
+	User time (seconds): 982480.75
+	System time (seconds): 32628.59
+	Percent of CPU this job got: 1282%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 21:58:46
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 23756524
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2469991735
+	Voluntary context switches: 44551165
+	Involuntary context switches: 28444809
+	Swaps: 0
+	File system inputs: 56
+	File system outputs: 147040
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
