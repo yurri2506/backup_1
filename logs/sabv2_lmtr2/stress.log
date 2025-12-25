@@ -1,7 +1,0 @@
-stress-ng: info:  [3728257] setting to a 2 hours, 46 mins, 39 secs run per stressor
-stress-ng: info:  [3728257] dispatching hogs: 6 cpu, 8 vm
-stress-ng: info:  [3728257] skipped: 0
-stress-ng: info:  [3728257] passed: 0
-stress-ng: info:  [3728257] failed: 0
-stress-ng: info:  [3728257] metrics untrustworthy: 0
-stress-ng: info:  [3728257] successful run completed in 2 mins, 27.26 secs

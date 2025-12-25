@@ -1,0 +1,5 @@
+# AggSandbox Experiments Summary - Wed Nov 26 04:10:51 PM UTC 2025
+# Format: TYPE,N=...,Exit=...,Time=...,User=...,Sys=...,CPU=...%,RAM=...GB,Fraud=...,L1Verify=...,L1VerifyTime=...,L1VerifyGas=...,Log=...
+
+baseline,N=1,Exit=0,Time=1:31:44,User=25629.61,Sys=858.33,CPU=this%,RAM=14.70GB,Fraud=NO,L1Verify=SKIPPED,L1VerifyTime=N/A,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/baseline_n1_20251126_161051.log
+baseline,N=50,Exit=0,Time=3:02:55,User=64614.52,Sys=2261.48,CPU=this%,RAM=19.53GB,Fraud=NO,L1Verify=SKIPPED,L1VerifyTime=N/A,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/baseline_n50_20251126_150732.log

@@ -1,0 +1,1 @@
+scripts/aggsandbox/run_all.sh

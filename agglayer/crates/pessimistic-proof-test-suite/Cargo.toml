@@ -49,3 +49,6 @@ path = "src/bin/ppgen_sabv_lmtr.rs"
 [[bin]]
 name = "ppgen_sabv_lmtr5"
 path = "src/bin/ppgen_sabv_lmtr5.rs"
+[[bin]]
+name = "fraud_test_generator"
+path = "src/bin/fraud_test_generator.rs"

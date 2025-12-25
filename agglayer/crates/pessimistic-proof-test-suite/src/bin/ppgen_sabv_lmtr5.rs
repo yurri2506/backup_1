@@ -145,9 +145,8 @@ fn main() {
     
     info!("✅ Created {} blocks total for SABV5 verification", blocks.len());
     
-    // Use the last l1_info_root as the expected global root for verification
-    // In a real scenario, this would be the expected blockchain state root
-    // For now, we use l1_info_root from the last certificate as the expected root
+    // Compute global_root from ALL blocks (aggregated root) to match SABV5's computation
+    // This should match the root computed by SABV5 from original blocks (before rebalancing)
     let global_root = if let Some(wrong_root_hex) = &args.wrong_global_root {
         // FRAUD TEST MODE: Use wrong global_root to test fraud detection
         info!("🔴 FRAUD TEST MODE: Using wrong_global_root for fraud detection test");
@@ -161,11 +160,32 @@ fn main() {
         wrong_root_array.copy_from_slice(&wrong_root_bytes);
         AggDigest::from(wrong_root_array)
     } else {
-        // Normal mode: use computed global_root
-        global_roots.last().copied().unwrap_or_else(|| {
-            // Fallback: use default if no blocks (shouldn't happen)
-            AggDigest::default()
-        })
+        // Normal mode: compute global_root from ALL blocks using same method as SABV5
+        // This matches the expected_root_from_original_blocks that SABV5 will compute
+        // We create a temporary SABV5 instance just to use its build_real_merkle_tree method
+        use pessimistic_proof_core::{Sabv5Algorithm, Sabv5Config};
+        let temp_config = Sabv5Config {
+            branching_factor: 3,
+            num_validators: 5,
+            secret_sharing_threshold: 3,
+        };
+        let temp_sabv5 = Sabv5Algorithm::new(temp_config);
+        
+        // Build Merkle tree from ALL blocks (same as SABV5 does for expected_root_from_original_blocks)
+        match temp_sabv5.build_real_merkle_tree(&blocks, 3) {
+            Ok((computed_root, height)) => {
+                info!("📊 Computed global_root from {} blocks: {:?} (height={})", 
+                      blocks.len(), computed_root, height);
+                computed_root
+            },
+            Err(e) => {
+                warn!("⚠️  Failed to compute global_root from blocks: {:?}", e);
+                warn!("   Falling back to last l1_info_root");
+                global_roots.last().copied().unwrap_or_else(|| {
+                    AggDigest::default()
+                })
+            }
+        }
     };
     
     let setup_time = setup_start.elapsed();

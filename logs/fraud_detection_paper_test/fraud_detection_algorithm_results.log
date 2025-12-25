@@ -1,7 +1,0 @@
-error: unexpected argument '--malicious-batches' found
-
-  tip: to pass '--malicious-batches' as a value, use '-- --malicious-batches'
-
-Usage: cargo run --release --package [<SPEC>] --bin [<NAME>] [ARGS]...
-
-For more information, try '--help'.

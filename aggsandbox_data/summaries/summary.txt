@@ -1,0 +1,363 @@
+# AggSandbox Experiments Summary - Tue Dec  2 02:20:31 PM UTC 2025
+# Format: TYPE,N=...,Exit=...,Time=...,User=...,Sys=...,CPU=...%,RAM=...GB,Fraud=...,L1Verify=...,L1VerifyTime=...,L1VerifyGas=...,Log=...
+
+
+# Continuing experiments - Tue Dec  2 02:46:12 PM UTC 2025
+[2025-12-02_15:35:16] Starting L1 verification...
+   Contract: 0x36b58F5C1969B7b6591D752ea6F5486D069010AB
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-02_15:35:16] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xc6632b4de0a391f7fbb33cd72d10de8435af5b74e24504b67d23c858bc5cf5ce
+[2025-12-02_15:35:16] ✅ L1 verification transaction sent: 0x8f2bb796ee2f0bd42acf9f03cc619e257a948d784cdd19964a28203b6cde049f
+
+# Continuing experiments - Sun Dec  7 03:44:40 PM UTC 2025
+[2025-12-07_16:33:58] Starting L1 verification...
+   Contract: 0x4631BCAbD6dF18D94796344963cB60d44a4136b6
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-07_16:33:58] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xc6632b4de0a391f7fbb33cd72d10de8435af5b74e24504b67d23c858bc5cf5ce
+[2025-12-07_16:33:58] ✅ L1 verification transaction sent: 0xfa5f894fb52af36954d492435e6ec77e5d2e33268b13c2da3ce60f9614fbd440
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-07_16:34:10] ✅ L1 verification completed in .047752952s
+L1_VERIFY,Time=.047752952s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xfa5f894fb52af36954d492435e6ec77e5d2e33268b13c2da3ce60f9614fbd440
+baseline,N=1,Exit=0,Time=49:18,User=13858.66,Sys=412.67,CPU=this%,RAM=14.85GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.047752952s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/baseline_n1_20251207_154440.log
+[2025-12-07_17:39:05] Starting L1 verification...
+   Contract: 0x4631BCAbD6dF18D94796344963cB60d44a4136b6
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-07_17:39:06] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xc6632b4de0a391f7fbb33cd72d10de8435af5b74e24504b67d23c858bc5cf5ce
+[2025-12-07_17:39:06] ✅ L1 verification transaction sent: 0x2b538c44c8bf393d4c35f6859248115741375ae4f74cfac01fc6fcb50e50b2ce
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-07_17:39:18] ✅ L1 verification completed in .050122495s
+L1_VERIFY,Time=.050122495s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x2b538c44c8bf393d4c35f6859248115741375ae4f74cfac01fc6fcb50e50b2ce
+baseline,N=10,Exit=0,Time=1:04:54,User=20243.67,Sys=650.06,CPU=this%,RAM=15.74GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.050122495s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/baseline_n10_20251207_163410.log
+[2025-12-07_19:56:31] Starting L1 verification...
+   Contract: 0x4631BCAbD6dF18D94796344963cB60d44a4136b6
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-07_19:56:31] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xf924f787fdacbe09af47e3b86ba965348c52789db162099861ea6ed7bac15905
+[2025-12-07_19:56:31] ✅ L1 verification transaction sent: 0x3e5e2387cdfb2b23e1bbdd02207ca10c0238d88218bf0f1ca85ab36417d2f139
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-07_19:56:43] ✅ L1 verification completed in .038380745s
+L1_VERIFY,Time=.038380745s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x3e5e2387cdfb2b23e1bbdd02207ca10c0238d88218bf0f1ca85ab36417d2f139
+baseline,N=50,Exit=0,Time=2:17:13,User=49709.37,Sys=1711.90,CPU=this%,RAM=19.00GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.038380745s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/baseline_n50_20251207_173918.log
+[2025-12-07_23:47:11] Starting L1 verification...
+   Contract: 0x4631BCAbD6dF18D94796344963cB60d44a4136b6
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-07_23:47:11] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xf924f787fdacbe09af47e3b86ba965348c52789db162099861ea6ed7bac15905
+[2025-12-07_23:47:11] ✅ L1 verification transaction sent: 0x4a74b9794c5cdbb887826fbc45d9e8ea3a946d338128890f3c115ec32067eb47
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-07_23:47:23] ✅ L1 verification completed in .051782182s
+L1_VERIFY,Time=.051782182s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x4a74b9794c5cdbb887826fbc45d9e8ea3a946d338128890f3c115ec32067eb47
+baseline,N=100,Exit=0,Time=3:50:27,User=88478.12,Sys=2814.01,CPU=this%,RAM=17.86GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.051782182s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/baseline_n100_20251207_195643.log
+
+# Continuing V5 experiments - Mon Dec  8 02:08:18 PM UTC 2025
+[2025-12-08_14:56:45] Starting L1 verification...
+   Contract: 0xfaAddC93baf78e89DCf37bA67943E1bE8F37Bb8c
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-08_14:56:45] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x39a254e2855dbf87cd7e92cde3d8003ecf6b31f5737c1ca5e1e0a94d834fe2e4
+[2025-12-08_14:56:45] ✅ L1 verification transaction sent: 0x08a4a1968cac71c449507cc7e1f6faba3b66c281ff492de180da026ece34475d
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-08_14:56:57] ✅ L1 verification completed in .042960719s
+L1_VERIFY,Time=.042960719s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x08a4a1968cac71c449507cc7e1f6faba3b66c281ff492de180da026ece34475d
+v5,N=1,Exit=0,Time=48:26,User=24282.53,Sys=820.54,CPU=this%,RAM=14.82GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.042960719s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n1_20251208_140818.log
+
+# Continuing V5 experiments - Mon Dec  8 04:16:47 PM UTC 2025
+[2025-12-08_17:05:26] Starting L1 verification...
+   Contract: 0x40918Ba7f132E0aCba2CE4de4c4baF9BD2D7D849
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-08_17:05:26] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x5bfad85c71848877f0a533a7bcf159cab4f301c56199de1cc1187369aea6de87
+[2025-12-08_17:05:27] ✅ L1 verification transaction sent: 0xb9b366c9598b373f8a2e2a7df88bf15f336b7b3e1c4dfb35e5954e50f79d72d4
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-08_17:05:39] ✅ L1 verification completed in .048969018s
+L1_VERIFY,Time=.048969018s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xb9b366c9598b373f8a2e2a7df88bf15f336b7b3e1c4dfb35e5954e50f79d72d4
+v5,N=1,Exit=0,Time=48:39,User=24270.95,Sys=819.47,CPU=this%,RAM=14.32GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.048969018s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n1_20251208_161647.log
+
+# Continuing V5 experiments - Tue Dec  9 06:15:45 AM UTC 2025
+[2025-12-09_07:19:05] Starting L1 verification...
+   Contract: 0xFD6F7A6a5c21A3f503EBaE7a473639974379c351
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_07:19:05] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x170628731cac7a8986908be2726624d776be6d8d80939c9c9dec571ee050f0b8
+[2025-12-09_07:19:05] ✅ L1 verification transaction sent: 0x068a329e13808a942977f7bc12c24d9b8f5f30ec4f0313c662884e2669f7b202
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_07:19:17] ✅ L1 verification completed in .051072977s
+L1_VERIFY,Time=.051072977s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x068a329e13808a942977f7bc12c24d9b8f5f30ec4f0313c662884e2669f7b202
+v5,N=10,Exit=0,Time=1:03:19,User=35321.70,Sys=1196.20,CPU=this%,RAM=17.16GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.051072977s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n10_20251209_061545.log
+
+# Starting V5 experiments with 5 runs per N - Tue Dec  9 09:33:23 AM UTC 2025
+[2025-12-09_10:21:47] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_10:21:47] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x5e1439aca1c119cd3609939b8d614c02d500e4537af73962e9f95e09a4c65135
+[2025-12-09_10:21:47] ✅ L1 verification transaction sent: 0xec448d22ac5e0f42660fbb2cd351e6e39bb15ce53023f88837e2f1e4a76fbf8b
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_10:21:59] ✅ L1 verification completed in .043722944s
+L1_VERIFY,Time=.043722944s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xec448d22ac5e0f42660fbb2cd351e6e39bb15ce53023f88837e2f1e4a76fbf8b
+v5,N=1,Exit=0,Time=48:22,User=24304.24,Sys=799.34,CPU=this%,RAM=15.63GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.043722944s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n1_20251209_093324.log
+[2025-12-09_11:10:17] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_11:10:17] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xa9038463dbae232b4c23082518497f85a6887d8f13cc279620f5d18ccdd584f3
+[2025-12-09_11:10:17] ✅ L1 verification transaction sent: 0x5c04fbcde4b26f91a59f38566bd30660d11f75487d100d50fc7d0759088ee57f
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_11:10:29] ✅ L1 verification completed in .046635239s
+L1_VERIFY,Time=.046635239s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x5c04fbcde4b26f91a59f38566bd30660d11f75487d100d50fc7d0759088ee57f
+v5,N=1,Exit=0,Time=48:13,User=24288.17,Sys=796.89,CPU=this%,RAM=14.89GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.046635239s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n1_20251209_102204.log
+[2025-12-09_11:58:49] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_11:58:49] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x77383b167bf08d29bda102978a86a83b9022852e86d0472e56d4ab8f04f78707
+[2025-12-09_11:58:49] ✅ L1 verification transaction sent: 0xca9588ce42d047e473dd74d34ebf36b03302e6a4ce837e5ad941b8ef5cf9e9d1
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_11:59:01] ✅ L1 verification completed in .041841462s
+L1_VERIFY,Time=.041841462s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xca9588ce42d047e473dd74d34ebf36b03302e6a4ce837e5ad941b8ef5cf9e9d1
+v5,N=1,Exit=0,Time=48:14,User=24285.96,Sys=788.65,CPU=this%,RAM=14.81GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.041841462s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n1_20251209_111034.log
+[2025-12-09_12:47:39] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_12:47:39] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x2502a870a52f37ab8b5394217c1140c04f19f13813a6212e4cfb61a9aa33fb8a
+[2025-12-09_12:47:39] ✅ L1 verification transaction sent: 0x043255a9ffe1800b4b56a1ead6aadfbb4b775c62b3a623629ab3d9d9acf083ff
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_12:47:51] ✅ L1 verification completed in .047506707s
+L1_VERIFY,Time=.047506707s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x043255a9ffe1800b4b56a1ead6aadfbb4b775c62b3a623629ab3d9d9acf083ff
+v5,N=1,Exit=0,Time=48:32,User=24316.88,Sys=830.12,CPU=this%,RAM=14.79GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.047506707s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n1_20251209_115907.log
+[2025-12-09_13:36:10] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_13:36:10] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x79d8cf5de2cdc0b720838a6516a03629fa4a06703edb71db7c57c380c5ed8504
+[2025-12-09_13:36:11] ✅ L1 verification transaction sent: 0x81c4946b4df064c49fd3afd464e8753f6672a346512f948f69394c866524535b
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_13:36:23] ✅ L1 verification completed in .293583343s
+L1_VERIFY,Time=.293583343s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x81c4946b4df064c49fd3afd464e8753f6672a346512f948f69394c866524535b
+v5,N=1,Exit=0,Time=48:14,User=24296.59,Sys=777.92,CPU=this%,RAM=14.82GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.293583343s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n1_20251209_124756.log
+[2025-12-09_14:39:54] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_14:39:54] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x01b8921a293e48e11efdc4223ad2aa7dbc2cb97ecc0a4c0f486483e23cdf6c8f
+[2025-12-09_14:39:54] ✅ L1 verification transaction sent: 0xf74a4e77baa5514d550f2cf197fa2a5f4f3c4be4c1753f51409cba318cd768fc
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_14:40:06] ✅ L1 verification completed in .295499578s
+L1_VERIFY,Time=.295499578s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xf74a4e77baa5514d550f2cf197fa2a5f4f3c4be4c1753f51409cba318cd768fc
+v5,N=10,Exit=0,Time=1:03:30,User=35325.69,Sys=1231.26,CPU=this%,RAM=16.94GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.295499578s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n10_20251209_133623.log
+[2025-12-09_15:43:33] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_15:43:33] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x6ddb68908a38d371d6d0902750aab60b5af87ba6ad8d4d5f3abb6c709f8b02a4
+[2025-12-09_15:43:33] ✅ L1 verification transaction sent: 0xd5515d414d413f903c816aa7d6569bcde32e080254aca1c53ae7051b87f2b008
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_15:43:45] ✅ L1 verification completed in .047912617s
+L1_VERIFY,Time=.047912617s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xd5515d414d413f903c816aa7d6569bcde32e080254aca1c53ae7051b87f2b008
+v5,N=10,Exit=0,Time=1:03:21,User=35123.97,Sys=1168.71,CPU=this%,RAM=16.96GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.047912617s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n10_20251209_144011.log
+[2025-12-09_16:47:29] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_16:47:29] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x08524c8e3a500aaf4398674a0d3ec6241a2c3280088c314d5fc424899378d94e
+[2025-12-09_16:47:29] ✅ L1 verification transaction sent: 0x55c71193907b0c7864939447ca2b71cf9dca0113250f4b218f5006c65d17e58d
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_16:47:41] ✅ L1 verification completed in .049983519s
+L1_VERIFY,Time=.049983519s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x55c71193907b0c7864939447ca2b71cf9dca0113250f4b218f5006c65d17e58d
+v5,N=10,Exit=0,Time=1:03:38,User=35285.89,Sys=1220.20,CPU=this%,RAM=17.12GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.049983519s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n10_20251209_154350.log
+[2025-12-09_17:51:07] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_17:51:07] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x1840237e96d70956a7e3c52e2b69ed772d57fde54319dbffabad71111c578bc3
+[2025-12-09_17:51:07] ✅ L1 verification transaction sent: 0x581445d1fcee0e73801d52b14cc1154c0fd75de1302432518a0dcb2f2ce173b6
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_17:51:19] ✅ L1 verification completed in .041234359s
+L1_VERIFY,Time=.041234359s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x581445d1fcee0e73801d52b14cc1154c0fd75de1302432518a0dcb2f2ce173b6
+v5,N=10,Exit=0,Time=1:03:20,User=35368.97,Sys=1188.35,CPU=this%,RAM=17.03GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.041234359s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n10_20251209_164746.log
+[2025-12-09_18:54:35] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_18:54:35] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0x01aece828d2e549dbba35659cecbd149c7824d89057a0e8373911ae58b6116f8
+[2025-12-09_18:54:35] ✅ L1 verification transaction sent: 0x5783bd16b3833ab27a14e626575460f19875a8556873ef6d4960cc348249c8e3
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_18:54:47] ✅ L1 verification completed in .042588712s
+L1_VERIFY,Time=.042588712s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x5783bd16b3833ab27a14e626575460f19875a8556873ef6d4960cc348249c8e3
+v5,N=10,Exit=0,Time=1:03:10,User=35201.18,Sys=1180.42,CPU=this%,RAM=17.01GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.042588712s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n10_20251209_175124.log
+[2025-12-09_21:08:19] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_21:08:19] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xa344a27471be8ad5279b6f87dbcc8acc81553df670cb4e23fb178f465b0bc1fd
+[2025-12-09_21:08:19] ✅ L1 verification transaction sent: 0x0e1881b8f175af83a7f643d56270523dfeb85a3253843a046ffd375d5570e9e7
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_21:08:31] ✅ L1 verification completed in .043553870s
+L1_VERIFY,Time=.043553870s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x0e1881b8f175af83a7f643d56270523dfeb85a3253843a046ffd375d5570e9e7
+v5,N=50,Exit=0,Time=2:13:31,User=86343.48,Sys=3179.80,CPU=this%,RAM=20.28GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.043553870s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n50_20251209_185447.log
+[2025-12-09_23:22:17] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-09_23:22:17] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xa942c4d4bd8a3c9466fd1d2af8e3ca7543e44e0221b6fd71f7e97f00ee7c8160
+[2025-12-09_23:22:17] ✅ L1 verification transaction sent: 0x87c2ebb290bae77259d0c45316df63e3e77d861b5ddd0e1bce81d39c78d97a6a
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-09_23:22:29] ✅ L1 verification completed in .043214818s
+L1_VERIFY,Time=.043214818s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0x87c2ebb290bae77259d0c45316df63e3e77d861b5ddd0e1bce81d39c78d97a6a
+v5,N=50,Exit=0,Time=2:13:40,User=86480.84,Sys=3223.85,CPU=this%,RAM=20.45GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.043214818s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n50_20251209_210836.log
+[2025-12-10_01:36:04] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-10_01:36:04] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xaf21f6884d694e745f768dea489d9f4ac0e50289ace399fbbff767ca284bc984
+[2025-12-10_01:36:04] ✅ L1 verification transaction sent: 0xcc7b41f518044d76c75675b2f62dcd80e2787382f123ccea51bb96e2a034981a
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-10_01:36:16] ✅ L1 verification completed in .041976737s
+L1_VERIFY,Time=.041976737s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xcc7b41f518044d76c75675b2f62dcd80e2787382f123ccea51bb96e2a034981a
+v5,N=50,Exit=0,Time=2:13:29,User=86668.27,Sys=3154.48,CPU=this%,RAM=20.18GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.041976737s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n50_20251209_232234.log
+[2025-12-10_03:49:40] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-10_03:49:40] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xab3361ca030f18e48f25fd68b0d588103e89bb32f1ac3dfa8dc0b3a9709dceb0
+[2025-12-10_03:49:40] ✅ L1 verification transaction sent: 0xd157a5eb33ca72a45ba882f132e9670a0f793e79db04539b4136c0b20bfe6ca3
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-10_03:49:53] ✅ L1 verification completed in .047493544s
+L1_VERIFY,Time=.047493544s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xd157a5eb33ca72a45ba882f132e9670a0f793e79db04539b4136c0b20bfe6ca3
+v5,N=50,Exit=0,Time=2:13:19,User=86653.28,Sys=3046.41,CPU=this%,RAM=20.25GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.047493544s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n50_20251210_013621.log
+[2025-12-10_06:03:30] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-10_06:03:30] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xe2edae263eb78776d0233b095622dcb3becded6aa8c1a8c181198902a144ff7d
+[2025-12-10_06:03:30] ✅ L1 verification transaction sent: 0xfd18cb1022f904a5b81734029ef4633863c6d2a15b129929630a7510d1f91133
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-10_06:03:42] ✅ L1 verification completed in .049119086s
+L1_VERIFY,Time=.049119086s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xfd18cb1022f904a5b81734029ef4633863c6d2a15b129929630a7510d1f91133
+v5,N=50,Exit=0,Time=2:13:32,User=86586.98,Sys=3133.14,CPU=this%,RAM=20.34GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.049119086s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n50_20251210_034958.log
+[2025-12-10_09:50:28] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-10_09:50:29] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xc956b80ed44cea2ab97b832910298e11748464a3dab827282d61a871d1cfee1a
+[2025-12-10_09:50:29] ✅ L1 verification transaction sent: 0xe2ec36a417e9be642a2483d79ef21a2236a231cb29a12c16f40623dbbd4c6468
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-10_09:50:41] ✅ L1 verification completed in .296564390s
+L1_VERIFY,Time=.296564390s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xe2ec36a417e9be642a2483d79ef21a2236a231cb29a12c16f40623dbbd4c6468
+v5,N=100,Exit=0,Time=3:46:46,User=154483.46,Sys=5574.19,CPU=this%,RAM=19.37GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.296564390s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n100_20251210_060342.log
+[2025-12-10_13:37:36] Starting L1 verification...
+   Contract: 0x74Cf9087AD26D541930BaC724B7ab21bA8F00a27
+   RPC: http://localhost:8545
+   RollupID: 1 (chainID: 1101)
+[2025-12-10_13:37:37] Attempting L1 verification...
+   Parameters:
+     - rollupID: 1
+     - l1InfoTreeLeafCount: 0
+     - newLocalExitRoot: 0xcf8a894f86a691b0fe3ef039b5076dbeee95cbefb127720f9c1223d5c42c0310
+[2025-12-10_13:37:37] ✅ L1 verification transaction sent: 0xbf9c56a863b0b49473d6d5910e3fc7ed30692049aa0e754a2789f531b65c51a2
+   ⚠️  Could not get receipt (timeout or RPC issue)
+[2025-12-10_13:37:49] ✅ L1 verification completed in .040988768s
+L1_VERIFY,Time=.040988768s,Gas=N/A,RollupID=1,NetworkID=1,TxHash=0xbf9c56a863b0b49473d6d5910e3fc7ed30692049aa0e754a2789f531b65c51a2
+v5,N=100,Exit=0,Time=3:46:50,User=154525.75,Sys=5600.33,CPU=this%,RAM=19.68GB,Fraud=NO,L1Verify=SUCCESS,L1VerifyTime=.040988768s,L1VerifyGas=N/A,Log=/home/ubuntu/thanhhuyen/logs/aggsandbox_exp/v5_n100_20251210_095046.log
+
+# Starting V5 HIGH N experiments (200, 500, 700) with 5 runs per N - Wed Dec 10 03:28:13 PM UTC 2025

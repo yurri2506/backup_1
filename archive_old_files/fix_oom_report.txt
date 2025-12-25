@@ -1,0 +1,137 @@
+====================================================================================================
+BÁO CÁO FIX LỖI OOM KILL - V5 BENCHMARK
+====================================================================================================
+Ngày fix: 2025-11-17 11:20:00 UTC
+
+====================================================================================================
+VẤN ĐỀ PHÁT HIỆN
+====================================================================================================
+
+❌ LỖI:
+  - N=100: TẤT CẢ 10/10 runs bị OOM kill (signal 9)
+    → RAM usage: ~61-62 GB (gần bằng total RAM của system 62GB)
+    → User time thấp: ~5-11k s (incomplete, bị kill sớm)
+  
+  - N=500: 10/13 runs bị OOM kill
+    → Các runs bị kill có RAM usage ~61-65 GB
+    → Các runs thành công có RAM usage ~22-24 GB
+
+🔍 NGUYÊN NHÂN:
+  - Script `run_v5_benchmark.sh` đang set RAYON_NUM_THREADS=16 cho TẤT CẢ các giá trị N
+  - Với N>=100, 16 threads tạo ra quá nhiều parallelism → RAM usage tăng đột biến
+  - RAM usage vượt quá khả năng hệ thống (62GB) → OOM killer kill process
+  - Theo phân tích trước: RAYON_NUM_THREADS=8 là optimal cho N>=100 (nhanh hơn ~2-3%)
+
+====================================================================================================
+GIẢI PHÁP ĐÃ ÁP DỤNG
+====================================================================================================
+
+✅ SỬA SCRIPT `run_v5_benchmark.sh`:
+
+1. Điều chỉnh RAYON_NUM_THREADS theo N:
+   - N<=10: RAYON_NUM_THREADS=16 (OK, memory thấp)
+   - N>=100: RAYON_NUM_THREADS=8 (optimal, giảm RAM usage)
+
+2. Giữ nguyên các tham số an toàn:
+   - SHARD_BATCH_SIZE=1 (giống baseline, safe)
+   - TRACE_GEN_WORKERS=1 (giống baseline, safe)
+
+3. Cập nhật documentation trong script:
+   - Header script phản ánh cấu hình động theo N
+   - Comments giải thích lý do điều chỉnh
+
+====================================================================================================
+THAY ĐỔI CHI TIẾT
+====================================================================================================
+
+FILE: run_v5_benchmark.sh
+
+BEFORE:
+```
+export RAYON_NUM_THREADS=16  # Fixed cho tất cả N
+```
+
+AFTER:
+```
+if [ "$N" -ge 100 ]; then
+    # N>=100: Dùng 8 threads (optimal, tránh OOM)
+    export RAYON_NUM_THREADS=8
+else
+    # N<=10: Dùng 16 threads (OK, memory thấp)
+    export RAYON_NUM_THREADS=16
+fi
+```
+
+====================================================================================================
+KẾT QUẢ MONG ĐỢI
+====================================================================================================
+
+✅ N=1, N=10:
+  - RAYON_NUM_THREADS=16 (giữ nguyên)
+  - RAM: ~16-24GB (OK)
+  - CPU: ~1200-1400%
+
+✅ N=100:
+  - RAYON_NUM_THREADS=8 (giảm từ 16 → 8)
+  - RAM: ~20-25GB (giảm từ ~61-62GB → ~20-25GB)
+  - CPU: ~1200% (~12 cores)
+  - Không còn bị OOM kill
+
+✅ N=200, N=500, N=700:
+  - RAYON_NUM_THREADS=8 (giảm từ 16 → 8)
+  - RAM: ~20-25GB (giảm từ ~61-65GB → ~20-25GB)
+  - CPU: ~1200% (~12 cores)
+  - Không còn bị OOM kill
+
+====================================================================================================
+LỢI ÍCH
+====================================================================================================
+
+1. ✅ Tránh OOM kill:
+   - RAM usage giảm từ ~61-65GB → ~20-25GB (giảm ~60-70%)
+   - N=100 sẽ có thể hoàn thành full proving thay vì bị kill
+
+2. ✅ Performance tốt hơn:
+   - RAYON_NUM_THREADS=8 nhanh hơn ~2-3% so với 16 threads cho N>=100
+   - Giảm overhead của parallelism quá mức
+
+3. ✅ Tận dụng tài nguyên hợp lý:
+   - N<=10: Dùng tối đa CPU (16 threads) - OK vì memory thấp
+   - N>=100: Dùng optimal CPU (8 threads) - Tránh OOM, performance tốt
+
+====================================================================================================
+KHUYẾN NGHỊ
+====================================================================================================
+
+1. ✅ Chạy lại benchmark với script đã sửa:
+   ```bash
+   bash run_v5_benchmark.sh
+   ```
+
+2. ✅ Monitor RAM usage trong lần chạy đầu:
+   - Xem log files để confirm RAM usage giảm xuống ~20-25GB
+   - Đảm bảo không còn bị OOM kill
+
+3. ✅ Nếu vẫn có vấn đề với N=100:
+   - Có thể cần giảm thêm SHARD_BATCH_SIZE hoặc TRACE_GEN_WORKERS
+   - Hoặc xem xét skip N=100 (đã có N=200)
+
+4. ✅ Cleanup warnings (optional):
+   - Chạy: `cargo fix --lib -p pessimistic-proof-core`
+   - Chạy: `cargo fix --bin ppgen_sabv_lmtr5`
+
+====================================================================================================
+TÓM TẮT
+====================================================================================================
+
+✅ ĐÃ SỬA: Script điều chỉnh RAYON_NUM_THREADS theo N để tránh OOM
+   - N<=10: 16 threads (OK)
+   - N>=100: 8 threads (optimal)
+
+✅ KẾT QUẢ MONG ĐỢI:
+   - RAM usage giảm từ ~61-65GB → ~20-25GB (giảm ~60-70%)
+   - N=100 sẽ có thể hoàn thành thay vì bị OOM kill
+   - Performance tốt hơn (~2-3% improvement)
+
+✅ SẴN SÀNG: Script đã sửa xong, có thể chạy lại benchmark
+

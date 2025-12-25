@@ -1,0 +1,191 @@
+====================================================================================================
+TÓM TẮT SỐ LIỆU V5 EXPERIMENTS (SABV5 + LMTR4) - AggSandbox
+====================================================================================================
+Ngày cập nhật: 2025-12-10 15:06:01 UTC
+
+Tiến độ: 17/20 runs hoàn thành (85%)
+- N=1: 5/5 runs ✅
+- N=10: 5/5 runs ✅
+- N=50: 5/5 runs ✅
+- N=100: 2/5 runs (còn 3 runs đang chạy)
+
+====================================================================================================
+N=1 (7 runs - bao gồm cả runs cũ)
+----------------------------------------------------------------------------------------------------
+  ⏱️  Elapsed Time:
+     - Trung bình: 48.4 phút (0.81 giờ)
+     - Min: 48.2 phút
+     - Max: 48.6 phút
+     - StdDev: 0.2 phút
+     - Độ ổn định: Rất cao (chênh lệch < 1%)
+
+  💻 User Time (CPU):
+     - Trung bình: 6.75 giờ (24,292 giây)
+     - Min: 6.74 giờ
+     - Max: 6.75 giờ
+
+  💾 Peak RAM:
+     - Trung bình: 14.87 GB
+     - Min: 14.32 GB
+     - Max: 15.63 GB
+     - StdDev: 0.39 GB
+
+  ✅ L1 Verify Time:
+     - Trung bình: 80.75 ms
+     - Min: 41.84 ms
+     - Max: 293.58 ms
+
+  🛡️  Fraud Detection: 7/7 pass (100%)
+  ✅ L1 Verify Status: 7/7 success (100%)
+
+====================================================================================================
+N=10 (6 runs - bao gồm cả runs cũ)
+----------------------------------------------------------------------------------------------------
+  ⏱️  Elapsed Time:
+     - Trung bình: 63.4 phút (1.06 giờ)
+     - Min: 63.2 phút
+     - Max: 63.6 phút
+     - StdDev: 0.2 phút
+     - Độ ổn định: Rất cao (chênh lệch < 1%)
+
+  💻 User Time (CPU):
+     - Trung bình: 9.80 giờ (35,271 giây)
+     - Min: 9.76 giờ
+     - Max: 9.82 giờ
+
+  💾 Peak RAM:
+     - Trung bình: 17.04 GB
+     - Min: 16.94 GB
+     - Max: 17.16 GB
+     - StdDev: 0.09 GB
+
+  ✅ L1 Verify Time:
+     - Trung bình: 88.05 ms
+     - Min: 41.23 ms
+     - Max: 295.50 ms
+
+  🛡️  Fraud Detection: 6/6 pass (100%)
+  ✅ L1 Verify Status: 6/6 success (100%)
+
+====================================================================================================
+N=50 (5 runs)
+----------------------------------------------------------------------------------------------------
+  ⏱️  Elapsed Time:
+     - Trung bình: 133.5 phút (2.23 giờ)
+     - Min: 133.3 phút
+     - Max: 133.7 phút
+     - StdDev: 0.1 phút
+     - Độ ổn định: Rất cao (chênh lệch < 0.5%)
+
+  💻 User Time (CPU):
+     - Trung bình: 24.04 giờ (86,547 giây)
+     - Min: 23.98 giờ
+     - Max: 24.07 giờ
+
+  💾 Peak RAM:
+     - Trung bình: 20.30 GB
+     - Min: 20.18 GB
+     - Max: 20.45 GB
+     - StdDev: 0.10 GB
+
+  ✅ L1 Verify Time:
+     - Trung bình: 45.07 ms
+     - Min: 41.98 ms
+     - Max: 49.12 ms
+
+  🛡️  Fraud Detection: 5/5 pass (100%)
+  ✅ L1 Verify Status: 5/5 success (100%)
+
+====================================================================================================
+N=100 (2 runs - còn 3 runs đang chạy)
+----------------------------------------------------------------------------------------------------
+  ⏱️  Elapsed Time:
+     - Trung bình: 226.8 phút (3.78 giờ)
+     - Min: 226.8 phút (226m 59s)
+     - Max: 226.8 phút (227m 3s)
+     - StdDev: 0.0 phút
+     - Độ ổn định: Rất cao (chênh lệch < 0.1%)
+
+  💻 User Time (CPU):
+     - Trung bình: 42.92 giờ (154,505 giây)
+     - Min: 42.91 giờ
+     - Max: 42.92 giờ
+
+  💾 Peak RAM:
+     - Trung bình: 19.52 GB
+     - Min: 19.37 GB
+     - Max: 19.68 GB
+     - StdDev: 0.22 GB
+
+  ✅ L1 Verify Time:
+     - Trung bình: 168.78 ms
+     - Min: 40.99 ms
+     - Max: 296.56 ms
+
+  🛡️  Fraud Detection: 2/2 pass (100%)
+  ✅ L1 Verify Status: 2/2 success (100%)
+
+====================================================================================================
+BẢNG TỔNG HỢP
+====================================================================================================
+N      Runs   Avg Time        Avg RAM (GB)    Avg L1 Verify (ms)   Fraud Pass   L1 Success
+----------------------------------------------------------------------------------------------------
+1      7      48.4 phút      14.87           80.75                 7/7 (100%)   7/7 (100%)
+10     6      63.4 phút      17.04           88.05                 6/6 (100%)   6/6 (100%)
+50     5      133.5 phút     20.30           45.07                 5/5 (100%)   5/5 (100%)
+100    2      226.8 phút     19.52           168.78                2/2 (100%)   2/2 (100%)
+
+====================================================================================================
+QUAN SÁT VÀ PHÂN TÍCH
+====================================================================================================
+
+1. Độ ổn định thời gian:
+   - Tất cả các runs đều rất ổn định (StdDev < 0.5 phút)
+   - N=1: 48.4 ± 0.2 phút
+   - N=10: 63.4 ± 0.2 phút
+   - N=50: 133.5 ± 0.1 phút
+   - N=100: 226.8 ± 0.0 phút
+
+2. Scalability:
+   - N=1 → N=10: Thời gian tăng ~1.31x (63.4/48.4)
+   - N=10 → N=50: Thời gian tăng ~2.11x (133.5/63.4)
+   - N=50 → N=100: Thời gian tăng ~1.70x (226.8/133.5)
+   - Tổng thể: N tăng 100x → thời gian tăng ~4.69x
+
+3. RAM Usage:
+   - N=1: ~15 GB
+   - N=10: ~17 GB (+13%)
+   - N=50: ~20 GB (+18% so với N=10)
+   - N=100: ~19.5 GB (giảm nhẹ so với N=50, có thể do tối ưu)
+
+4. L1 Verify Time:
+   - Rất nhanh: 40-300 ms
+   - Trung bình: 45-88 ms (trừ N=100 có 1 outlier 296ms)
+   - Độ ổn định cao
+
+5. Fraud Detection:
+   - Tất cả runs đều pass fraud detection (100%)
+   - Fix đã hoạt động đúng
+
+6. L1 Verification:
+   - Tất cả runs đều verify thành công trên L1 (100%)
+
+====================================================================================================
+KẾT LUẬN
+====================================================================================================
+
+✅ Tất cả experiments đều thành công:
+   - Không có fraud detection false positive
+   - L1 verification thành công 100%
+   - Độ ổn định thời gian rất cao
+   - RAM usage hợp lý và ổn định
+
+⏳ Đang chạy:
+   - N=100, Run 3/5 (bắt đầu 13:37:54)
+   - N=100, Run 4/5, 5/5 (còn lại)
+   - Ước tính hoàn thành: ~8 giờ nữa
+
+📊 Dữ liệu đã đủ cho phân tích:
+   - N=1, N=10, N=50: Đã có đủ 5 runs mỗi N
+   - N=100: Đã có 2 runs (đang chạy thêm 3 runs để đủ 5)
+
