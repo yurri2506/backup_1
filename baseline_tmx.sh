@@ -26,7 +26,7 @@ tmux send-keys -t "$SESSION_NAME" "mkdir -p $LOG_DIR && dstat --time --cpu --mem
 
 # Pane 2: Apply CPU/RAM stress to guarantee availability of 6 cores and 64GB usage
 tmux split-window -h -t "$SESSION_NAME"
-tmux send-keys -t "$SESSION_NAME" "echo 'Starting stress: 6 CPU workers, 64G VM' && stress-ng --cpu 6 --cpu-method all --vm 8 --vm-bytes 8G --vm-keep --timeout 9999s > $LOG_DIR/stress.log 2>&1" C-m
+tmux send-keys -t "$SESSION_NAME" "echo 'Starting stress: 16 CPU workers, 64G VM' && stress-ng --cpu 16 --cpu-method all --vm 8 --vm-bytes 8G --vm-keep --timeout 9999s > $LOG_DIR/stress.log 2>&1" C-m
 
 # Pane 3: SP1 server
 tmux split-window -v -t "$SESSION_NAME"
@@ -36,8 +36,10 @@ tmux send-keys -t "$SESSION_NAME" "/bin/bash /home/ubuntu/backup_1/sp1_local_ser
 tmux split-window -v -t "$SESSION_NAME"
 tmux send-keys -t "$SESSION_NAME" "cd $BIN_DIR" C-m
 tmux send-keys -t "$SESSION_NAME" "export SP1_PROVER=\"${SP1_PROVER:-cpu}\"" C-m
+tmux send-keys -t "$SESSION_NAME" "export RAYON_NUM_THREADS=16" C-m
+tmux send-keys -t "$SESSION_NAME" "export OMP_NUM_THREADS=16" C-m
 tmux send-keys -t "$SESSION_NAME" "mkdir -p $LOG_DIR/proofs" C-m
-tmux send-keys -t "$SESSION_NAME" "for N in \"\${EXIT_COUNTS[@]}\"; do for RUN in {1..10}; do echo \"[BASELINE] N=\$N - RUN \$RUN/10\" | tee -a $LOG_DIR/run.log; /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits \$N --n-imported-exits \$N --proof-dir $LOG_DIR/proofs > $LOG_DIR/proof_${BIN}_\${N}_run\${RUN}.no_input.log 2>&1; echo \"[BASELINE] N=\$N - COMPLETED RUN \$RUN/10\" | tee -a $LOG_DIR/run.log; done; echo \"[BASELINE] ===== COMPLETED N=\$N =====\" | tee -a $LOG_DIR/run.log; done" C-m
+tmux send-keys -t "$SESSION_NAME" "EXIT_COUNTS=(1 10 20 50 100 200 500 700); for N in \"\${EXIT_COUNTS[@]}\"; do if [ \$N -eq 700 ]; then MAX_RUN=5; else MAX_RUN=10; fi; for RUN in \$(seq 1 \$MAX_RUN); do echo \"[BASELINE] N=\$N - RUN \$RUN/\$MAX_RUN\" | tee -a $LOG_DIR/run.log; /usr/bin/time -v cargo run --release -p $PKG --bin $BIN -- --n-exits \$N --n-imported-exits \$N --proof-dir $LOG_DIR/proofs > $LOG_DIR/proof_${BIN}_\${N}_run\${RUN}.no_input.log 2>&1; echo \"[BASELINE] N=\$N - COMPLETED RUN \$RUN/\$MAX_RUN\" | tee -a $LOG_DIR/run.log; done; echo \"[BASELINE] ===== COMPLETED N=\$N =====\" | tee -a $LOG_DIR/run.log; done" C-m
 tmux send-keys -t "$SESSION_NAME" "echo 'DONE' | tee -a $LOG_DIR/run.log" C-m
 
 echo "tmux session '$SESSION_NAME' started. Attach: tmux attach -t $SESSION_NAME"

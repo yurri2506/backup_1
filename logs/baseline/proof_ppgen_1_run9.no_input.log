@@ -1,0 +1,75 @@
+warning: unused variable: `branching_factor`
+  --> crates/pessimistic-proof-core/src/lmtr.rs:31:9
+   |
+31 |         branching_factor: usize,
+   |         ^^^^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_branching_factor`
+   |
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: field `config` is never read
+  --> crates/pessimistic-proof-core/src/sabv.rs:13:5
+   |
+12 | pub struct SabvAlgorithm {
+   |            ------------- field in this struct
+13 |     config: SabvConfig,
+   |     ^^^^^^
+   |
+   = note: `SabvAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+   = note: `#[warn(dead_code)]` on by default
+
+warning: field `config` is never read
+  --> crates/pessimistic-proof-core/src/lmtr.rs:12:5
+   |
+11 | pub struct LmtrAlgorithm {
+   |            ------------- field in this struct
+12 |     config: LmtrConfig,
+   |     ^^^^^^
+   |
+   = note: `LmtrAlgorithm` has derived impls for the traits `Clone` and `Debug`, but these are intentionally ignored during dead code analysis
+
+warning: `pessimistic-proof-core` (lib) generated 3 warnings
+    Finished `release` profile [optimized] target(s) in 0.97s
+     Running `target/release/ppgen --n-exits 1 --n-imported-exits 1 --proof-dir /home/ubuntu/backup_1/logs/baseline/proofs`
+[2m2025-10-28T22:53:36.258843Z[0m [32m INFO[0m Writing the certificate to "/home/ubuntu/backup_1/logs/baseline/proofs/1-certificate-ed8ed7b1-a6a7-4957-81dd-7041c8bab528.json"
+[2m2025-10-28T22:53:36.259294Z[0m [32m INFO[0m Certificate 0x6ab1759924bdecd031526c8b468d7a69471c16fbd02a2ff0d4c20acfc0bfc464: [{"network_id":1,"height":0,"prev_local_exit_root":"0x27ae5ba08d7291c96c8cbddcc148bf48a6d68c7974b94356f53754ef6171d757","new_local_exit_root":"0x485b818f7311eac30cd922862f42ac1e238bb696326255488afdf43a3912e335","bridge_exits":[{"leaf_type":"Transfer","token_info":{"origin_network":0,"origin_token_address":"0x0000000000000000000000000000000000000000"},"dest_network":0,"dest_address":"0xc5ccaa65dc2a07911315b46954d7c2a5e0a6649b","amount":"0x2880dc0e310148","metadata":"0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"}],"imported_bridge_exits":[{"bridge_exit":{"leaf_type":"Transfer","token_info":{"origin_network":0,"origin_token_address":"0x0000000000000000000000000000000000000000"},"dest_network":1,"dest_address":"0xc8f8e62ab8bbe6b61d6de59c33946ec460b911f7","amount":"0x2880dc0e310148","metadata":"0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470"},"claim_data":{"Mainnet":{"proof_leaf_mer":{"proof":{"siblings":["0x0000000000000000000000000000000000000000000000000000000000000000","0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5","0xb4c11951957c6f8f642c4af61cd6b24640fec6dc7fc607ee8206a99e92410d30","0x21ddb9a356815c3fac1026b6dec5df3124afbadb485c9ba5a3e3398a04b7ba85","0xe58769b32a1beaf1ea27375a44095a0d1fb664ce2dd358e7fcbfb78c26a19344","0x0eb01ebfc9ed27500cd4dfc979272d1f0913cc9f66540d7e8005811109e1cf2d","0x887c22bd8750d34016ac3c66b5ff102dacdd73f6b014e710b51e8022af9a1968","0xffd70157e48063fc33c97a050f7f640233bf646cc98d9524c6b92bcf3ab56f83","0x9867cc5f7f196b93bae1e27e6320742445d290f2263827498b54fec539f756af","0xcefad4e508c098b9a7e1d8feb19955fb02ba9675585078710969d3440f5054e0","0xf9dc3e7fe016e050eff260334f18a5d4fe391d82092319f5964f2e2eb7c1c3a5","0xf8b13a49e282f609c317a833fb8d976d11517c571d1221a265d25af778ecf892","0x3490c6ceeb450aecdc82e28293031d10c7d73bf85e57bf041a97360aa2c5d99c","0xc1df82d9c4b87413eae2ef048f94b4d3554cea73d92b0f7af96e0271c691e2bb","0x5c67add7c6caf302256adedf7ab114da0acfe870d449a3a489f781d659e8becc","0xda7bce9f4e8618b6bd2f4132ce798cdc7a60e7e1460a7299e3c6342a579626d2","0x2733e50f526ec2fa19a22b31e8ed50f23cd1fdf94c9154ed3a7609a2f1ff981f","0xe1d3b5c807b281e4683cc6d6315cf95b9ade8641defcb32372f1c126e398ef7a","0x5a2dce0a8a7f68bb74560f8f71837c2c2ebbcbf7fffb42ae1896f13f7c7479a0","0xb46a28b6f55540f89444f63de0378e3d121be09e06cc9ded1c20e65876d36aa0","0xc65e9645644786b620e2dd2ad648ddfcbf4a7e5b1a3a4ecfe7f64667a3f0b7e2","0xf4418588ed35a2458cffeb39b93d26f18d2ab13bdce6aee58e7b99359ec2dfd9","0x5a9c16dc00d6ef18b7933a6f8dc65ccb55667138776f7dea101070dc8796e377","0x4df84f40ae0c8229d0d6069e5c8f39a7c299677a09d367fc7b05e3bc380ee652","0xcdc72595f74c7b1043d0e1ffbab734648c838dfb0527d971b602bc216c9619ef","0x0abf5ac974a1ed57f4050aa510dd9c74f508277b39d7973bb2dfccc5eeb0618d","0xb8cd74046ff337f0a7bf2c8e03e10f642c1886798d71806ab1e888d9e5ee87d0","0x838c5655cb21c6cb83313b5a631175dff4963772cce9108188b34ac87c81c41e","0x662ee4dd2dd7b2bc707961b1e646c4047669dcb6584f0d8d770daf5d7e7deb2e","0x388ab20e2573d171a88108e79d820e98f26c0b84aa8b2f4aa4968dbb818ea322","0x93237c50ba75ee485f4c22adf2f741400bdf8d6a9cc7df7ecae576221665d735","0x8448818bb4ae4562849e949e17ac16e0be16688e156b5cf15e098c627c0056a9"]},"root":"0xbd2dfe2a3e170675c469d0013ce8c905708ca67d49f3364908e0c682a6be964a"},"proof_ger_l1root":{"proof":{"siblings":["0x0000000000000000000000000000000000000000000000000000000000000000","0xad3228b676f7d3cd4284a5443f17f1962b36e491b30a40b2405849e597ba5fb5","0xb4c11951957c6f8f642c4af61cd6b24640fec6dc7fc607ee8206a99e92410d30","0x21ddb9a356815c3fac1026b6dec5df3124afbadb485c9ba5a3e3398a04b7ba85","0xe58769b32a1beaf1ea27375a44095a0d1fb664ce2dd358e7fcbfb78c26a19344","0x0eb01ebfc9ed27500cd4dfc979272d1f0913cc9f66540d7e8005811109e1cf2d","0x887c22bd8750d34016ac3c66b5ff102dacdd73f6b014e710b51e8022af9a1968","0xffd70157e48063fc33c97a050f7f640233bf646cc98d9524c6b92bcf3ab56f83","0x9867cc5f7f196b93bae1e27e6320742445d290f2263827498b54fec539f756af","0xcefad4e508c098b9a7e1d8feb19955fb02ba9675585078710969d3440f5054e0","0xf9dc3e7fe016e050eff260334f18a5d4fe391d82092319f5964f2e2eb7c1c3a5","0xf8b13a49e282f609c317a833fb8d976d11517c571d1221a265d25af778ecf892","0x3490c6ceeb450aecdc82e28293031d10c7d73bf85e57bf041a97360aa2c5d99c","0xc1df82d9c4b87413eae2ef048f94b4d3554cea73d92b0f7af96e0271c691e2bb","0x5c67add7c6caf302256adedf7ab114da0acfe870d449a3a489f781d659e8becc","0xda7bce9f4e8618b6bd2f4132ce798cdc7a60e7e1460a7299e3c6342a579626d2","0x2733e50f526ec2fa19a22b31e8ed50f23cd1fdf94c9154ed3a7609a2f1ff981f","0xe1d3b5c807b281e4683cc6d6315cf95b9ade8641defcb32372f1c126e398ef7a","0x5a2dce0a8a7f68bb74560f8f71837c2c2ebbcbf7fffb42ae1896f13f7c7479a0","0xb46a28b6f55540f89444f63de0378e3d121be09e06cc9ded1c20e65876d36aa0","0xc65e9645644786b620e2dd2ad648ddfcbf4a7e5b1a3a4ecfe7f64667a3f0b7e2","0xf4418588ed35a2458cffeb39b93d26f18d2ab13bdce6aee58e7b99359ec2dfd9","0x5a9c16dc00d6ef18b7933a6f8dc65ccb55667138776f7dea101070dc8796e377","0x4df84f40ae0c8229d0d6069e5c8f39a7c299677a09d367fc7b05e3bc380ee652","0xcdc72595f74c7b1043d0e1ffbab734648c838dfb0527d971b602bc216c9619ef","0x0abf5ac974a1ed57f4050aa510dd9c74f508277b39d7973bb2dfccc5eeb0618d","0xb8cd74046ff337f0a7bf2c8e03e10f642c1886798d71806ab1e888d9e5ee87d0","0x838c5655cb21c6cb83313b5a631175dff4963772cce9108188b34ac87c81c41e","0x662ee4dd2dd7b2bc707961b1e646c4047669dcb6584f0d8d770daf5d7e7deb2e","0x388ab20e2573d171a88108e79d820e98f26c0b84aa8b2f4aa4968dbb818ea322","0x93237c50ba75ee485f4c22adf2f741400bdf8d6a9cc7df7ecae576221665d735","0x8448818bb4ae4562849e949e17ac16e0be16688e156b5cf15e098c627c0056a9"]},"root":"0x6322935cce506970e2685003c2a8b8da5c7b2f525624b4023ab1186894cec736"},"l1_leaf":{"l1_info_tree_index":0,"rer":"0x0000000000000000000000000000000000000000000000000000000000000000","mer":"0xbd2dfe2a3e170675c469d0013ce8c905708ca67d49f3364908e0c682a6be964a","inner":{"global_exit_root":"0x2e0ee9ac0e17213b415a76fe3327b99b8ddac01c03fee9fde3a4aa321c58f234","block_hash":"0x0000000000000000000000000000000000000000000000000000000000000000","timestamp":0}}}},"global_index":{"mainnet_flag":true,"rollup_index":0,"leaf_index":0}}],"metadata":"0x0000000000000000000000000000000000000000000000000000000000000000","signature":{"r":"0x147292f24be21bfc671f688f8ea27e7c1b7c123f584232397f2f0bbcc77f6d85","s":"0x2ae5d779298dfd36552f40ae4033f206af978d5e24d1878048e22a16425c6593","odd_y_parity":false},"custom_chain_data":[],"l1_info_tree_leaf_count":null}]
+[2m2025-10-28T22:53:36.259973Z[0m [32m INFO[0m Generating the proof for 1 bridge exit(s) and 1 imported bridge exit(s)
+[2m2025-10-28T22:53:45.663850Z[0m [32m INFO[0m [1mprove_core[0m: clk = 0 pc = 0x201504
+[2m2025-10-28T22:53:46.051662Z[0m [32m INFO[0m [1mprove_core[0m: clk = 0 pc = 0x201504
+[2m2025-10-28T22:53:49.572727Z[0m [32m INFO[0m [1mprove_core[0m:[1mgenerate main traces[0m: close [3mtime.busy[0m[2m=[0m1.46s [3mtime.idle[0m[2m=[0m5.05µs [2m[3mindex[0m[2m=[0m0[0m
+[2m2025-10-28T22:59:21.648998Z[0m [32m INFO[0m [1mprove_core[0m: close [3mtime.busy[0m[2m=[0m336s [3mtime.idle[0m[2m=[0m4.85µs
+[2m2025-10-28T23:14:38.982045Z[0m [32m INFO[0m [1mcompress[0m: close [3mtime.busy[0m[2m=[0m917s [3mtime.idle[0m[2m=[0m7.54µs
+[2m2025-10-28T23:15:26.188293Z[0m [32m INFO[0m [1mshrink[0m:[1mprove_shards[0m: close [3mtime.busy[0m[2m=[0m40.2s [3mtime.idle[0m[2m=[0m4.84µs
+[2m2025-10-28T23:15:26.549488Z[0m [32m INFO[0m [1mshrink[0m: close [3mtime.busy[0m[2m=[0m47.6s [3mtime.idle[0m[2m=[0m4.25µs
+[2m2025-10-28T23:25:41.533493Z[0m [32m INFO[0m [1mwrap_bn254[0m:[1mprove_shards[0m: close [3mtime.busy[0m[2m=[0m436s [3mtime.idle[0m[2m=[0m11.1µs
+[2m2025-10-28T23:25:41.877740Z[0m [32m INFO[0m [1mwrap_bn254[0m:[1mverify[0m: close [3mtime.busy[0m[2m=[0m344ms [3mtime.idle[0m[2m=[0m4.24µs
+[2m2025-10-28T23:25:42.288345Z[0m [32m INFO[0m [1mwrap_bn254[0m: close [3mtime.busy[0m[2m=[0m616s [3mtime.idle[0m[2m=[0m5.00µs
+[sp1] plonk circuit artifacts already seem to exist at /home/ubuntu/.sp1/circuits/plonk/v5.0.0. if you want to re-download them, delete the directory
+[2m2025-10-28T23:25:42.404401Z[0m [32m INFO[0m [1mwrap_plonk_bn254[0m: Running prove in docker
+[2m2025-10-28T23:41:56.946108Z[0m [32m INFO[0m [1mwrap_plonk_bn254[0m: Running verify in docker
+[2m2025-10-28T23:41:57.412444Z[0m [32m INFO[0m [1mwrap_plonk_bn254[0m: close [3mtime.busy[0m[2m=[0m975s [3mtime.idle[0m[2m=[0m5.50µs
+[2m2025-10-28T23:42:00.010291Z[0m [32m INFO[0m Successfully generated the plonk proof with a latency of 2903.750264599s
+[2m2025-10-28T23:42:00.010421Z[0m [32m INFO[0m vkey: 0x0000ff7fc78f3323c990eae4a0381bedf2ceee02edb680e157eabc2adcc21a81
+[2m2025-10-28T23:42:00.010635Z[0m [32m INFO[0m Writing the proof to "/home/ubuntu/backup_1/logs/baseline/proofs/1-exits-v0x0000ff-a451b1e5-3471-4f0d-a20c-b5de51b5bcc7.json"
+	Command being timed: "cargo run --release -p pessimistic-proof-test-suite --bin ppgen -- --n-exits 1 --n-imported-exits 1 --proof-dir /home/ubuntu/backup_1/logs/baseline/proofs"
+	User time (seconds): 24861.33
+	System time (seconds): 674.20
+	Percent of CPU this job got: 878%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 48:25.63
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 15554260
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 51217453
+	Voluntary context switches: 973792
+	Involuntary context switches: 881940
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 4240
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
